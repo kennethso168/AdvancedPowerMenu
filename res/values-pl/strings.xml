@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="reboot_recovery">Recovery</string>
+	<string name="reboot_confirm">Telefon zostanie zrestartowany</string>
+    <string name="reboot_confirm_recovery">Telefon zostanie zrestartowany do trybu Recovery</string>
+
+</resources>

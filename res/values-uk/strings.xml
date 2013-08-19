@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="reboot_recovery">Меню відновлення (рекавері)</string>    
+	<string name="reboot_confirm">Пристрій буде перезавантажений</string>
+    <string name="reboot_confirm_recovery">Пристрій буде перезавантажений у меню відновлення (рекавері)</string>
+	<string name="reboot_soft">М\'яке перезавантаження</string>
+
+</resources>

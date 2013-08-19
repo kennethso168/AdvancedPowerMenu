@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="reboot_recovery">Modo recuperación</string>
+	<string name="reboot_confirm">El teléfono se reiniciará</string>
+    <string name="reboot_confirm_recovery">El teléfono se reiniciaré en modo de restauración</string>
+</resources>

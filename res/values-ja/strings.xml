@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Advanced Reboot Menu</string>
+    <string name="reboot_soft">ソフトリブート</string>
+    <string name="xposed_description">"再起動オプションを電源メニューに追加します。"</string>
+    <string name="reboot_recovery">リカバリ</string>
+    <string name="reboot_confirm">端末を再起動します。</string>
+    <string name="reboot_confirm_recovery">リカバリへ再起動します。</string>
+	<string name="take_screenshot">スクリーンショット</string>
+</resources>

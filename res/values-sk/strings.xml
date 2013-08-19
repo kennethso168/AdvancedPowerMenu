@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="reboot_recovery">Recovery</string>   
+    <string name="reboot_confirm">Váš telefón bude reštartovaný</string>
+    <string name="reboot_confirm_recovery">Váš telefón bude reštartovaný do režimu Recovery</string>
+
+</resources>

@@ -1,0 +1,21 @@
+<resources>
+
+	<!--Basic Information -->
+	<!--Not necessary to translate as these are just descriptions. However if you like you can still translate these. -->
+    <string name="app_name">Advanced Reboot Menu</string>
+	<string name="xposed_description">Enables advanced reboot menu with option to reboot to recovery.\nDeveloped by kennethso168@xda</string>
+	<string name="credits_msg">Developed by kennethso168@xda</string>
+    
+	<!-- Reboot Options -->
+	<string name="reboot_soft">Soft reboot</string>
+    <string name="reboot_recovery">Recovery</string>
+	
+	<!-- Confirmation Dialogs -->
+    <string name="reboot_confirm">Your phone will reboot.</string>
+    <string name="reboot_confirm_recovery">Your phone will reboot into recovery.</string>
+	
+	<!-- Screenshot  -->
+	<string name="take_screenshot">Screenshot</string>
+	
+	
+</resources>

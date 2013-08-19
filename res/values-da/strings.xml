@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="reboot_recovery">Systemgendannelse</string> 
+	<string name="reboot_confirm">Din telefon vil genstarte</string>
+    <string name="reboot_confirm_recovery">Din telefon vil genstarte i systemgendannelsestilstand</string>
+	<string name="reboot_soft">blød genstart</string>
+</resources>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="reboot_recovery">Recovery</string> 
+    <string name="reboot_confirm">Телефон будет перезагружен</string>
+    <string name="reboot_confirm_recovery">Телефон будет перезагружен в recovery</string>
+    <string name="reboot_soft">Мягкая перезагрузка</string>	
+
+</resources>

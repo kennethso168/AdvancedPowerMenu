@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="reboot_recovery">Recovery</string>
+    <string name="reboot_confirm">A telefonja újra fog indulni</string>
+    <string name="reboot_confirm_recovery">A telefonja újra fog indulni a recovery-be</string>
+</resources>

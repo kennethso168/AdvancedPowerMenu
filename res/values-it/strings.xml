@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="reboot_recovery">Riavvia in Recovery</string>
+    <string name="reboot_confirm">Il telefono si riavvierà</string>
+    <string name="reboot_confirm_recovery">Il telefono si riavvierà in ripristino</string>
+    <string name="reboot_soft">Riavvio soft</string>	
+
+</resources>
