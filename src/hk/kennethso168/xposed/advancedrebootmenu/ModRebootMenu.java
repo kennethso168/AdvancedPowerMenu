@@ -26,6 +26,7 @@ import android.os.Handler;
 import android.os.IBinder;
 import android.os.Message;
 import android.os.Messenger;
+import android.os.PowerManager;
 import android.os.RemoteException;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -34,7 +35,6 @@ import android.view.WindowManager;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 import de.robv.android.xposed.XC_MethodHook;
 import de.robv.android.xposed.XC_MethodHook.Unhook;
 import de.robv.android.xposed.XC_MethodReplacement;
@@ -298,32 +298,51 @@ public class ModRebootMenu {
                     public void onClick(DialogInterface dialog, int which) {
                     	dialog.dismiss();
                         if (mode == SEQ_REBOOT_NORMAL) {
-                        	Process p;
-							try {
+                        	
+							//try {
+								final PowerManager pm = (PowerManager) mContext.getSystemService(Context.POWER_SERVICE);
+								/*
 								p = Runtime.getRuntime().exec(new String[]{"su", "-c", "system/bin/sh"});
 								DataOutputStream stdin = new DataOutputStream(p.getOutputStream());
 	                        	//from here all commands are executed with su permissions
 	                        	stdin.writeBytes(mRebootCmd);
-							} catch (IOException e) {
-								XposedBridge.log(e);
-							}
+	                        	*/
+								//alt implementation
+								pm.reboot(null);
+							//} catch (IOException e) {}
                         } else if (mode == SEQ_REBOOT_SOFT) {
                         	try {
                         		Process proc = Runtime.getRuntime()
-                        		            .exec(new String[]{ "su", "-c", "system/bin/sh"});
+                        		            .exec("sh");
+                        		
                         		DataOutputStream stdin = new DataOutputStream(proc.getOutputStream()); 
                         		//from here all commands are executed with su permissions
                         		stdin.writeBytes(mRebootSoftCmd);
-                        		} catch (Exception e) {
+                        		
+                        	} catch (Exception e) {
                         			XposedBridge.log(e);
-                        		}
+                        	}   
                         } else if (mode == SEQ_REBOOT_RECOVERY) {
                         	Process p;
-							try {
+							/*
+                        	try {
+								
 								p = Runtime.getRuntime().exec(new String[]{"su", "-c", "system/bin/sh"});
 								DataOutputStream stdin = new DataOutputStream(p.getOutputStream());
 	                        	//from here all commands are executed with su permissions
 	                        	stdin.writeBytes(mRebootRecoveryCmd);
+	                        	
+							} catch (IOException e) {
+								XposedBridge.log(e);
+							}
+                        	*/
+                        	try {
+								p = Runtime.getRuntime().exec("sh");
+								DataOutputStream stdin = new DataOutputStream(p.getOutputStream()); 
+                        		//from here all commands are executed with su permissions
+                        		stdin.writeBytes("mkdir -p /cache/recovery\ntouch /cache/recovery/boot\n");
+								final PowerManager pm = (PowerManager) mContext.getSystemService(Context.POWER_SERVICE);
+								pm.reboot("recovery");
 							} catch (IOException e) {
 								XposedBridge.log(e);
 							}
