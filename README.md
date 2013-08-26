@@ -22,12 +22,12 @@ Xposed framework installed
 
 Installation
 ============
-You will need xposed framework and for this mod to work! See prerequisites above.
+- You will need xposed framework and for this mod to work! See prerequisites above.
 After you meet the prerequisites,
-Download and install the apk in the next post
-Go to Xposed Installer and enable "Advanced Reboot Menu"
-Reboot and you are done! (Sometimes you might need to reboot more than once for all functions to work)
-If you use the reboot functions for the first time you may need to grant superuser permission.
+- Download and install the apk in the next post
+- Go to Xposed Installer and enable "Advanced Reboot Menu"
+- Reboot and you are done! (Sometimes you might need to reboot more than once for all functions to work)
+- If you use the reboot functions for the first time you may need to grant superuser permission.
 
 Disclaimer
 ==========
