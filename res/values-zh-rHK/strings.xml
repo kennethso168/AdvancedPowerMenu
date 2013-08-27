@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+
+	<!--Basic Information -->
+	<!--Not necessary to translate as these are just desciptions. However if you like you can still translate these. -->
+    <string name="app_name">進階重啟目錄(Advanced Reboot Menu)</string>
+	<string name="xposed_description">增加進階重啟選項，包括重啟至 Recovery 的選項。由 kennethso168@xda 開發。</string>
+	<string name="credits_msg">由 kennethso168@xda 開發。</string>
+    
+	<!-- Reboot Options -->
+	<string name="reboot_soft">軟重啟</string>
+    <string name="poweroff_recovery">Recovery</string>
+	
+	<!-- Confirmation Dialogs -->
+	<string name="reboot_confirm">您的手機將重新啟動</string>
+    <string name="reboot_confirm_recovery">您的手機將重新啟動至 Recovery</string>
+	
+	<!-- Screenshot  -->
+	<string name="take_screenshot">螢幕截圖</string>
+	
+	
+</resources>
