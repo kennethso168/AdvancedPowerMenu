@@ -67,8 +67,7 @@ public class ModRebootMenu {
     private static String mRebootCmd = "reboot\n";
     private static String mRebootRecoveryCmd = 
     		"mkdir -p /cache/recovery\n" +
-    		"touch /cache/recovery/boot\n" +
-    		"reboot\n";
+    		"touch /cache/recovery/boot\n";
     private static String mRebootSoftCmd = 
     		"setprop ctl.restart surfaceflinger\n" +
     		"setprop ctl.restart zygote\n";
@@ -169,6 +168,7 @@ public class ModRebootMenu {
                     Object screenshotActionItem = null;
                     Resources res = mContext.getResources();
                     for (Object o : mItems) {
+                    	// search for reboot/restart
                     	// search for drawable
                         try {
                             Field f = XposedHelpers.findField(o.getClass(), "mIconResId");
@@ -185,7 +185,6 @@ public class ModRebootMenu {
                         } catch (IllegalArgumentException iae) {
                             // continue
                         }
-
                         // search for text
                         try {
                             Field f = XposedHelpers.findField(o.getClass(), "mMessageResId");
@@ -202,25 +201,39 @@ public class ModRebootMenu {
                         } catch (IllegalArgumentException iae) {
                         	// continue
                         }
-                        //TODO also use the same technique for looking screenshot item
+                        
+                        // search for screenshot
+                        // search for drawable
                         try {
                             Field f = XposedHelpers.findField(o.getClass(), "mIconResId");
-                            String resName = res.getResourceName((Integer) f.get(o)).toLowerCase(Locale.US);
-                            log("resName = " + resName);
+                            String resName = res.getResourceEntryName((Integer) f.get(o)).toLowerCase(Locale.US);
+                            log("Drawable resName = " + resName);
                             if (resName.contains("screenshot")) {
                                 screenshotActionItem = o;
                                 break;
                             }
                         } catch (NoSuchFieldError nfe) {
-                        	//the exception is normal for no existing reboot action item.
-                        	//So not logged for release version
-                        	log(nfe);
+                            // continue
                         } catch (Resources.NotFoundException resnfe) { 
-                        	log(resnfe);
-                        	//the exception is normal for no existing reboot action item.
-                        	//So not logged for release version
+                            // continue
                         } catch (IllegalArgumentException iae) {
-                        	XposedBridge.log(iae);
+                            // continue
+                        }
+                        // search for text
+                        try {
+                            Field f = XposedHelpers.findField(o.getClass(), "mMessageResId");
+                            String resName = res.getResourceEntryName((Integer) f.get(o)).toLowerCase(Locale.US);
+                            log("Text resName = " + resName);
+                            if (resName.contains("screenshot")) {
+                                screenshotActionItem = o;
+                                break;
+                            }
+                        } catch (NoSuchFieldError nfe) {
+                        	// continue
+                        } catch (Resources.NotFoundException resnfe) { 
+                        	// continue
+                        } catch (IllegalArgumentException iae) {
+                        	// continue
                         }
                     }
 
@@ -498,10 +511,6 @@ public class ModRebootMenu {
 						};  
 						msg.replyTo = new Messenger(h);  
 						msg.arg1 = msg.arg2 = 0;  
-						/*if (mStatusBar != null && mStatusBar.isVisibleLw())  
-							msg.arg1 = 1;  
-						if (mNavigationBar != null && mNavigationBar.isVisibleLw())  
-							msg.arg2 = 1;  */
 						try {  
 							messenger.send(msg);  
 						} catch (RemoteException e) {
