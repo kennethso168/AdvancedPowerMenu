@@ -2,8 +2,8 @@
 
 	<!--Basic Information -->
 	<!--Not necessary to translate as these are just descriptions. However if you like you can still translate these. -->
-    <string name="app_name">Advanced Reboot Menu</string>
-	<string name="xposed_description">Enables advanced reboot menu with option to reboot to recovery.\nDeveloped by kennethso168@xda</string>
+    <string name="app_name">Advanced Power Menu</string>
+	<string name="xposed_description">Add Reboot, Soft Reboot, Reboot to Recovery and Screenshot to power menu.\nDeveloped by kennethso168@xda</string>
 	<string name="credits_msg">Developed by kennethso168@xda</string>
     
 	<!-- Reboot Options -->
@@ -17,5 +17,30 @@
 	<!-- Screenshot  -->
 	<string name="take_screenshot">Screenshot</string>
 	
+	<!-- Preference Screen -->
+	<string name="note_title">Note</string>
+	<string name="note_summ">You may need to reboot for changes to take effect.</string>
+	<string name="sect_menu_options">Menu Options</string>
+	<string name="enable_reboot_title">Enable advanced reboot</string>
+	<string name="enable_reboot_summ">Check to add/replace the reboot option which allows different reboot methods.</string>
+	<string name="enable_screenshot_title">Enable screenshot</string>
+	<string name="enable_screenshot_summ">Check to add the option which enables screenshot functionality if none originally exists.</string>
+	<string name="confirm_dialog_title">Confirmation dialogs&#8230;</string>
+	<string name="confirm_dialog_summ">Choose when to show confirmation dialogs when reboot.</string>
+	<string name="confirm_dialog_default">0</string>
+	
+	<string name="sect_debug">Debug</string>
+	<string name="verbose_log_title">Enable verbose logging</string>
+	<string name="verbose_log_summ">Check to write full logs into /data/xposed/debug.log</string>
+	
+	<string name="sect_about">About</string>
+	<string name="app_info_title">App info</string>
+	<!-- do not translate app_info_summ -->
+	<string name="app_info_summ">Advaced Power Menu version 3.0\nby Kenneth So (kennethso168@xda)</string>
+	
+	<string name="license_title">Open source license</string>
+	<string name="xda_title">View xda thread</string>
+	<string name="email_title">Email the developer</string>
+	<string name="donate_title">Donate</string>
 	
 </resources>

@@ -11,8 +11,10 @@ import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
+import java.util.Set;
 
 import android.app.AlertDialog;
 import android.content.ComponentName;
@@ -38,9 +40,9 @@ import android.widget.TextView;
 import de.robv.android.xposed.XC_MethodHook;
 import de.robv.android.xposed.XC_MethodHook.Unhook;
 import de.robv.android.xposed.XC_MethodReplacement;
+import de.robv.android.xposed.XSharedPreferences;
 import de.robv.android.xposed.XposedBridge;
 import de.robv.android.xposed.XposedHelpers;
-//import de.robv.android.xposed.XSharedPreferences;
 
 public class ModRebootMenu {
     private static final String CLASS = "ModRebootMenu.java";
@@ -61,6 +63,7 @@ public class ModRebootMenu {
     private static String mRebootConfirmStr;
     private static String mRebootConfirmRecoveryStr;
     private static Unhook mRebootActionHook;
+    private static XSharedPreferences xPref;
     
     //reboot shell commands
     //  \n executes the command
@@ -77,23 +80,27 @@ public class ModRebootMenu {
     private static final int SEQ_REBOOT_SOFT = 1;
     private static final int SEQ_REBOOT_RECOVERY = 2;
     
+    //constants for modes of showing confirmation dialogs
+    private static final int VALUE_ENABLE_DIALOGS = 0;
+    private static final int VALUE_DISABLE_DIALOGS = 1;
+    
     //variables for screenshot function
     static final Object mScreenshotLock = new Object();
 	static ServiceConnection mScreenshotConnection = null;  
 
     private static void log(String message) {
-        if(Main.WRITE_LOGS) XposedBridge.log(CLASS + ": " + message);
+    	if(Main.writeLogs()) XposedBridge.log(CLASS + ": " + message);
     }
     
     private static void log(Throwable t){
-    	if(Main.WRITE_LOGS){
+    	if(Main.writeLogs()){
     		XposedBridge.log(CLASS + ": ");
     		XposedBridge.log(t);
     	}    	
     }
 
-    public static void init(/*final XSharedPreferences prefs, */final ClassLoader classLoader) {
-
+    public static void init(final XSharedPreferences pref, final ClassLoader classLoader) {
+    	xPref = pref;
         try {
             final Class<?> globalActionsClass = XposedHelpers.findClass(CLASS_GLOBAL_ACTIONS, classLoader);
             final Class<?> actionClass = XposedHelpers.findClass(CLASS_ACTION, classLoader);
@@ -154,7 +161,9 @@ public class ModRebootMenu {
                     if (!prefs.getBoolean(GravityBoxSettings.PREF_KEY_POWEROFF_ADVANCED, false)) {
                         return;
                     }*/
-                    
+                    pref.reload();
+                    boolean advRebootEnabled = pref.getBoolean("pref_enable_reboot", false);
+                    boolean screenshotEnabled = pref.getBoolean("pref_enable_screenshot", false);
                     @SuppressWarnings("unchecked")
                     List<Object> mItems = (List<Object>) XposedHelpers.getObjectField(param.thisObject, "mItems");
 
@@ -201,7 +210,7 @@ public class ModRebootMenu {
                         } catch (IllegalArgumentException iae) {
                         	// continue
                         }
-                        
+                         
                         // search for screenshot
                         // search for drawable
                         try {
@@ -236,38 +245,41 @@ public class ModRebootMenu {
                         	// continue
                         }
                     }
-
-                    if (rebootActionItem != null) {
-                        log("Existing Reboot action item found! Replacing onPress()");
-                        mRebootActionHook = XposedHelpers.findAndHookMethod(rebootActionItem.getClass(), 
-                                "onPress", new XC_MethodReplacement () {
-                            @Override
-                            protected Object replaceHookedMethod(MethodHookParam param) throws Throwable {
-                                showDialog();
-                                return null;
-                            }
-                        });
-                    } else {
-                        log("Existing Reboot action item NOT found! Adding new RebootAction item");
-                        Object action = Proxy.newProxyInstance(classLoader, new Class<?>[] { actionClass }, 
-                                new RebootAction());
-                        // add to the second position
-                        mItems.add(1, action);
-                        BaseAdapter mAdapter = (BaseAdapter) XposedHelpers.getObjectField(param.thisObject, "mAdapter");
-                        mAdapter.notifyDataSetChanged(); 
+                    if(advRebootEnabled){
+	                    if (rebootActionItem != null) {
+	                        log("Existing Reboot action item found! Replacing onPress()");
+	                        mRebootActionHook = XposedHelpers.findAndHookMethod(rebootActionItem.getClass(), 
+	                                "onPress", new XC_MethodReplacement () {
+	                            @Override
+	                            protected Object replaceHookedMethod(MethodHookParam param) throws Throwable {
+	                                showDialog();
+	                                return null;
+	                            }
+	                        });
+	                    } else {
+	                        log("Existing Reboot action item NOT found! Adding new RebootAction item");
+	                        Object action = Proxy.newProxyInstance(classLoader, new Class<?>[] { actionClass }, 
+	                                new RebootAction());
+	                        // add to the second position
+	                        mItems.add(1, action);
+	                        BaseAdapter mAdapter = (BaseAdapter) XposedHelpers.getObjectField(param.thisObject, "mAdapter");
+	                        mAdapter.notifyDataSetChanged(); 
+	                    }
                     }
-                    if (screenshotActionItem != null) {
-                    	log("Existing Screenshot action item found! Nothing is done.");
-                    	//no need to do anything!
-                    	//As the original screenshot action item can be left intact
-                    } else {
-                    	log("Existing Screenshot action item NOT found! Adding new ScreenshotAction item");
-                    	Object action = Proxy.newProxyInstance(classLoader, new Class<?>[] { actionClass }, 
-                                new ScreenshotAction());
-                    	// add to the third position
-                    	mItems.add(2, action);
-                        BaseAdapter mAdapter = (BaseAdapter) XposedHelpers.getObjectField(param.thisObject, "mAdapter");
-                        mAdapter.notifyDataSetChanged(); 
+                    if(screenshotEnabled){
+	                    if (screenshotActionItem != null) {
+	                    	log("Existing Screenshot action item found! Nothing is done.");
+	                    	//no need to do anything!
+	                    	//As the original screenshot action item can be left intact
+	                    } else {
+	                    	log("Existing Screenshot action item NOT found! Adding new ScreenshotAction item");
+	                    	Object action = Proxy.newProxyInstance(classLoader, new Class<?>[] { actionClass }, 
+	                                new ScreenshotAction());
+	                    	// add to the second/third position
+	                    	mItems.add(advRebootEnabled?2:1, action);
+	                        BaseAdapter mAdapter = (BaseAdapter) XposedHelpers.getObjectField(param.thisObject, "mAdapter");
+	                        mAdapter.notifyDataSetChanged(); 
+	                    }
                     }
                 }
             });
@@ -315,54 +327,67 @@ public class ModRebootMenu {
     private static void handleReboot(Context context, String caption, final int mode) {
         try {
             final String message = (mode == 0 || mode == 1) ? mRebootConfirmStr : mRebootConfirmRecoveryStr;
-
-            AlertDialog.Builder builder = new AlertDialog.Builder(mContext)
-                .setTitle(caption)
-                .setMessage(message)
-                .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
-
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                    	dialog.dismiss();
-                        if (mode == SEQ_REBOOT_NORMAL) {
-							final PowerManager pm = (PowerManager) mContext.getSystemService(Context.POWER_SERVICE);
-							pm.reboot(null);
-                        } else if (mode == SEQ_REBOOT_SOFT) {
-                        	try {
-                        		Process proc = Runtime.getRuntime().exec("sh");
-                        		DataOutputStream stdin = new DataOutputStream(proc.getOutputStream()); 
-                        		stdin.writeBytes(mRebootSoftCmd);
-                        		
-                        	} catch (Exception e) {
-                        			XposedBridge.log(e);
-                        	}   
-                        } else if (mode == SEQ_REBOOT_RECOVERY) {
-                        	Process p;
-                        	try {
-								p = Runtime.getRuntime().exec("sh");
-								DataOutputStream stdin = new DataOutputStream(p.getOutputStream()); 
-                        		stdin.writeBytes("mkdir -p /cache/recovery\ntouch /cache/recovery/boot\n");
-								final PowerManager pm = (PowerManager) mContext.getSystemService(Context.POWER_SERVICE);
-								pm.reboot("recovery");
-							} catch (IOException e) {
-								XposedBridge.log(e);
-							}
-                        	
-                        }
-                    }
-                })
-                .setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
-                    
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                });
-            AlertDialog dialog = builder.create();
-            dialog.getWindow().setType(WindowManager.LayoutParams.TYPE_KEYGUARD_DIALOG);
-            dialog.show();
+            xPref.reload();
+            String showDialogMode = xPref.getString("pref_confirm_dialog", "3");  //3 is a temp indicator for error
+            log("ShowDialogMode = " + showDialogMode);
+            int showDialogModeInt = Integer.parseInt(showDialogMode);
+	            if (showDialogModeInt == VALUE_DISABLE_DIALOGS){
+	            	handleRebootCore(mode);
+	            }else{
+	            	AlertDialog.Builder builder = new AlertDialog.Builder(mContext)
+	                .setTitle(caption)
+	                .setMessage(message)
+	                .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+	
+	                    @Override
+	                    public void onClick(DialogInterface dialog, int which) {
+	                    	dialog.dismiss();
+	                    	handleRebootCore(mode);
+	                    }
+	                })
+	                .setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+	                    
+	                    @Override
+	                    public void onClick(DialogInterface dialog, int which) {
+	                        dialog.dismiss();
+	                    }
+	                });
+	            	AlertDialog dialog = builder.create();
+	            	dialog.getWindow().setType(WindowManager.LayoutParams.TYPE_KEYGUARD_DIALOG);
+	            	dialog.show();
+	            }
+            	
+            
         } catch (Exception e) {
             XposedBridge.log(e);
+        }
+    }
+    
+    private static void handleRebootCore(final int mode){
+    	if (mode == SEQ_REBOOT_NORMAL) {
+			final PowerManager pm = (PowerManager) mContext.getSystemService(Context.POWER_SERVICE);
+			pm.reboot(null);
+        } else if (mode == SEQ_REBOOT_SOFT) {
+        	try {
+        		Process proc = Runtime.getRuntime().exec("sh");
+        		DataOutputStream stdin = new DataOutputStream(proc.getOutputStream()); 
+        		stdin.writeBytes(mRebootSoftCmd);
+        		
+        	} catch (Exception e) {
+        			XposedBridge.log(e);
+        	}   
+        } else if (mode == SEQ_REBOOT_RECOVERY) {
+        	Process p;
+        	try {
+				p = Runtime.getRuntime().exec("sh");
+				DataOutputStream stdin = new DataOutputStream(p.getOutputStream()); 
+        		stdin.writeBytes("mkdir -p /cache/recovery\ntouch /cache/recovery/boot\n");
+				final PowerManager pm = (PowerManager) mContext.getSystemService(Context.POWER_SERVICE);
+				pm.reboot("recovery");
+			} catch (IOException e) {
+				XposedBridge.log(e);
+			}
+        	
         }
     }
     
