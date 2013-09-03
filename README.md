@@ -1,7 +1,7 @@
-AdvancedRebootMenu
+AdvancedPowerMenu
 ==================
 
-Advanced Reboot Menu Xposed Mod
+Advanced Power Menu Xposed Mod
 
 Features
 ========
@@ -17,7 +17,7 @@ Thanks to Xposed framework,
 
 Prerequisites
 =============
-All Xperia Phones with rooted stock Jelly Bean ROM / AOSP(Please do test and tell me)
+All Xperia Phones with rooted stock 4.0+ ROM / Nexus devices / AOSP(Please do test and tell me)
 Xposed framework installed
 
 Installation
@@ -25,7 +25,7 @@ Installation
 - You will need xposed framework and for this mod to work! See prerequisites above.
 After you meet the prerequisites,
 - Download and install the apk in the next post
-- Go to Xposed Installer and enable "Advanced Reboot Menu"
+- Go to Xposed Installer and enable "Advanced Power Menu"
 - Reboot and you are done! (Sometimes you might need to reboot more than once for all functions to work)
 - If you use the reboot functions for the first time you may need to grant superuser permission.
 
