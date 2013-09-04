@@ -15,6 +15,10 @@
             <intent android:action="android.intent.action.VIEW"
             		android:data="https://raw.github.com/kennethso168/AdvancedRebootMenu/master/LICENSE.md" />
         </Preference>
+        <Preference android:key="pref_special_thanks" android:title="@string/special_thanks_title">
+            <intent android:action="android.intent.action.VIEW"
+            		android:data="https://raw.github.com/kennethso168/AdvancedPowerMenu/master/SpecialThanks.md" />
+        </Preference>
         <Preference android:title="@string/xda_title" android:key="pref_xda">
             <intent android:action="android.intent.action.VIEW"
             		android:data="http://forum.xda-developers.com/showthread.php?t=2404042" />
@@ -27,6 +31,7 @@
             <intent android:action="android.intent.action.VIEW"
             		android:data="http://forum.xda-developers.com/donatetome.php?u=4414937" />
         </Preference>
+        
     </PreferenceCategory>
     
 

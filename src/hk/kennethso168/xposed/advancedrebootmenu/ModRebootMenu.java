@@ -11,10 +11,8 @@ import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
-import java.util.Set;
 
 import android.app.AlertDialog;
 import android.content.ComponentName;
@@ -37,6 +35,7 @@ import android.view.WindowManager;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import de.robv.android.xposed.XC_MethodHook;
 import de.robv.android.xposed.XC_MethodHook.Unhook;
 import de.robv.android.xposed.XC_MethodReplacement;
@@ -381,7 +380,7 @@ public class ModRebootMenu {
         	try {
 				p = Runtime.getRuntime().exec("sh");
 				DataOutputStream stdin = new DataOutputStream(p.getOutputStream()); 
-        		stdin.writeBytes("mkdir -p /cache/recovery\ntouch /cache/recovery/boot\n");
+        		stdin.writeBytes(mRebootRecoveryCmd);
 				final PowerManager pm = (PowerManager) mContext.getSystemService(Context.POWER_SERVICE);
 				pm.reboot("recovery");
 			} catch (IOException e) {
