@@ -3,6 +3,7 @@
 	<!--Basic Information -->
 	<!--Not necessary to translate as these are just descriptions. However if you like you can still translate these. -->
     <string name="app_name">Advanced Power Menu</string>
+    <string name="launcher_name">Adv. Power Menu</string>
 	<string name="xposed_description">Add Reboot, Soft Reboot, Reboot to Recovery and Screenshot to power menu.\nDeveloped by kennethso168@xda</string>
 	<string name="credits_msg">Developed by kennethso168@xda</string>
     
