@@ -5,7 +5,7 @@
 	<!--Basic Information -->
 	<!--Not necessary to translate as these are just desciptions. However if you like you can still translate these. -->
     <string name="app_name">進階重啟目錄(Advanced Reboot Menu)</string>
-	<string name="xposed_description">增加進階重啟選項，包括重啟至 Recovery 的選項。由 kennethso168@xda 開發。</string>
+	<string name="xposed_description">於電源目錄增加重啟、軟重啟、重啟至Recovery及螢幕截圖選項。由 kennethso168@xda 開發。</string>
 	<string name="credits_msg">由 kennethso168@xda 開發。</string>
     
 	<!-- Reboot Options -->

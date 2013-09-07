@@ -5,7 +5,6 @@ import de.robv.android.xposed.XposedBridge;
 import de.robv.android.xposed.callbacks.XC_LoadPackage.LoadPackageParam;
 import de.robv.android.xposed.XSharedPreferences;
 import de.robv.android.xposed.IXposedHookZygoteInit;
-import de.robv.android.xposed.XSharedPreferences;
 
 public class Main implements IXposedHookLoadPackage, IXposedHookZygoteInit{
 	
@@ -22,7 +21,7 @@ public class Main implements IXposedHookLoadPackage, IXposedHookZygoteInit{
     	return pref.getBoolean("pref_verbose_log", true);
     }
     
-    private static final String APP_NAME = "Advanced Reboot Menu";
+    private static final String LOG_APP_NAME = "APM";
     
     @Override
     public void initZygote(StartupParam startupParam) throws Throwable {
@@ -30,7 +29,7 @@ public class Main implements IXposedHookLoadPackage, IXposedHookZygoteInit{
     }
     
     private static void log(String message) {
-    	if(WRITE_LOGS) XposedBridge.log(APP_NAME + ": " + message);
+    	if(WRITE_LOGS) XposedBridge.log(LOG_APP_NAME + ": " + message);
     }
     
     @Override
