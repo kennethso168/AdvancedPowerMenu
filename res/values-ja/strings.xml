@@ -1,10 +1,45 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Advanced Reboot Menu</string>
-    <string name="reboot_soft">ソフトリブート</string>
-    <string name="xposed_description">"再起動オプションを電源メニューに追加します。"</string>
+
+	<!--Basic Information -->
+	<!--Not necessary to translate as these are just descriptions. However if you like you can still translate these. -->
+    <string name="app_name">Advanced Power Menu</string>
+    <string name="launcher_name">Adv. Power Menu</string>
+	<string name="xposed_description">再起動やスクリーンショットオプションを電源メニューに追加します。\n開発者: kennethso168@xda</string>
+	<string name="credits_msg">開発者: kennethso168@xda</string>
+    
+	<!-- Reboot Options -->
+	<string name="reboot_soft">ソフトリブート</string>
     <string name="reboot_recovery">リカバリ</string>
+	
+	<!-- Confirmation Dialogs -->
     <string name="reboot_confirm">端末を再起動します。</string>
     <string name="reboot_confirm_recovery">リカバリへ再起動します。</string>
+	
+	<!-- Screenshot  -->
 	<string name="take_screenshot">スクリーンショット</string>
+	
+	<!-- Preference Screen -->
+	<string name="note_title">注意</string>
+	<string name="note_summ">変更を反映させるには再起動してください。</string>
+	<string name="sect_menu_options">メニューオプション</string>
+	<string name="enable_reboot_title">再起動オプションの追加</string>
+	<string name="enable_reboot_summ">様々な再起動ができるオプションを電源メニューに追加します。</string>
+	<string name="enable_screenshot_title">スクリーンショットを追加</string>
+	<string name="enable_screenshot_summ">電源メニューにスクリーンショットを撮影できる項目を追加します。</string>
+	<string name="confirm_dialog_title">確認ダイアログ&#8230;</string>
+	<string name="confirm_dialog_summ">再起動するときに確認のダイアログを表示するか設定します。</string>
+	
+	<string name="sect_debug">デバッグ</string>
+	<string name="verbose_log_title">詳細なログを残す</string>
+	<string name="verbose_log_summ">チェックすると/data/xposed/debug.logに完全なログを残します。</string>
+	
+	<string name="sect_about">このアプリについて</string>
+	<string name="app_info_title">アプリ情報</string>
+	
+	<string name="license_title">オープンソースライセンス</string>
+	<string name="special_thanks_title">協力者</string>
+	<string name="xda_title">xda threadを開く</string>
+	<string name="email_title">開発者にメールを送信</string>
+	<string name="donate_title">寄付</string>
+	
 </resources>

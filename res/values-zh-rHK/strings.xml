@@ -5,8 +5,8 @@
 	<!--Basic Information -->
 	<!--Not necessary to translate as these are just desciptions. However if you like you can still translate these. -->
     <string name="app_name">進階重啟目錄(Advanced Reboot Menu)</string>
-	<string name="xposed_description">於電源目錄增加重啟、軟重啟、重啟至Recovery及螢幕截圖選項。由 kennethso168@xda 開發。</string>
-	<string name="credits_msg">由 kennethso168@xda 開發。</string>
+	<string name="xposed_description">於電源目錄增加重啟、軟重啟、重啟至Recovery及螢幕截圖選項。\n開發者︰kennethso168@xda</string>
+	<string name="credits_msg">開發者︰kennethso168@xda</string>
     
 	<!-- Reboot Options -->
 	<string name="reboot_soft">軟重啟</string>
@@ -18,6 +18,30 @@
 	
 	<!-- Screenshot  -->
 	<string name="take_screenshot">螢幕截圖</string>
+	
+	<!-- Preference Screen -->
+	<string name="note_title">注意</string>
+	<string name="note_summ">要使變更生效，您可能需要重新啟動您的手機。</string>
+	<string name="sect_menu_options">目錄選項</string>
+	<string name="enable_reboot_title">啟用進階重啟</string>
+	<string name="enable_reboot_summ">勾選以增加/取代「重新啟動」選項，使您可以選擇不同的重啟模式。</string>
+	<string name="enable_screenshot_title">啟用螢幕截圖</string>
+	<string name="enable_screenshot_summ">勾選以增加「螢幕截圖」選項。若已有此選項存在則維持不變。</string>
+	<string name="confirm_dialog_title">確認對話框&#8230;</string>
+	<string name="confirm_dialog_summ">按此選擇當重啟時是否顯示確認對話框</string>
+	
+	<string name="sect_debug">除錯</string>
+	<string name="verbose_log_title">啟用詳細記錄</string>
+	<string name="verbose_log_summ">勾選以在 /data/xposed/debug.log 中作詳細的除錯記錄</string>
+	
+	<string name="sect_about">關於</string>
+	<string name="app_info_title">應用程式資訊</string>
+	
+	<string name="license_title">開源許可證</string>
+	<string name="special_thanks_title">鳴謝</string>
+	<string name="xda_title">瀏覽 xda 討論帖</string>
+	<string name="email_title">發送電郵給開發者</string>
+	<string name="donate_title">捐款</string>
 	
 	
 </resources>

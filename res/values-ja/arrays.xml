@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="confirm_dialog">
+        <item name="enable">ダイアログを表示する</item>
+        <item name="disable">ダイアログを表示しない</item>
+    </string-array>
+    <string-array name="confirm_dialog_values">
+        <item name="enable">0</item>
+        <item name="disable">1</item>
+    </string-array>
+</resources>
