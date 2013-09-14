@@ -4,6 +4,7 @@
         <item name="enable">Show all dialogs</item>
         <item name="disable">Disable all reboot dialogs</item>
     </string-array>
+    <!-- Don't translate all the below strings -->
     <string-array name="confirm_dialog_values">
         <item name="enable">0</item>
         <item name="disable">1</item>

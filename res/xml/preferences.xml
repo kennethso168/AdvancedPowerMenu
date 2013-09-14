@@ -4,13 +4,14 @@
     <PreferenceCategory android:title="@string/sect_menu_options" android:key="pref_menu_options">
         <CheckBoxPreference android:summary="@string/enable_reboot_summ" android:key="pref_enable_reboot" android:title="@string/enable_reboot_title" android:defaultValue="true"/>
         <CheckBoxPreference android:summary="@string/enable_screenshot_summ" android:key="pref_enable_screenshot" android:title="@string/enable_screenshot_title" android:defaultValue="true"/>
-        <ListPreference android:entries="@array/confirm_dialog" android:summary="@string/confirm_dialog_summ" android:key="pref_confirm_dialog" android:title="@string/confirm_dialog_title" android:defaultValue="@string/confirm_dialog_default" android:entryValues="@array/confirm_dialog_values"/>
+        <ListPreference android:entries="@array/confirm_dialog" android:key="pref_confirm_dialog" android:title="@string/confirm_dialog_title" android:defaultValue="@string/confirm_dialog_default" android:entryValues="@array/confirm_dialog_values"/>
     </PreferenceCategory>
     <PreferenceCategory android:title="@string/sect_debug" android:key="pref_debug">
         <CheckBoxPreference android:summary="@string/verbose_log_summ" android:key="pref_verbose_log" android:title="@string/verbose_log_title" android:defaultValue="false"/>
+        <CheckBoxPreference android:key="pref_hide_ic_launcher" android:title="@string/hide_ic_launcher_title"/>
     </PreferenceCategory>
     <PreferenceCategory android:title="@string/sect_about" android:key="pref_about">
-        <Preference android:summary="@string/app_info_summ" android:title="@string/app_info_title" android:key="pref_app_info"/>
+        <Preference android:title="@string/app_info_title" android:key="pref_app_info"/>
         <Preference android:title="@string/license_title" android:key="pref_license">
             <intent android:action="android.intent.action.VIEW"
             		android:data="https://raw.github.com/kennethso168/AdvancedRebootMenu/master/LICENSE.md" />
