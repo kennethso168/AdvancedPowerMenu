@@ -1,9 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="reboot_recovery">Recovery</string> 
-    <string name="reboot_confirm">Телефон будет перезагружен</string>
-    <string name="reboot_confirm_recovery">Телефон будет перезагружен в recovery</string>
-    <string name="reboot_soft">Мягкая перезагрузка</string>	
+    <string name="app_name">Расширенное меню перезагрузки</string>
+	<string name="launcher_name">Меню перезагрузки</string>
+	<string name="xposed_description">"Добавляет варианты перезагрузки и скриншот в меню выключения. \nРазработка kennethso168@xda \nПеревод от greatslon"</string>
+	<string name="credits_msg">Разработка kennethso168@xda</string>
+	<string name="reboot_soft">Мягкая перезагрузка</string>
+	<string name="reboot_recovery">Рекавери</string>
+	<string name="reboot_confirm">Телефон будет перезагружен</string>
+	<string name="reboot_confirm_recovery">Телефон будет перезагружен в рекавери</string>
+	<string name="take_screenshot">Скриншот</string>
+	<string name="note_title">Внимание</string>
+	<string name="note_summ">Необходима перезагрузка, чтобы изменения вступли в силу.</string>
+	<string name="sect_menu_options">Настройки</string>
+	<string name="enable_reboot_title">Расширенная перезагрузка</string>
+	<string name="enable_reboot_summ">Выберите для включения различных вариантов перезагрузки.</string>
+	<string name="enable_screenshot_title">Cкриншот</string>
+	<string name="enable_screenshot_summ">Добавление пункта Скриншот, если его изначально нет в меню выключения.</string>
+	<string name="confirm_dialog_title">Диалог подтверждения</string>
+	<string name="sect_debug">Отладка</string>
+	<string name="verbose_log_title">Подробное логирование</string>
+	<string name="verbose_log_summ">Включите для записи полного лога в /data/xposed/debug.log</string>
+	<string name="hide_ic_launcher_title">Скрыть иконку в лаунчере</string>
+	<string name="sect_about">О приложении</string>
+	<string name="app_info_title">Информация о приложении</string>
+	<string name="app_info_before">"Расширенное меню перезагрузки. Версия "</string>
+	<string name="app_info_after">\nот Kenneth So (kennethso168@xda). \nПеревод от greatslon.</string>
+	<string name="license_title">Открытая лицензия</string>
+	<string name="special_thanks_title">Отдельное спасибо</string>
+	<string name="xda_title">Пост на xda</string>
+	<string name="email_title">Написать разработчику</string>
+	<string name="donate_title">Спонсировать</string>
 
 </resources>

@@ -51,6 +51,14 @@ public class Settings extends Activity {
 	public static class PrefsFragment extends PreferenceFragment implements OnSharedPreferenceChangeListener{
 		public static final String KEY_PREF_CONFIRM_DIALOG = "pref_confirm_dialog";
 		public static final String KEY_PREF_APP_INFO = "pref_app_info";
+		
+		public void updateListPrefSumm(String key, int r_array){
+			Resources res = getResources();
+			String[] prefDescs = res.getStringArray(r_array);
+			int prefValue = Integer.parseInt(getPreferenceScreen().getSharedPreferences().getString(key, "0"));
+			findPreference(key).setSummary(prefDescs[prefValue]);		
+		}
+		
 		@Override
 		public void onCreate(Bundle savedInstanceState) {
 			super.onCreate(savedInstanceState);
@@ -58,11 +66,11 @@ public class Settings extends Activity {
 			// this is important because although the handler classes that read these settings
 			// are in the same package, they are executed in the context of the hooked package
 			getPreferenceManager().setSharedPreferencesMode(MODE_WORLD_READABLE);
+			
 			addPreferencesFromResource(R.xml.preferences);
-			int prefConfirmDialogValue = Integer.parseInt(getPreferenceScreen().getSharedPreferences().getString(KEY_PREF_CONFIRM_DIALOG, "0"));
-			Resources res = getResources();
-			String[] prefConfirmDialogDesc = res.getStringArray(R.array.confirm_dialog);
-			findPreference(KEY_PREF_CONFIRM_DIALOG).setSummary(prefConfirmDialogDesc[prefConfirmDialogValue]);
+			
+			updateListPrefSumm(KEY_PREF_CONFIRM_DIALOG, R.array.confirm_dialog);
+			
 			String aboutBefore = getResources().getString(R.string.app_info_before);
 			String aboutAfter = getResources().getString(R.string.app_info_after);
 			findPreference(KEY_PREF_APP_INFO).setSummary(aboutBefore + versionName + aboutAfter);
@@ -73,12 +81,7 @@ public class Settings extends Activity {
 		public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
 			if (key.equals(KEY_PREF_CONFIRM_DIALOG))
 	        {
-	            // Set summary to be the user-description for the selected value
-	            Preference pref = findPreference(key);
-	            int prefConfirmDialogValue = Integer.parseInt(sharedPreferences.getString(KEY_PREF_CONFIRM_DIALOG, "0"));
-	            Resources res = getResources();
-				String[] prefConfirmDialogDesc = res.getStringArray(R.array.confirm_dialog);
-	            pref.setSummary(prefConfirmDialogDesc[prefConfirmDialogValue]);
+				updateListPrefSumm(key, R.array.confirm_dialog);
 	        }
 	    }
 		

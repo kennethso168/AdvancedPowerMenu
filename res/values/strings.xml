@@ -21,7 +21,7 @@
 	<!-- Preference Screen -->
 	<string name="note_title">Note</string>
 	<string name="note_summ">You may need to reboot for changes to take effect</string>
-	<string name="sect_menu_options">Menu Options</string>
+	<string name="sect_menu_options">Power Menu Options</string>
 	<string name="enable_reboot_title">Advanced reboot</string>
 	<string name="enable_reboot_summ">Add/replace the reboot option which allows different reboot methods</string>
 	<string name="enable_screenshot_title">Screenshot</string>
@@ -30,7 +30,7 @@
 	<!-- Do not translate or include confirm_dialog_default in other languages -->
 	<string name="confirm_dialog_default">0</string>
 	
-	<string name="sect_debug">Debug</string>
+	<string name="sect_debug">App Options</string>
 	<string name="verbose_log_title">Verbose logging</string>
 	<string name="verbose_log_summ">Write full logs into /data/xposed/debug.log</string>
 	<string name="hide_ic_launcher_title">Hide launcher icon</string>

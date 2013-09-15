@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="confirm_dialog">
+		<item name="enable">Показывать</item>
+		<item name="disable">Отключить</item>
+	</string-array>
+</resources>
