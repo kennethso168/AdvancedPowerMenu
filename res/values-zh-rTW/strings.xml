@@ -32,7 +32,7 @@
 	<string name="sect_debug">程式選項</string>
 	<string name="verbose_log_title">詳細除錯記錄</string>
 	<string name="verbose_log_summ">在 /data/xposed/debug.log 中作詳細的除錯記錄</string>
-	<string name="hide_ic_launcher_title">隱藏啟動器選項</string>
+	<string name="hide_ic_launcher_title">隱藏啟動器圖示</string>
 	
 	<string name="sect_about">關於</string>
 	<string name="app_info_title">應用程式資訊</string>
