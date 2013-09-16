@@ -33,6 +33,7 @@
 	<string name="verbose_log_title">詳細除錯記錄</string>
 	<string name="verbose_log_summ">在 /data/xposed/debug.log 中作詳細的除錯記錄</string>
 	<string name="hide_ic_launcher_title">隱藏啟動器圖示</string>
+	<string name="hide_ic_launcher_dialog">要使變更生效，請等候或重新啟動您的啟動器。\n另外，你可在  Xposed外掛模組 > 應用模組 > 進階重啟目錄(Advanced Reboot Menu) 進入本程式 (按一下清單項目而非勾選框)。</string>
 	
 	<string name="sect_about">關於</string>
 	<string name="app_info_title">應用程式資訊</string>

@@ -34,6 +34,7 @@
 	<string name="verbose_log_title">Verbose logging</string>
 	<string name="verbose_log_summ">Write full logs into /data/xposed/debug.log</string>
 	<string name="hide_ic_launcher_title">Hide launcher icon</string>
+	<string name="hide_ic_launcher_dialog">You may need to wait for a while or restart the launcher for changes to take effect.\nAlso, you may access Advanced Power Menu from Xposed Installer > Modules > Advanced Power Menu (Press the item instead of the checkbox).</string>
 	
 	<string name="sect_about">About</string>
 	<string name="app_info_title">App info</string>

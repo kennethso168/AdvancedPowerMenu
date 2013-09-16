@@ -15,12 +15,24 @@
         
         <activity
             android:name=".Settings"
-            android:label="@string/launcher_name" >
+            android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="de.robv.android.xposed.category.MODULE_SETTINGS" />
             </intent-filter>
         </activity>
+        
+        <activity-alias
+			android:enabled="true"
+			android:name=".Settings-ShowIcon"
+			android:label="@string/launcher_name"
+			android:icon="@drawable/ic_launcher"
+			android:targetActivity=".Settings">
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+				<category android:name="android.intent.category.LAUNCHER" />
+			</intent-filter>
+		</activity-alias> 
          
         <meta-data android:name="xposedmodule" android:value="true"/>
         <meta-data android:name="xposedminversion" android:value="2.0*"/>
