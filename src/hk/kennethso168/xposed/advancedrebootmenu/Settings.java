@@ -56,7 +56,7 @@ public class Settings extends Activity {
 	public static class PrefsFragment extends PreferenceFragment implements OnSharedPreferenceChangeListener{
 		private void setIconVis() {
 			SharedPreferences sharedPref = getPreferenceManager().getSharedPreferences();
-			boolean show = !(sharedPref.getBoolean(KEY_PREF_HIDE_IC_LAUNCHER, true));
+			boolean show = !(sharedPref.getBoolean(KEY_PREF_HIDE_IC_LAUNCHER, false));
 		    Context ctx = getActivity();
 		    PackageManager pm = getActivity().getPackageManager();
 		    

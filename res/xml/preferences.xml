@@ -8,7 +8,7 @@
     </PreferenceCategory>
     <PreferenceCategory android:title="@string/sect_debug" android:key="pref_debug">
         <CheckBoxPreference android:summary="@string/verbose_log_summ" android:key="pref_verbose_log" android:title="@string/verbose_log_title" android:defaultValue="false"/>
-        <CheckBoxPreference android:key="pref_hide_ic_launcher" android:title="@string/hide_ic_launcher_title"/>
+        <CheckBoxPreference android:key="pref_hide_ic_launcher" android:title="@string/hide_ic_launcher_title" android:defaultValue="false"/>
     </PreferenceCategory>
     <PreferenceCategory android:title="@string/sect_about" android:key="pref_about">
         <Preference android:title="@string/app_info_title" android:key="pref_app_info"/>
