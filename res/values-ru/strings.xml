@@ -22,6 +22,7 @@
 	<string name="verbose_log_title">Подробное логирование</string>
 	<string name="verbose_log_summ">Включите для записи полного лога в /data/xposed/debug.log</string>
 	<string name="hide_ic_launcher_title">Скрыть иконку в лаунчере</string>
+	<string name="hide_ic_launcher_dialog">Возможно придётся подождать немного или перезагрузить лаунчер.\nВы также будете иметь доступ к настройкам Расширенного меню через Xposed Installer > Модули > Расширенное меню перезагрузки (Нажмите на название, а не чекбокс).</string>
 	<string name="sect_about">О приложении</string>
 	<string name="app_info_title">Информация о приложении</string>
 	<string name="app_info_before">"Расширенное меню перезагрузки. Версия "</string>

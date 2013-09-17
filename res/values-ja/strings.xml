@@ -32,6 +32,7 @@
 	<string name="verbose_log_title">詳細なログを残す</string>
 	<string name="verbose_log_summ">チェックすると/data/xposed/debug.logに完全なログを残します。</string>
 	<string name="hide_ic_launcher_title">ホームアプリでアイコンを隠す</string>	
+	<string name="hide_ic_launcher_dialog">変更を反映するためホームアプリを再起動 します。\nホームアプリの再起動が完了したらXposedインストーラ > モジュール> Advanced Power Menuをタップ(チェックではなく)してください。</string>
 
 	<string name="sect_about">このアプリについて</string>
 	<string name="app_info_title">アプリ情報</string>
