@@ -27,8 +27,10 @@
 	<string name="enable_screenshot_title">Screenshot</string>
 	<string name="enable_screenshot_summ">Add the option which enables screenshot functionality if none originally exists</string>
 	<string name="confirm_dialog_title">Confirmation dialogs</string>
-	<!-- Do not translate or include confirm_dialog_default in other languages -->
+	<string name="icon_color_title">Color theme for icons</string>
+	<!-- Do not translate or include the "default" strings in other languages -->
 	<string name="confirm_dialog_default">0</string>
+	<string name="icon_color_title_default">0</string>
 	
 	<string name="sect_debug">App Options</string>
 	<string name="verbose_log_title">Verbose logging</string>

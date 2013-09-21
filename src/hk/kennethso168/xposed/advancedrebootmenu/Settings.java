@@ -69,6 +69,7 @@ public class Settings extends Activity {
 		}
 		
 		public static final String KEY_PREF_CONFIRM_DIALOG = "pref_confirm_dialog";
+		public static final String KEY_PREF_ICON_COLOR = "pref_icon_color";
 		public static final String KEY_PREF_APP_INFO = "pref_app_info";
 		public static final String KEY_PREF_HIDE_IC_LAUNCHER = "pref_hide_ic_launcher";
 		
@@ -107,6 +108,7 @@ public class Settings extends Activity {
 			addPreferencesFromResource(R.xml.preferences);
 			
 			updateListPrefSumm(KEY_PREF_CONFIRM_DIALOG, R.array.confirm_dialog);
+			updateListPrefSumm(KEY_PREF_ICON_COLOR, R.array.icon_color);
 			
 			String aboutBefore = getResources().getString(R.string.app_info_before);
 			String aboutAfter = getResources().getString(R.string.app_info_after);
@@ -116,11 +118,12 @@ public class Settings extends Activity {
 		
 		@Override
 		public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-			if (key.equals(KEY_PREF_CONFIRM_DIALOG))
-	        {
+			if (key.equals(KEY_PREF_CONFIRM_DIALOG)){
 				updateListPrefSumm(key, R.array.confirm_dialog);
 	        }
-			if (key.equals(KEY_PREF_HIDE_IC_LAUNCHER))
+			if (key.equals(KEY_PREF_ICON_COLOR)){
+				updateListPrefSumm(key, R.array.icon_color);
+			}if (key.equals(KEY_PREF_HIDE_IC_LAUNCHER))
 	        {
 				setIconVis();
 				DialogFragment df = new HideIconDialogFragment();

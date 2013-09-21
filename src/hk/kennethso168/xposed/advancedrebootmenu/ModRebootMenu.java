@@ -121,13 +121,27 @@ public class ModRebootMenu {
                    mRecoveryStr = armRes.getString(R.string.reboot_recovery);
                    
                    mScreenshotStr = armRes.getString(R.string.take_screenshot);
-
-                   mRebootIcon = armRes.getDrawable(R.drawable.ic_lock_reboot);
-                   mRebootSoftIcon = armRes.getDrawable(R.drawable.ic_lock_reboot_soft);
-                   mRecoveryIcon = armRes.getDrawable(R.drawable.ic_lock_recovery);
                    
+                   //Get user's preference for the menu icon color theme
+                   xPref.reload();
+                   String IconColorMode = xPref.getString("pref_icon_color", "0");
+                   log("IconColorMode = " + IconColorMode);
+                   int IconColorInt = Integer.parseInt(IconColorMode);
                    
-                   mScreenshotIcon = armRes.getDrawable(R.drawable.ic_screenshot);
+                   //Create "sets" of icons with different color themes of the same icon in one set
+                   int[] mRebootIconSet = {R.drawable.ic_lock_reboot, R.drawable.ic_lock_reboot_dark, R.drawable.ic_lock_reboot_color};
+                   int[] mScreenshotIconSet = {R.drawable.ic_screenshot, R.drawable.ic_screenshot_dark, R.drawable.ic_screenshot_color};
+                   int[] mRebootSoftIconSet = {R.drawable.ic_lock_reboot_soft, R.drawable.ic_lock_reboot_soft_dark, R.drawable.ic_lock_reboot_soft_color};
+                   int[] mRecoveryIconSet = {R.drawable.ic_lock_recovery, R.drawable.ic_lock_recovery_dark, R.drawable.ic_lock_recovery_color};
+                   
+                   //Set the icons appropriately
+                   //1st level icons
+                   mRebootIcon = armRes.getDrawable(mRebootIconSet[IconColorInt]);                 
+                   mScreenshotIcon = armRes.getDrawable(mScreenshotIconSet[IconColorInt]);
+                   //2nd level icons
+                   //note that the icon for normal reboot is reused.
+                   mRebootSoftIcon = armRes.getDrawable(mRebootSoftIconSet[IconColorInt]);
+                   mRecoveryIcon = armRes.getDrawable(mRecoveryIconSet[IconColorInt]);
 
                    mRebootItemList = new ArrayList<IIconListAdapterItem>();
                    mRebootItemList.add(new BasicIconListItem(mRebootStr, null, mRebootIcon, null));
