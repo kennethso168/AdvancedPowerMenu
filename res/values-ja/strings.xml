@@ -27,6 +27,7 @@
 	<string name="enable_screenshot_title">スクリーンショット</string>
 	<string name="enable_screenshot_summ">電源メニューにスクリーンショットを撮影できる項目を追加します。</string>
 	<string name="confirm_dialog_title">確認ダイアログ</string>
+	<string name="icon_color_title">アイコンのテーマ色</string>
 
 	<string name="sect_debug">アプリオプション</string>
 	<string name="verbose_log_title">詳細なログを残す</string>
