@@ -10,10 +10,12 @@
 	<!-- Reboot Options -->
 	<string name="reboot_soft">Soft reboot</string>
     <string name="reboot_recovery">Recovery</string>
+    <string name="reboot_bootloader">Bootloader</string>
 	
 	<!-- Confirmation Dialogs -->
     <string name="reboot_confirm">Your phone will reboot.</string>
     <string name="reboot_confirm_recovery">Your phone will reboot into recovery.</string>
+    <string name="reboot_confirm_bootloader">Your phone will reboot into bootloader.</string>
 	
 	<!-- Screenshot  -->
 	<string name="take_screenshot">Screenshot</string>
@@ -28,6 +30,7 @@
 	<string name="enable_screenshot_summ">Add the option which enables screenshot functionality if none originally exists</string>
 	<string name="confirm_dialog_title">Confirmation dialogs</string>
 	<string name="icon_color_title">Color theme for icons</string>
+	<string name="reboot_methods_title">Reboot methods to show</string>
 	<!-- Do not translate or include the "default" strings in other languages -->
 	<string name="confirm_dialog_default">0</string>
 	<string name="icon_color_title_default">0</string>

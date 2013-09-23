@@ -53,14 +53,19 @@ public class ModRebootMenu {
     private static String mRebootStr;
     private static String mRebootSoftStr;
     private static String mRecoveryStr;
+    private static String mBootloaderStr;
     private static String mScreenshotStr;
     private static Drawable mRebootIcon;
     private static Drawable mRebootSoftIcon;
     private static Drawable mRecoveryIcon;
+    private static Drawable mBootloaderIcon;
     private static Drawable mScreenshotIcon;
+    private static int[] rebootSubMenu = new int[4];
+    private static boolean normalRebootOnly = false;
     private static List<IIconListAdapterItem> mRebootItemList;
     private static String mRebootConfirmStr;
     private static String mRebootConfirmRecoveryStr;
+    private static String mRebootConfirmBootloaderStr;
     private static Unhook mRebootActionHook;
     private static XSharedPreferences xPref;
     
@@ -78,6 +83,7 @@ public class ModRebootMenu {
     private static final int SEQ_REBOOT_NORMAL = 0;
     private static final int SEQ_REBOOT_SOFT = 1;
     private static final int SEQ_REBOOT_RECOVERY = 2;
+    private static final int SEQ_REBOOT_BOOTLOADER = 3;
     
     //constants for modes of showing confirmation dialogs
     private static final int VALUE_ENABLE_DIALOGS = 0;
@@ -119,6 +125,7 @@ public class ModRebootMenu {
                    mRebootStr  = (rebootStrId == 0) ? "Reboot" : res.getString(rebootStrId);
                    mRebootSoftStr = armRes.getString(R.string.reboot_soft);
                    mRecoveryStr = armRes.getString(R.string.reboot_recovery);
+                   mBootloaderStr = armRes.getString(R.string.reboot_bootloader);
                    
                    mScreenshotStr = armRes.getString(R.string.take_screenshot);
                    
@@ -133,6 +140,7 @@ public class ModRebootMenu {
                    int[] mScreenshotIconSet = {R.drawable.ic_screenshot, R.drawable.ic_screenshot_dark, R.drawable.ic_screenshot_color};
                    int[] mRebootSoftIconSet = {R.drawable.ic_lock_reboot_soft, R.drawable.ic_lock_reboot_soft_dark, R.drawable.ic_lock_reboot_soft_color};
                    int[] mRecoveryIconSet = {R.drawable.ic_lock_recovery, R.drawable.ic_lock_recovery_dark, R.drawable.ic_lock_recovery_color};
+                   int[] mBootloaderIconSet = {R.drawable.ic_lock_reboot_bootloader, R.drawable.ic_lock_reboot_bootloader_dark, R.drawable.ic_lock_reboot_bootloader_color};
                    
                    //Set the icons appropriately
                    //1st level icons
@@ -142,14 +150,37 @@ public class ModRebootMenu {
                    //note that the icon for normal reboot is reused.
                    mRebootSoftIcon = armRes.getDrawable(mRebootSoftIconSet[IconColorInt]);
                    mRecoveryIcon = armRes.getDrawable(mRecoveryIconSet[IconColorInt]);
+                   mBootloaderIcon = armRes.getDrawable(mBootloaderIconSet[IconColorInt]);
 
+                   boolean SoftEnabled = pref.getBoolean("pref_rebootsub_soft", true);
+                   boolean RecoveryEnabled = pref.getBoolean("pref_rebootsub_recovery", true);
+                   boolean BootloaderEnabled = pref.getBoolean("pref_rebootsub_bootloader", true);
+                   int cnt = 0;
+                   
                    mRebootItemList = new ArrayList<IIconListAdapterItem>();
+                   
                    mRebootItemList.add(new BasicIconListItem(mRebootStr, null, mRebootIcon, null));
-                   mRebootItemList.add(new BasicIconListItem(mRebootSoftStr, null, mRebootSoftIcon, null));
-                   mRebootItemList.add(new BasicIconListItem(mRecoveryStr, null, mRecoveryIcon, null));
-
+                   rebootSubMenu[cnt] = SEQ_REBOOT_NORMAL;
+                   cnt++;
+                   if(SoftEnabled){
+                	   mRebootItemList.add(new BasicIconListItem(mRebootSoftStr, null, mRebootSoftIcon, null));
+                	   rebootSubMenu[cnt] = SEQ_REBOOT_SOFT;
+                	   cnt++;
+                   }
+                   if(RecoveryEnabled){
+                	   mRebootItemList.add(new BasicIconListItem(mRecoveryStr, null, mRecoveryIcon, null));
+                	   rebootSubMenu[cnt] = SEQ_REBOOT_RECOVERY;
+                	   cnt++;
+                   }
+                   if(BootloaderEnabled){
+                	   mRebootItemList.add(new BasicIconListItem(mBootloaderStr, null, mBootloaderIcon, null));
+                	   rebootSubMenu[cnt] = SEQ_REBOOT_BOOTLOADER;
+                	   cnt++;
+                   }
+                   if(cnt==1) normalRebootOnly = true;
                    mRebootConfirmStr = armRes.getString(R.string.reboot_confirm);
                    mRebootConfirmRecoveryStr = armRes.getString(R.string.reboot_confirm_recovery);
+                   mRebootConfirmBootloaderStr = armRes.getString(R.string.reboot_confirm_bootloader);
 
                    log("GlobalActions constructed, resources set.");
                }
@@ -265,7 +296,11 @@ public class ModRebootMenu {
 	                                "onPress", new XC_MethodReplacement () {
 	                            @Override
 	                            protected Object replaceHookedMethod(MethodHookParam param) throws Throwable {
-	                                showDialog();
+	                                if(normalRebootOnly){
+	                                	handleReboot(mContext, mRebootStr, SEQ_REBOOT_NORMAL);
+	                                }else{
+	                                	showDialog();
+	                                }
 	                                return null;
 	                            }
 	                        });
@@ -318,7 +353,7 @@ public class ModRebootMenu {
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();
                         log("onClick() item = " + which);
-                        handleReboot(mContext, mRebootStr, which);
+                        handleReboot(mContext, mRebootStr, rebootSubMenu[which]);
                     }
                 })
                 .setNegativeButton(android.R.string.no,
@@ -339,7 +374,14 @@ public class ModRebootMenu {
 
     private static void handleReboot(Context context, String caption, final int mode) {
         try {
-            final String message = (mode == 0 || mode == 1) ? mRebootConfirmStr : mRebootConfirmRecoveryStr;
+            String message;
+            if(mode == 0 || mode == 1){
+            	message = mRebootConfirmStr;
+            }else if (mode == 2){
+            	message = mRebootConfirmRecoveryStr;
+            }else{
+            	message = mRebootConfirmBootloaderStr;
+            }
             xPref.reload();
             String showDialogMode = xPref.getString("pref_confirm_dialog", "3");  //3 is a temp indicator for error
             log("ShowDialogMode = " + showDialogMode);
@@ -401,6 +443,9 @@ public class ModRebootMenu {
 				XposedBridge.log(e);
 			}
         	
+        } else if (mode == SEQ_REBOOT_BOOTLOADER){
+        	final PowerManager pm = (PowerManager) mContext.getSystemService(Context.POWER_SERVICE);
+			pm.reboot("bootloader");
         }
     }
     
@@ -449,10 +494,14 @@ public class ModRebootMenu {
 
                 return v;
             } else if (methodName.equals("onPress")) {
-                showDialog();
+            	if(normalRebootOnly){
+                	handleReboot(mContext, mRebootStr, SEQ_REBOOT_NORMAL);
+                }else{
+                	showDialog();
+                }
                 return null;
             } else if (methodName.equals("onLongPress")) {
-                handleReboot(mContext, mRebootStr, 0);
+                handleReboot(mContext, mRebootStr, SEQ_REBOOT_NORMAL);
                 return true;
             } else if (methodName.equals("showDuringKeyguard")) {
                 return true;

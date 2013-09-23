@@ -3,13 +3,18 @@
     <Preference android:title="@string/note_title" android:summary="@string/note_summ" android:key="pref_note"></Preference>
     <PreferenceCategory android:title="@string/sect_menu_options" android:key="pref_menu_options">
         <CheckBoxPreference android:summary="@string/enable_reboot_summ" android:key="pref_enable_reboot" android:title="@string/enable_reboot_title" android:defaultValue="true"/>
-        <CheckBoxPreference android:summary="@string/enable_screenshot_summ" android:key="pref_enable_screenshot" android:title="@string/enable_screenshot_title" android:defaultValue="true"/>
-        <ListPreference android:entries="@array/confirm_dialog" android:key="pref_confirm_dialog" android:title="@string/confirm_dialog_title" android:defaultValue="@string/confirm_dialog_default" android:entryValues="@array/confirm_dialog_values"/>
+        <ListPreference android:entries="@array/confirm_dialog" android:key="pref_confirm_dialog" android:title="@string/confirm_dialog_title" android:defaultValue="@string/confirm_dialog_default" android:entryValues="@array/confirm_dialog_values" /><PreferenceScreen android:title="@string/reboot_methods_title" android:key="pref_reboot_methods" android:persistent="false">
+            <CheckBoxPreference android:defaultValue="true" android:key="pref_rebootsub_soft" android:title="@string/reboot_soft"/>
+            <CheckBoxPreference android:defaultValue="true" android:key="pref_rebootsub_recovery" android:title="@string/reboot_recovery"/>
+            <CheckBoxPreference android:defaultValue="true" android:key="pref_rebootsub_bootloader" android:title="@string/reboot_bootloader"/>
+        </PreferenceScreen><CheckBoxPreference android:summary="@string/enable_screenshot_summ" android:key="pref_enable_screenshot" android:title="@string/enable_screenshot_title" android:defaultValue="true"/>
+        
         <ListPreference android:key="pref_icon_color" android:title="@string/icon_color_title" android:entryValues="@array/icon_color_values" android:entries="@array/icon_color" android:defaultValue="@string/icon_color_title_default"/>
+        
     </PreferenceCategory>
     <PreferenceCategory android:title="@string/sect_debug" android:key="pref_debug">
-        <CheckBoxPreference android:summary="@string/verbose_log_summ" android:key="pref_verbose_log" android:title="@string/verbose_log_title" android:defaultValue="false"/>
-        <CheckBoxPreference android:key="pref_hide_ic_launcher" android:title="@string/hide_ic_launcher_title" android:defaultValue="false"/>
+        <CheckBoxPreference android:key="pref_hide_ic_launcher" android:title="@string/hide_ic_launcher_title" android:defaultValue="false" /><CheckBoxPreference android:summary="@string/verbose_log_summ" android:key="pref_verbose_log" android:title="@string/verbose_log_title" android:defaultValue="false"/>
+        
     </PreferenceCategory>
     <PreferenceCategory android:title="@string/sect_about" android:key="pref_about">
         <Preference android:title="@string/app_info_title" android:key="pref_app_info"/>
