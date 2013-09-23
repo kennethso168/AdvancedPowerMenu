@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<!--Basic Information -->
+	<!--Not necessary to translate as these are just desciptions. However if you like you can still translate these. -->
+        <string name="app_name">高级电源菜单(Advanced Reboot Menu)</string>
+	<string name="xposed_description">在电源菜单增加重启、软重启、重启至 Recovery 以及萤幕截图选项。\n开发者︰kennethso168@xda</string>
+	<string name="credits_msg">开发者︰kennethso168@xda</string>
+    
+	<!-- Reboot Options -->
+	<string name="reboot_soft">软重启</string>
+        <string name="reboot_recovery">Recovery</string>
+	
+	<!-- Confirmation Dialogs -->
+	<string name="reboot_confirm">您的手机将重新启动</string>
+        <string name="reboot_confirm_recovery">您的手机将重新启动至 Recovery。</string>
+	
+	<!-- Screenshot  -->
+	<string name="take_screenshot">萤幕截图</string>
+	
+	<!-- Preference Screen -->
+	<string name="note_title">注意</string>
+	<string name="note_summ">要使变更生效，您可能需要重新启动您的手机。</string>
+	<string name="sect_menu_options">电源菜单选项</string>
+	<string name="enable_reboot_title">高级重启</string>
+	<string name="enable_reboot_summ">增加/取代「重新启动」选项，使您可以选择不同的重启模式</string>
+	<string name="enable_screenshot_title">萤幕截图</string>
+	<string name="enable_screenshot_summ">增加「萤幕截图」选项﹝若已有此选项存在则维持不变﹞</string>
+	<string name="confirm_dialog_title">确认对话框</string>
+	<string name="icon_color_title">颜色主题图标</string>
+	
+	<string name="sect_debug">应用选项</string>
+	<string name="verbose_log_title">详细除错日志</string>
+	<string name="verbose_log_summ">在 /data/xposed/debug.log 中作详细的除错记录</string>
+	<string name="hide_ic_launcher_title">隐藏启动器图标</string>
+	<string name="hide_ic_launcher_dialog">要使变更生效，请等候或重新启动您的启动器。\n另外，你可在  Xposed外挂模组 > 应用模组 > 进阶重启目录(Advanced Reboot Menu) 进入本程式 (按一下清单项目而非勾选框)。</string>
+	
+	<string name="sect_about">关于</string>
+	<string name="app_info_title">应用程序信息</string>
+	<string name="app_info_before">"高级重启菜单 (Advanced Reboot Menu) 版本 "</string>
+	<string name="app_info_after">\n开发者︰kennethso168@xda</string>
+	
+	<string name="license_title">开源许可证</string>
+	<string name="special_thanks_title">感谢</string>
+	<string name="xda_title">浏览 xda 讨论帖</string>
+	<string name="email_title">发送电邮给开发者</string>
+	<string name="donate_title">捐款</string>
+	
+	
+</resources>

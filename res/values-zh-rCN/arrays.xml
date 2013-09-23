@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="confirm_dialog">
+        <item name="enable">显示所有对话框</item>
+        <item name="disable">重启时不要显示对话框</item>
+    </string-array>
+</resources>
