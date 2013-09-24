@@ -10,12 +10,14 @@
     
 	<!-- Reboot Options -->
 	<string name="reboot_soft">軟重啟</string>
-    <string name="poweroff_recovery">Recovery</string>
+    <string name="reboot_recovery">Recovery</string>
+    <string name="reboot_bootloader">Bootloader</string>
 	
 	<!-- Confirmation Dialogs -->
 	<string name="reboot_confirm">您的手機將重新啟動</string>
     <string name="reboot_confirm_recovery">您的手機將重新啟動至 Recovery</string>
-	
+	<string name="reboot_confirm_bootloader">您的手機將重新啟動至 Bootloader</string>
+    
 	<!-- Screenshot  -->
 	<string name="take_screenshot">螢幕截圖</string>
 	
@@ -29,6 +31,7 @@
 	<string name="enable_screenshot_summ">增加「螢幕截圖」選項﹝若已有此選項存在則維持不變﹞</string>
 	<string name="confirm_dialog_title">確認對話框</string>
 	<string name="icon_color_title">圖示色調</string>
+	<string name="reboot_methods_title">顯示的重啟模式</string>
 	
 	<string name="sect_debug">程式選項</string>
 	<string name="verbose_log_title">詳細除錯記錄</string>
