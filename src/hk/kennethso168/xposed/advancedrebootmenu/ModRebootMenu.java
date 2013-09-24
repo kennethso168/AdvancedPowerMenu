@@ -1,6 +1,7 @@
 package hk.kennethso168.xposed.advancedrebootmenu;
 
 import hk.kennethso168.xposed.advancedrebootmenu.actions.QuickDialAction;
+import hk.kennethso168.xposed.advancedrebootmenu.actions.ScreenshotAction;
 import hk.kennethso168.xposed.advancedrebootmenu.adapters.BasicIconListItem;
 import hk.kennethso168.xposed.advancedrebootmenu.adapters.IIconListAdapterItem;
 import hk.kennethso168.xposed.advancedrebootmenu.adapters.IconListAdapter;
@@ -16,19 +17,11 @@ import java.util.List;
 import java.util.Locale;
 
 import android.app.AlertDialog;
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
-import android.content.ServiceConnection;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
-import android.os.Handler;
-import android.os.IBinder;
-import android.os.Message;
-import android.os.Messenger;
 import android.os.PowerManager;
-import android.os.RemoteException;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,7 +29,6 @@ import android.view.WindowManager;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import de.robv.android.xposed.XC_MethodHook;
 import de.robv.android.xposed.XC_MethodHook.Unhook;
 import de.robv.android.xposed.XC_MethodReplacement;
@@ -55,7 +47,7 @@ public class ModRebootMenu {
     private static String mRebootSoftStr;
     private static String mRecoveryStr;
     private static String mBootloaderStr;
-    private static String mScreenshotStr;
+    private static String mScreenshotLabel;
     private static String mQuickDialLabel;
     private static Drawable mRebootIcon;
     private static Drawable mRebootSoftIcon;
@@ -90,10 +82,6 @@ public class ModRebootMenu {
     //constants for modes of showing confirmation dialogs
     private static final int VALUE_ENABLE_DIALOGS = 0;
     private static final int VALUE_DISABLE_DIALOGS = 1;
-    
-    //variables for screenshot function
-    static final Object mScreenshotLock = new Object();
-	static ServiceConnection mScreenshotConnection = null;  
 
     private static void log(String message) {
     	if(Main.writeLogs()) XposedBridge.log(CLASS + ": " + message);
@@ -129,7 +117,7 @@ public class ModRebootMenu {
                    mRecoveryStr = armRes.getString(R.string.reboot_recovery);
                    mBootloaderStr = armRes.getString(R.string.reboot_bootloader);
                    
-                   mScreenshotStr = armRes.getString(R.string.take_screenshot);
+                   mScreenshotLabel = armRes.getString(R.string.take_screenshot);
                    mQuickDialLabel = armRes.getString(R.string.quick_dial);
                    
                    //Get user's preference for the menu icon color theme
@@ -325,7 +313,7 @@ public class ModRebootMenu {
 	                    } else {
 	                    	log("Existing Screenshot action item NOT found! Adding new ScreenshotAction item");
 	                    	Object action = Proxy.newProxyInstance(classLoader, new Class<?>[] { actionClass }, 
-	                                new ScreenshotAction());
+	                                new ScreenshotAction(mContext, mScreenshotLabel, mScreenshotIcon));
 	                    	// add to the second/third position
 	                    	mItems.add(advRebootEnabled?2:1, action);
 	                        BaseAdapter mAdapter = (BaseAdapter) XposedHelpers.getObjectField(param.thisObject, "mAdapter");
@@ -461,18 +449,6 @@ public class ModRebootMenu {
         }
     }
     
-    private static void handleScreenshot(Context context) {
-    	final Handler handler = new Handler();
-    	//take a screenshot after a 0.5s delay
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-            	takeScreenshot(handler);
-            }
-        }, 500);
-    	
-    	
-    }
     
     private static class RebootAction implements InvocationHandler {
         private Context mContext;
@@ -527,117 +503,5 @@ public class ModRebootMenu {
         }
      
     }
-    
-    private static class ScreenshotAction implements InvocationHandler {
-    	private Context mContext;
-
-        public ScreenshotAction() {
-        }
-    	
-    	@Override
-        public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-    		String methodName = method.getName();
-
-            if (methodName.equals("create")) {
-                mContext = (Context) args[0];
-                Resources res = mContext.getResources();
-                LayoutInflater li = (LayoutInflater) args[3];
-                int layoutId = res.getIdentifier(
-                        "global_actions_item", "layout", "android");
-                View v = li.inflate(layoutId, (ViewGroup) args[2], false);
-
-                ImageView icon = (ImageView) v.findViewById(res.getIdentifier(
-                        "icon", "id", "android"));
-                icon.setImageDrawable(mScreenshotIcon);
-
-                TextView messageView = (TextView) v.findViewById(res.getIdentifier(
-                        "message", "id", "android"));
-                messageView.setText(mScreenshotStr);
-
-                TextView statusView = (TextView) v.findViewById(res.getIdentifier(
-                        "status", "id", "android"));
-                statusView.setVisibility(View.GONE);
-
-                return v;
-            } else if (methodName.equals("onPress")) {
-                handleScreenshot(mContext);
-                return null;
-            } else if (methodName.equals("onLongPress")) {
-                return true;
-            } else if (methodName.equals("showDuringKeyguard")) {
-                return true;
-            } else if (methodName.equals("showBeforeProvisioning")) {
-                return true;
-            } else if (methodName.equals("isEnabled")) {
-                return true;
-            } else {
-                return null;
-            }
-    	}
-    }
-    
-    private static void takeScreenshot(final Handler mHandler) {  
-		synchronized (mScreenshotLock) {  
-			if (mScreenshotConnection != null) {  
-				return;  
-			}  
-			ComponentName cn = new ComponentName("com.android.systemui",  
-					"com.android.systemui.screenshot.TakeScreenshotService");  
-			Intent intent = new Intent();  
-			intent.setComponent(cn);  
-			ServiceConnection conn = new ServiceConnection() {  
-				@Override  
-				public void onServiceConnected(ComponentName name, IBinder service) {  
-					synchronized (mScreenshotLock) {  
-						if (mScreenshotConnection != this) {  
-							return;  
-						}  
-						Messenger messenger = new Messenger(service);  
-						Message msg = Message.obtain(null, 1);  
-						final ServiceConnection myConn = this;  
-												
-						Handler h = new Handler(mHandler.getLooper()) {  
-							@Override  
-							public void handleMessage(Message msg) {  
-								synchronized (mScreenshotLock) {  
-									if (mScreenshotConnection == myConn) {  
-										mContext.unbindService(mScreenshotConnection);  
-										mScreenshotConnection = null;  
-										mHandler.removeCallbacks(mScreenshotTimeout);  
-									}  
-								}  
-							}  
-						};  
-						msg.replyTo = new Messenger(h);  
-						msg.arg1 = msg.arg2 = 0;  
-						try {  
-							messenger.send(msg);  
-						} catch (RemoteException e) {
-							XposedBridge.log(e);
-						}  
-					}  
-				}  
-				@Override  
-				public void onServiceDisconnected(ComponentName name) {}  
-			};  
-			if (mContext.bindService(intent, conn, Context.BIND_AUTO_CREATE)) {  
-				mScreenshotConnection = conn;  
-				mHandler.postDelayed(mScreenshotTimeout, 10000);  
-			}  
-		}
-	}
-    
-    static final Runnable mScreenshotTimeout = new Runnable() {
-        @Override public void run() {
-            synchronized (mScreenshotLock) {
-                if (mScreenshotConnection != null) {
-                    mContext.unbindService(mScreenshotConnection);
-                    mScreenshotConnection = null;
-                }
-            }
-        }
-    };
-    
-	
 
 }
