@@ -1,5 +1,6 @@
 package hk.kennethso168.xposed.advancedrebootmenu;
 
+import hk.kennethso168.xposed.advancedrebootmenu.actions.QuickDialAction;
 import hk.kennethso168.xposed.advancedrebootmenu.adapters.BasicIconListItem;
 import hk.kennethso168.xposed.advancedrebootmenu.adapters.IIconListAdapterItem;
 import hk.kennethso168.xposed.advancedrebootmenu.adapters.IconListAdapter;
@@ -55,6 +56,7 @@ public class ModRebootMenu {
     private static String mRecoveryStr;
     private static String mBootloaderStr;
     private static String mScreenshotStr;
+    private static String mQuickDialLabel;
     private static Drawable mRebootIcon;
     private static Drawable mRebootSoftIcon;
     private static Drawable mRecoveryIcon;
@@ -128,6 +130,7 @@ public class ModRebootMenu {
                    mBootloaderStr = armRes.getString(R.string.reboot_bootloader);
                    
                    mScreenshotStr = armRes.getString(R.string.take_screenshot);
+                   mQuickDialLabel = armRes.getString(R.string.quick_dial);
                    
                    //Get user's preference for the menu icon color theme
                    xPref.reload();
@@ -328,6 +331,15 @@ public class ModRebootMenu {
 	                        BaseAdapter mAdapter = (BaseAdapter) XposedHelpers.getObjectField(param.thisObject, "mAdapter");
 	                        mAdapter.notifyDataSetChanged(); 
 	                    }
+                    }
+                    String quickDial = pref.getString("pref_quick_dial_number", "");
+                    if (quickDial.length() > 0) {
+                        Object action = Proxy.newProxyInstance(classLoader, new Class<?>[] { actionClass },
+                                new QuickDialAction(mContext, mQuickDialLabel, quickDial));
+                        // add to the second/third position (before Screenshot, if it exists)
+                        mItems.add(advRebootEnabled?2:1, action);
+                        BaseAdapter mAdapter = (BaseAdapter) XposedHelpers.getObjectField(param.thisObject, "mAdapter");
+                        mAdapter.notifyDataSetChanged();
                     }
                 }
             });
