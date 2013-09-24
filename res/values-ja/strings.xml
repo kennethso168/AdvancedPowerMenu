@@ -10,10 +10,12 @@
 	<!-- Reboot Options -->
 	<string name="reboot_soft">ソフトリブート</string>
     <string name="reboot_recovery">リカバリ</string>
+    <string name="reboot_bootloader">Bootloader</string>
 	
 	<!-- Confirmation Dialogs -->
     <string name="reboot_confirm">端末を再起動します。</string>
     <string name="reboot_confirm_recovery">リカバリへ再起動します。</string>
+    <string name="reboot_confirm_bootloader">Bootloaderへ再起動します。</string>
 	
 	<!-- Screenshot  -->
 	<string name="take_screenshot">スクリーンショット</string>
@@ -28,16 +30,17 @@
 	<string name="enable_screenshot_summ">電源メニューにスクリーンショットを撮影できる項目を追加します。</string>
 	<string name="confirm_dialog_title">確認ダイアログ</string>
 	<string name="icon_color_title">アイコンのテーマ色</string>
+	<string name="reboot_methods_title">表示する再起動方法</string>
 
 	<string name="sect_debug">アプリオプション</string>
 	<string name="verbose_log_title">詳細なログを残す</string>
 	<string name="verbose_log_summ">チェックすると/data/xposed/debug.logに完全なログを残します。</string>
 	<string name="hide_ic_launcher_title">ホームアプリでアイコンを隠す</string>	
-	<string name="hide_ic_launcher_dialog">変更を反映するためホームアプリを再起動 します。\nホームアプリの再起動が完了したらXposedインストーラ > モジュール> Advanced Power Menuをタップ(チェックではなく)してください。</string>
+	<string name="hide_ic_launcher_dialog">変更を反映するにはホームアプリを再起動してください。\nホームアプリの再起動後に設定を開くにはXposedインストーラ > モジュール> Advanced Power Menuをタップ(チェックではなく)してください。</string>
 
 	<string name="sect_about">このアプリについて</string>
 	<string name="app_info_title">アプリ情報</string>
-	<string name="app_info_before">"Advaced Power Menu バージョン "</string>	
+	<string name="app_info_before">"Advaced Power Menu バージョン"</string>	
 
 	<string name="license_title">オープンソースライセンス</string>
 	<string name="special_thanks_title">協力者</string>
