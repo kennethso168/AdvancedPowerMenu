@@ -20,6 +20,9 @@
 	<!-- Screenshot  -->
 	<string name="take_screenshot">Screenshot</string>
 	
+	<!-- Quick dial  -->
+	<string name="quick_dial">Quick dial</string>
+	
 	<!-- Preference Screen -->
 	<string name="note_title">Note</string>
 	<string name="note_summ">You may need to reboot for changes to take effect</string>
@@ -29,6 +32,7 @@
 	<string name="enable_screenshot_title">Screenshot</string>
 	<string name="enable_screenshot_summ">Add the option which enables screenshot functionality if none originally exists</string>
 	<string name="confirm_dialog_title">Confirmation dialogs</string>
+	<string name="quick_dial_number">Quick dial number</string>
 	<string name="icon_color_title">Color theme for icons</string>
 	<string name="reboot_methods_title">Reboot methods to show</string>
 	<!-- Do not translate or include the "default" strings in other languages -->
