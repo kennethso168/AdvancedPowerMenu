@@ -119,7 +119,7 @@ public class Settings extends Activity {
 			
 			updateListPrefSumm(KEY_PREF_CONFIRM_DIALOG, R.array.confirm_dialog);
 			updateListPrefSumm(KEY_PREF_ICON_COLOR, R.array.icon_color);
-			updateEditTextPrefSumm(KEY_PREF_QUICK_DIAL_NUMBER, "Disabled");
+			updateEditTextPrefSumm(KEY_PREF_QUICK_DIAL_NUMBER, disabledStr);
 			
 			String aboutBefore = getResources().getString(R.string.app_info_before);
 			String aboutAfter = getResources().getString(R.string.app_info_after);
@@ -141,7 +141,7 @@ public class Settings extends Activity {
 				df.show(getFragmentManager(), "APM_hide_icon_dialog");
 	        }
 			if (key.equals(KEY_PREF_QUICK_DIAL_NUMBER)){
-				updateEditTextPrefSumm(key, "Disabled");
+				updateEditTextPrefSumm(key, disabledStr);
 			}
 	    }
 		
