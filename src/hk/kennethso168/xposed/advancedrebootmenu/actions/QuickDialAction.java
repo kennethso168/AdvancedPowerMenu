@@ -2,6 +2,7 @@ package hk.kennethso168.xposed.advancedrebootmenu.actions;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -13,8 +14,9 @@ import de.robv.android.xposed.XposedBridge;
 public class QuickDialAction extends SinglePressAction {
     String mLabelText;
     String mDialNumber;
+    Drawable mQuickDialIcon;
 
-    public QuickDialAction(Context context, String labelText, String dialNumber) {
+    public QuickDialAction(Context context, String labelText, String dialNumber, Drawable quickDialIcon) {
         super(context);
         mLabelText = labelText;
         mDialNumber = dialNumber;
@@ -27,7 +29,7 @@ public class QuickDialAction extends SinglePressAction {
     
     @Override
     protected void setupIcon(ImageView icon) {
-        icon.setImageResource(android.R.drawable.ic_menu_call);
+    	icon.setImageDrawable(mQuickDialIcon);
     }
     
     @Override

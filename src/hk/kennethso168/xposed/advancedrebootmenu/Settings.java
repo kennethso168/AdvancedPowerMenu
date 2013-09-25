@@ -72,12 +72,20 @@ public class Settings extends Activity {
 		public static final String KEY_PREF_ICON_COLOR = "pref_icon_color";
 		public static final String KEY_PREF_APP_INFO = "pref_app_info";
 		public static final String KEY_PREF_HIDE_IC_LAUNCHER = "pref_hide_ic_launcher";
+		public static final String KEY_PREF_QUICK_DIAL_NUMBER = "pref_quick_dial_number";
+		public static String disabledStr;
 		
 		public void updateListPrefSumm(String key, int r_array){
 			Resources res = getResources();
 			String[] prefDescs = res.getStringArray(r_array);
 			int prefValue = Integer.parseInt(getPreferenceScreen().getSharedPreferences().getString(key, "0"));
 			findPreference(key).setSummary(prefDescs[prefValue]);		
+		}
+		
+		public void updateEditTextPrefSumm(String key, String emptyText){
+			String text = getPreferenceScreen().getSharedPreferences().getString(key, emptyText);
+			if (text.equals("")) text = emptyText;
+			findPreference(key).setSummary(text);
 		}
 		
 		public static class HideIconDialogFragment extends DialogFragment {
@@ -107,8 +115,11 @@ public class Settings extends Activity {
 			
 			addPreferencesFromResource(R.xml.preferences);
 			
+			disabledStr = getResources().getString(R.string.disabled);
+			
 			updateListPrefSumm(KEY_PREF_CONFIRM_DIALOG, R.array.confirm_dialog);
 			updateListPrefSumm(KEY_PREF_ICON_COLOR, R.array.icon_color);
+			updateEditTextPrefSumm(KEY_PREF_QUICK_DIAL_NUMBER, "Disabled");
 			
 			String aboutBefore = getResources().getString(R.string.app_info_before);
 			String aboutAfter = getResources().getString(R.string.app_info_after);
@@ -123,12 +134,15 @@ public class Settings extends Activity {
 	        }
 			if (key.equals(KEY_PREF_ICON_COLOR)){
 				updateListPrefSumm(key, R.array.icon_color);
-			}if (key.equals(KEY_PREF_HIDE_IC_LAUNCHER))
-	        {
+			}
+			if (key.equals(KEY_PREF_HIDE_IC_LAUNCHER)){
 				setIconVis();
 				DialogFragment df = new HideIconDialogFragment();
 				df.show(getFragmentManager(), "APM_hide_icon_dialog");
 	        }
+			if (key.equals(KEY_PREF_QUICK_DIAL_NUMBER)){
+				updateEditTextPrefSumm(key, "Disabled");
+			}
 	    }
 		
 		@Override

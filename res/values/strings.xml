@@ -33,6 +33,8 @@
 	<string name="enable_screenshot_summ">Add the option which enables screenshot functionality if none originally exists</string>
 	<string name="confirm_dialog_title">Confirmation dialogs</string>
 	<string name="quick_dial_number">Quick dial number</string>
+	<string name="quick_dial_note">Leave blank to disable this feature</string>
+	<string name="disabled">Disabled</string>
 	<string name="icon_color_title">Color theme for icons</string>
 	<string name="reboot_methods_title">Reboot methods to show</string>
 	<!-- Do not translate or include the "default" strings in other languages -->

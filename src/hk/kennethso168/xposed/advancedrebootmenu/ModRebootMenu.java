@@ -54,6 +54,7 @@ public class ModRebootMenu {
     private static Drawable mRecoveryIcon;
     private static Drawable mBootloaderIcon;
     private static Drawable mScreenshotIcon;
+    private static Drawable mQuickDialIcon;
     private static int[] rebootSubMenu = new int[4];
     private static boolean normalRebootOnly = false;
     private static List<IIconListAdapterItem> mRebootItemList;
@@ -129,14 +130,17 @@ public class ModRebootMenu {
                    //Create "sets" of icons with different color themes of the same icon in one set
                    int[] mRebootIconSet = {R.drawable.ic_lock_reboot, R.drawable.ic_lock_reboot_dark, R.drawable.ic_lock_reboot_color};
                    int[] mScreenshotIconSet = {R.drawable.ic_screenshot, R.drawable.ic_screenshot_dark, R.drawable.ic_screenshot_color};
+                   int[] mQuickDialIconSet = {R.drawable.ic_call, R.drawable.ic_call_dark, R.drawable.ic_call_color};
                    int[] mRebootSoftIconSet = {R.drawable.ic_lock_reboot_soft, R.drawable.ic_lock_reboot_soft_dark, R.drawable.ic_lock_reboot_soft_color};
                    int[] mRecoveryIconSet = {R.drawable.ic_lock_recovery, R.drawable.ic_lock_recovery_dark, R.drawable.ic_lock_recovery_color};
                    int[] mBootloaderIconSet = {R.drawable.ic_lock_reboot_bootloader, R.drawable.ic_lock_reboot_bootloader_dark, R.drawable.ic_lock_reboot_bootloader_color};
+                   
                    
                    //Set the icons appropriately
                    //1st level icons
                    mRebootIcon = armRes.getDrawable(mRebootIconSet[IconColorInt]);                 
                    mScreenshotIcon = armRes.getDrawable(mScreenshotIconSet[IconColorInt]);
+                   mQuickDialIcon = armRes.getDrawable(mQuickDialIconSet[IconColorInt]);
                    //2nd level icons
                    //note that the icon for normal reboot is reused.
                    mRebootSoftIcon = armRes.getDrawable(mRebootSoftIconSet[IconColorInt]);
@@ -323,7 +327,7 @@ public class ModRebootMenu {
                     String quickDial = pref.getString("pref_quick_dial_number", "");
                     if (quickDial.length() > 0) {
                         Object action = Proxy.newProxyInstance(classLoader, new Class<?>[] { actionClass },
-                                new QuickDialAction(mContext, mQuickDialLabel, quickDial));
+                                new QuickDialAction(mContext, mQuickDialLabel, quickDial, mQuickDialIcon));
                         // add to the second/third position (before Screenshot, if it exists)
                         mItems.add(advRebootEnabled?2:1, action);
                         BaseAdapter mAdapter = (BaseAdapter) XposedHelpers.getObjectField(param.thisObject, "mAdapter");
