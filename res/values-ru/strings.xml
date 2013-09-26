@@ -8,7 +8,6 @@
 	<string name="reboot_soft">Мягкая перезагрузка</string>
 	<string name="reboot_recovery">Рекавери</string>
 	<string name="reboot_confirm">Телефон будет перезагружен</string>
-	<string name="reboot_confirm_recovery">Телефон будет перезагружен в рекавери</string>
 	<string name="take_screenshot">Скриншот</string>
 	<string name="note_title">Внимание</string>
 	<string name="note_summ">Необходима перезагрузка, чтобы изменения вступли в силу.</string>
@@ -32,5 +31,14 @@
 	<string name="xda_title">Пост на xda</string>
 	<string name="email_title">Написать разработчику</string>
 	<string name="donate_title">Спонсировать</string>
+	<string name="icon_color_title">Цвет иконок</string>
+	<string name="reboot_methods_title">Отображаемые варианты перезагрузки</string>
+	<string name="reboot_bootloader">Бутлоадер</string>
+	<string name="reboot_confirm_bootloader">Телефон будет перезагружен в бутлоадер.</string>
+	<string name="reboot_confirm_recovery">Телефон будет перезагружен в рекавери.</string>
+	<string name="quick_dial">Быстрый набор</string>
+	<string name="quick_dial_number">Номер быстрого набора</string>
+	<string name="quick_dial_note">Оставьте пустым для отключения функции</string>
+	<string name="disabled">Отключено</string>
 
 </resources>

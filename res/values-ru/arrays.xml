@@ -4,4 +4,9 @@
 		<item name="enable">Показывать</item>
 		<item name="disable">Отключить</item>
 	</string-array>
+	<string-array name="icon_color">
+		<item name="default">Белые (По умлочанию)</item>
+		<item name="dark">Чёрные</item>
+		<item name="color">Цветные</item>
+	</string-array>
 </resources>

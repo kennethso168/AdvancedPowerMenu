@@ -20,6 +20,7 @@ public class QuickDialAction extends SinglePressAction {
         super(context);
         mLabelText = labelText;
         mDialNumber = dialNumber;
+        mQuickDialIcon = quickDialIcon;
     }
     
     @Override
