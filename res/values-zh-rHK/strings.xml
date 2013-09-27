@@ -21,6 +21,9 @@
 	<!-- Screenshot  -->
 	<string name="take_screenshot">螢幕截圖</string>
 	
+	<!-- Quick dial  -->
+	<string name="quick_dial">快速撥號</string>
+	
 	<!-- Preference Screen -->
 	<string name="note_title">注意</string>
 	<string name="note_summ">要使變更生效，您可能需要重新啟動您的手機。</string>
@@ -30,6 +33,9 @@
 	<string name="enable_screenshot_title">螢幕截圖</string>
 	<string name="enable_screenshot_summ">增加「螢幕截圖」選項﹝若已有此選項存在則維持不變﹞</string>
 	<string name="confirm_dialog_title">確認對話框</string>
+	<string name="quick_dial_number">快速撥號號碼</string>
+	<string name="quick_dial_note">留空以停用快速撥號功能</string>
+	<string name="disabled">已停用</string>
 	<string name="icon_color_title">圖示色調</string>
 	<string name="reboot_methods_title">顯示的重啟模式</string>
 	
