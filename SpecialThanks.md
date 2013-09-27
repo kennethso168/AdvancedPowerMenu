@@ -5,7 +5,6 @@ Developers
 
 Translators
 ===========
-
 - RyokoN for Japanese translation
 - greatslon for Russian translation
 - mapleshadow for Simplified Chinese translation
