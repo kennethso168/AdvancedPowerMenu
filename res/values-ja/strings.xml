@@ -20,6 +20,9 @@
 	<!-- Screenshot  -->
 	<string name="take_screenshot">スクリーンショット</string>
 	
+	<!-- Quick dial -->
+	<string name="quick_dial">クイック発信</string>
+	
 	<!-- Preference Screen -->
 	<string name="note_title">注意</string>
 	<string name="note_summ">変更を反映させるには再起動してください。</string>
@@ -29,6 +32,9 @@
 	<string name="enable_screenshot_title">スクリーンショット</string>
 	<string name="enable_screenshot_summ">電源メニューにスクリーンショットを撮影できる項目を追加します。</string>
 	<string name="confirm_dialog_title">確認ダイアログ</string>
+	<string name="quick_dial_number">クイック発信番号</string>
+	<string name="quick_dial_note">空のままにするとこの機能を無効にします。</string>
+	<string name="disabled">無効</string>
 	<string name="icon_color_title">アイコンのテーマ色</string>
 	<string name="reboot_methods_title">表示する再起動方法</string>
 
