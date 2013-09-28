@@ -37,6 +37,8 @@
 	<string name="disabled">無効</string>
 	<string name="icon_color_title">アイコンのテーマ色</string>
 	<string name="reboot_methods_title">表示する再起動方法</string>
+	<string name="expand_statusbar_title">通知領域を開く</string>
+	<string name="expand_statusbar_summ">通知領域を開くオプションを追加します。</string>
 
 	<string name="sect_debug">アプリオプション</string>
 	<string name="verbose_log_title">詳細なログを残す</string>
