@@ -9,9 +9,10 @@
             <CheckBoxPreference android:defaultValue="true" android:key="pref_rebootsub_bootloader" android:title="@string/reboot_bootloader"/>
         </PreferenceScreen><CheckBoxPreference android:summary="@string/enable_screenshot_summ" android:key="pref_enable_screenshot" android:title="@string/enable_screenshot_title" android:defaultValue="true"/>
         
-        <EditTextPreference android:key="pref_quick_dial_number" android:title="@string/quick_dial_number" android:inputType="phone" android:dialogMessage="@string/quick_dial_note"/>
+        <CheckBoxPreference android:title="@string/expand_statusbar_title" android:defaultValue="false" android:summary="@string/expand_statusbar_summ" android:key="pref_expand_statusbar"/><EditTextPreference android:key="pref_quick_dial_number" android:title="@string/quick_dial_number" android:inputType="phone" android:dialogMessage="@string/quick_dial_note"/>
         
         <ListPreference android:key="pref_icon_color" android:title="@string/icon_color_title" android:entryValues="@array/icon_color_values" android:entries="@array/icon_color" android:defaultValue="@string/icon_color_title_default"/>
+        
         
     </PreferenceCategory>
     <PreferenceCategory android:title="@string/sect_debug" android:key="pref_debug">

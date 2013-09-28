@@ -37,6 +37,8 @@
 	<string name="disabled">Disabled</string>
 	<string name="icon_color_title">Color theme for icons</string>
 	<string name="reboot_methods_title">Reboot methods to show</string>
+	<string name="expand_statusbar_title">Expand status bar</string>
+	<string name="expand_statusbar_summ">Add the option which expands the status bar</string>
 	<!-- Do not translate or include the "default" strings in other languages -->
 	<string name="confirm_dialog_default">0</string>
 	<string name="icon_color_title_default">0</string>
