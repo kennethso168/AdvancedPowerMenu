@@ -1,3 +1,11 @@
+Copyright (c) 2013 So Kei Hong. All rights reserved.
+
+The statement above only applies to all releases, in source, binary or installer form, on or after 30th September, 2013.
+
+---------------------------------------------------------------------------------
+
+The license below only applies to all releases, in source, binary or installer form, on or before 29th September, 2013.
+
 The MIT License (MIT)
 
 Copyright (c) 2013 So Kei Hong (kennethso168)
