@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="confirm_dialog">
+        <item>مشاهدة جميع الحوارات</item>
+        <item>تعطيل كافة حوارات إعادة التشغيل</item>
+    </string-array>
+    <string-array name="confirm_dialog_values">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+    <string-array name="icon_color">
+        <item>الافتراضي (الأبيض)</item>
+        <item>مظلم</item>
+        <item>غني بالألوان</item>
+    </string-array>
+    <string-array name="icon_color_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+</resources>
