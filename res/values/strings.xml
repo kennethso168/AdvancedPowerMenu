@@ -53,6 +53,10 @@
 	<string name="app_info_title">App info</string>
 	<string name="app_info_before">"Advaced Power Menu version "</string>
 	<string name="app_info_after">\nby Kenneth So (kennethso168@xda)</string>
+	<string name="readme_title">Readme</string>
+	<!-- It's quite "impossible" to translate the string below. No need to translate it -->
+	<string name="readme_content">Copyright (c) 2013 So Kei Hong. All rights reserved.\n\n
+	    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</string>
 	
 	<string name="license_title">Open source license</string>
 	<string name="special_thanks_title">Special thanks</string>

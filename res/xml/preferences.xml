@@ -19,14 +19,13 @@
     </PreferenceCategory>
     <PreferenceCategory android:title="@string/sect_about" android:key="pref_about">
         <Preference android:title="@string/app_info_title" android:key="pref_app_info"/>
-        <Preference android:title="@string/license_title" android:key="pref_license">
-            <intent android:action="android.intent.action.VIEW"
-            		android:data="https://raw.github.com/kennethso168/AdvancedRebootMenu/master/LICENSE.md" />
-        </Preference>
+        <hk.kennethso168.xposed.advancedrebootmenu.DialogExPreference
+        android:title="@string/readme_title"
+        android:dialogMessage="@string/readme_content"/>
         <Preference android:key="pref_special_thanks" android:title="@string/special_thanks_title">
             <intent android:action="android.intent.action.VIEW"
             		android:data="https://raw.github.com/kennethso168/AdvancedPowerMenu/master/SpecialThanks.md" />
-        </Preference>
+        </Preference> 
         <Preference android:title="@string/xda_title" android:key="pref_xda">
             <intent android:action="android.intent.action.VIEW"
             		android:data="http://forum.xda-developers.com/showthread.php?t=2404042" />
