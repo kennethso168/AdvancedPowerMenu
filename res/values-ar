@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Advanced Power Menu</string>
+    <string name="launcher_name">Adv. Power Menu</string>
+    <string name="xposed_description">"إضافة اعادة التشغيل، إعادة تشغيل سريع، إعادة تشغيل  للدخول لوضع الاسترداد  إلتقاط صورة للشاشة.
+التي وضعتها kennethso168 @ XDA "</string>
+    <string name="credits_msg">تطوير kennethso168@xda</string>
+    <string name="reboot_soft">اعادة تشغيل سريعة</string>
+    <string name="reboot_استرداد">استرداد</string>
+    <string name="reboot_bootloader">اعادة الإقلاع</string>
+    <string name="reboot_confirm">يتم اعادة تشغيل الهاتف</string>
+    <string name="reboot_confirm_استرداد">يتم اعادة تشغي الهاتف والدخول لوضع الاسترداد .</string>
+    <string name="reboot_confirm_bootloader">يتم اعادة التشغيل والدخول في وضع الاقلاع.</string>
+    <string name="take_screenshot">إلتقاط صورة للشاشة</string>
+    <string name="quick_dial">الطلب السريع</string>
+    <string name="note_title">الملاحظة</string>
+    <string name="note_summ">قد تحتاج إلى إعادة تشغيل الهاتف لتصبح التغييرات نافذة المفعول</string>
+    <string name="sect_menu_options">خيارات قائمة التشغيل</string>
+    <string name="enable_reboot_title">خيارات اعادة التشغيل</string>
+    <string name="enable_reboot_summ">إضافة / استبدال خيار إعادة التشغيل الذي يسمح بأساليب إعادة التشغيل المختلفة</string>
+    <string name="enable_screenshot_title">إلتقاط صورة للشاشة</string>
+    <string name="enable_screenshot_summ">إضافة خيار التي تمكن وظيفة لقطة شاشة إذا لم يوجد أصلا</string>
+    <string name="confirm_dialog_title">تاكيد الحوارات</string>
+    <string name="quick_dial_number">رقم الطلب السريع</string>
+    <string name="quick_dial_note">اتركه فارغا لتعطيل هذه الميزة</string>
+    <string name="disabled">تعطيل</string>
+    <string name="icon_color_title">موضوع اللون للرموز</string>
+    <string name="reboot_methods_title">اظهار طرق اعادة التشغيل</string>
+    <string name="confirm_dialog_default">0</string>
+    <string name="icon_color_title_default">0</string>
+    <string name="sect_debug">خيارات التطبيق</string>
+    <string name="verbose_log_title">التسجيل المطول</string>
+    <string name="verbose_log_summ">Write full logs into /data/xposed/debug.log</string>
+    <string name="hide_ic_launcher_title">اخفاء ايقونة اللانشر</string>
+    <string name="hide_ic_launcher_dialog">"قد تحتاج إلى الانتظار لبعض الوقت أو إعادة تشغيل قاذفة لتصبح التغييرات نافذة المفعول.
+أيضا، لا يجوز لك الوصول المتقدم القائمة قوة من Xposed المثبت> وحدات> متقدم قائمة الطاقة (اضغط على البند بدلا من مربع الاختيار)."</string>
+    <string name="sect_about">حول</string>
+    <string name="app_info_title">معلومات التطبيق</string>
+    <string name="app_info_before">"Advaced Power Menu version "</string>
+    <string name="app_info_after">"
+by Kenneth So (kennethso168@xda)"</string>
+    <string name="license_title">رخصة مفتوحة المصدر</string>
+    <string name="special_thanks_title">شكر خاص</string>
+    <string name="xda_title">View xda thread</string>
+    <string name="email_title">البريد الإلكتروني للمطور</string>
+    <string name="donate_title">تبرع</string>
+</resources>
