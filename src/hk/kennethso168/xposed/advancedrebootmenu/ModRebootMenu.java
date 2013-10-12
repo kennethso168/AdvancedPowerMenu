@@ -1,5 +1,6 @@
 package hk.kennethso168.xposed.advancedrebootmenu;
 
+import hk.kennethso168.xposed.advancedrebootmenu.actions.ExpandStatusBarAction;
 import hk.kennethso168.xposed.advancedrebootmenu.actions.QuickDialAction;
 import hk.kennethso168.xposed.advancedrebootmenu.actions.ScreenshotAction;
 import hk.kennethso168.xposed.advancedrebootmenu.adapters.BasicIconListItem;
@@ -43,18 +44,21 @@ public class ModRebootMenu {
     public static final String CLASS_ACTION = "com.android.internal.policy.impl.GlobalActions.Action";
     
     private static Context mContext;
+    private static Context armContext;
     private static String mRebootStr;
     private static String mRebootSoftStr;
     private static String mRecoveryStr;
     private static String mBootloaderStr;
     private static String mScreenshotLabel;
     private static String mQuickDialLabel;
+    private static String mExpandStatusBarLabel;
     private static Drawable mRebootIcon;
     private static Drawable mRebootSoftIcon;
     private static Drawable mRecoveryIcon;
     private static Drawable mBootloaderIcon;
     private static Drawable mScreenshotIcon;
     private static Drawable mQuickDialIcon;
+    private static Drawable mExpandStatusBarIcon;
     private static int[] rebootSubMenu = new int[4];
     private static boolean normalRebootOnly = false;
     private static List<IIconListAdapterItem> mRebootItemList;
@@ -106,7 +110,7 @@ public class ModRebootMenu {
                protected void afterHookedMethod(final MethodHookParam param) throws Throwable {
                    mContext = (Context) param.args[0];
 
-                   Context armContext = mContext.createPackageContext(
+                   armContext = mContext.createPackageContext(
                            Main.PACKAGE_NAME, Context.CONTEXT_IGNORE_SECURITY);
                    
                    Resources res = mContext.getResources();
@@ -120,6 +124,7 @@ public class ModRebootMenu {
                    
                    mScreenshotLabel = armRes.getString(R.string.take_screenshot);
                    mQuickDialLabel = armRes.getString(R.string.quick_dial);
+                   mExpandStatusBarLabel = armRes.getString(R.string.expand_statusbar_title);
                    
                    //Get user's preference for the menu icon color theme
                    xPref.reload();
@@ -134,13 +139,14 @@ public class ModRebootMenu {
                    int[] mRebootSoftIconSet = {R.drawable.ic_lock_reboot_soft, R.drawable.ic_lock_reboot_soft_dark, R.drawable.ic_lock_reboot_soft_color};
                    int[] mRecoveryIconSet = {R.drawable.ic_lock_recovery, R.drawable.ic_lock_recovery_dark, R.drawable.ic_lock_recovery_color};
                    int[] mBootloaderIconSet = {R.drawable.ic_lock_reboot_bootloader, R.drawable.ic_lock_reboot_bootloader_dark, R.drawable.ic_lock_reboot_bootloader_color};
-                   
+                   int[] mExpandStatusBarIconSet = {R.drawable.ic_expand_statusbar, R.drawable.ic_expand_statusbar_dark, R.drawable.ic_expand_statusbar_color};
                    
                    //Set the icons appropriately
                    //1st level icons
                    mRebootIcon = armRes.getDrawable(mRebootIconSet[IconColorInt]);                 
                    mScreenshotIcon = armRes.getDrawable(mScreenshotIconSet[IconColorInt]);
                    mQuickDialIcon = armRes.getDrawable(mQuickDialIconSet[IconColorInt]);
+                   mExpandStatusBarIcon = armRes.getDrawable(mExpandStatusBarIconSet[IconColorInt]);
                    //2nd level icons
                    //note that the icon for normal reboot is reused.
                    mRebootSoftIcon = armRes.getDrawable(mRebootSoftIconSet[IconColorInt]);
@@ -333,6 +339,16 @@ public class ModRebootMenu {
                         BaseAdapter mAdapter = (BaseAdapter) XposedHelpers.getObjectField(param.thisObject, "mAdapter");
                         mAdapter.notifyDataSetChanged();
                     }
+                    boolean expandStatusBarEnabled = pref.getBoolean("pref_expand_statusbar", false);
+                    if (expandStatusBarEnabled){
+                    	Object action = Proxy.newProxyInstance(classLoader, new Class<?>[] { actionClass },
+                                new ExpandStatusBarAction(mContext, mExpandStatusBarLabel, mExpandStatusBarIcon));
+                        // add to the second/third position (before Screenshot, if it exists)
+                        mItems.add(advRebootEnabled?2:1, action);
+                        BaseAdapter mAdapter = (BaseAdapter) XposedHelpers.getObjectField(param.thisObject, "mAdapter");
+                        mAdapter.notifyDataSetChanged();
+                    }
+                    
                 }
             });
         } catch (Exception e) {
