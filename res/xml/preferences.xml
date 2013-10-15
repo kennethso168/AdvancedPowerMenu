@@ -21,7 +21,8 @@
         <Preference android:title="@string/app_info_title" android:key="pref_app_info"/>
         <hk.kennethso168.xposed.advancedrebootmenu.DialogExPreference
         android:title="@string/readme_title"
-        android:dialogMessage="@string/readme_content"/>
+        android:dialogMessage="@string/readme_content"
+        android:negativeButtonText="@null"/>
         <Preference android:key="pref_special_thanks" android:title="@string/special_thanks_title">
             <intent android:action="android.intent.action.VIEW"
             		android:data="https://raw.github.com/kennethso168/AdvancedPowerMenu/master/SpecialThanks.md" />
