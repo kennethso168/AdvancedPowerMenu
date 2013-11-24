@@ -1,0 +1,61 @@
+<resources>
+
+	<!--Basic Information -->
+	<!--Not necessary to translate as these are just descriptions. However if you like you can still translate these. -->
+	<string name="xposed_description">Füge Neustart, Soft Neustart, Neustart in die Recovery und Bildschirmfoto zum Power Menü hinzu.\nEntwickelt von kennethso168@xda</string>
+	<string name="credits_msg">Entwickelt von kennethso168@xda</string>
+    
+	<!-- Reboot Options -->
+	<string name="reboot_soft">Soft Neustart</string>
+    <string name="reboot_recovery">Recovery</string>
+    <string name="reboot_bootloader">Bootloader</string>
+	
+	<!-- Confirmation Dialogs -->
+    <string name="reboot_confirm">Telefon wird neu gestartet.</string>
+    <string name="reboot_confirm_recovery">Telefon wird neu in die Recovery gestartet.</string>
+    <string name="reboot_confirm_bootloader">Telefon wird neu in den Bootloader gestartet.</string>
+	
+	<!-- Screenshot  -->
+	<string name="take_screenshot">Bildschirmfoto</string>
+	
+	<!-- Quick dial  -->
+	<string name="quick_dial">Schnellanruf</string>
+	
+	<!-- Preference Screen -->
+	<string name="note_title">Notiz</string>
+	<string name="note_summ">Ein Neustart könnte notwendig sein, damit alle Änderungen übernommen werden.</string>
+	<string name="sect_menu_options">Power Menu Options</string>
+	<string name="enable_reboot_title">Erweiterter Neustart</string>
+	<string name="enable_reboot_summ">Hinzufügen/entfernen von verschiednen Neustart Methoden</string>
+	<string name="enable_screenshot_title">Bildschirmfoto</string>
+	<string name="enable_screenshot_summ">Fügt die Möglichkeit ein Bildschirmfoto aufzunehmen hinzu, sofern nicht vorhaden</string>
+	<string name="confirm_dialog_title">Bestätigungsdialoge</string>
+	<string name="quick_dial_number">Schnellanruf Nummer</string>
+	<string name="quick_dial_note">Frei lassen, um diese Funktion zu deaktivieren</string>
+	<string name="disabled">Deaktiviert</string>
+	<string name="icon_color_title">Farb-Thema der Icons</string>
+	<string name="reboot_methods_title">Anzuzeigende Neustart Möglichkeiten</string>
+	<!-- Do not translate or include the "default" strings in other languages -->
+	
+	<string name="sect_debug">App Optionen</string>
+	<string name="verbose_log_title">Vollständiger Log</string>
+	<string name="verbose_log_summ">Schreibe vollständigen Log nach /data/xposed/debug.log</string>
+	<string name="hide_ic_launcher_title">Verstecke Launcher Icon</string>
+	<string name="hide_ic_launcher_dialog">Es könnte eine Weile dauern oder der Launcher muss nneu gestartet werden, damit die Änderungen aktiv werden.\nAlso, you may access Advanced Power Menu from Xposed Installer &gt; Modules &gt; Advanced Power Menu (Press the item instead of the checkbox).</string>
+	
+	<string name="sect_about">Über</string>
+	<string name="app_info_title">App Info</string>
+	<string name="app_info_before">&quot;Advaced Power Menu Version &quot;</string>
+	<string name="app_info_after">\nvon Kenneth So (kennethso168@xda)</string>
+	<string name="readme_title">Urheberrecht und Haftungsausschluss</string>
+	<!-- It's quite "impossible" to translate the string below. No need to translate it -->
+	<string name="readme_content">Copyright (c) 2013 So Kei Hong. All rights reserved.\n\n
+	    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</string>
+	
+	<string name="license_title">Open Source Lizenz</string>
+	<string name="special_thanks_title">Besonderer Dank</string>
+	<string name="xda_title">Zeige xda-Thread</string>
+	<string name="email_title">Sende dem Entwickler eine E-Mail</string>
+	<string name="donate_title">Spenden</string>
+	
+</resources>
