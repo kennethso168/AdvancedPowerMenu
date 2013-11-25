@@ -1,0 +1,67 @@
+<resources>
+
+	<!--Basic Information -->
+	<!--Not necessary to translate as these are just descriptions. However if you like you can still translate these. -->
+    <string name="app_name">תפריט כיבוי מתקדם</string>
+    <string name="launcher_name">תפריט כיבוי מתקדם</string>
+	<string name="xposed_description">הוסף לתפריט הכיבוי הפעלה מחדש, הפעלה מחדש מהירה, ופתיחת לריקברי.\פותח ע"י kennethso168 מxda</string>
+	<string name="credits_msg">פותח ע"י kennethso168 מxda</string>
+    
+	<!-- Reboot Options -->
+	<string name="reboot_soft">הפעלה מחדש מהירה</string>
+    <string name="reboot_recovery">פתיחת ריקברי</string>
+    <string name="reboot_bootloader">אתחול לבוט</string>
+	
+	<!-- Confirmation Dialogs -->
+    <string name="reboot_confirm">המכשיר יופעל מחדש</string>
+    <string name="reboot_confirm_recovery">המכשיר יכנס לריקברי</string>
+    <string name="reboot_confirm_bootloader">המכשיר יבצע אתחול.</string>
+	
+	<!-- Screenshot  -->
+	<string name="take_screenshot">צילום מסך</string>
+	
+	<!-- Quick dial  -->
+	<string name="quick_dial">חיוג מהיר</string>
+	
+	<!-- Preference Screen -->
+	<string name="note_title">הערה</string>
+	<string name="note_summ">תצטרך לבצע הפעלה מחדש בכדי שהשינויים יכנסו לתוקף</string>
+	<string name="sect_menu_options">תוספות אפשריות לתפריט כיבוי</string>
+	<string name="enable_reboot_title">הפעלה מחדש מתקדמת</string>
+	<string name="enable_reboot_summ">החלף את ייעוד כפתור ההפעלה מחדש בכדי לאפשר אפשרויות שונות</string>
+	<string name="enable_screenshot_title">צילום מסך</string>
+	<string name="enable_screenshot_summ">מוסיף כפתור לצילום מסך אם לא קיים אחד</string>
+	<string name="confirm_dialog_title">תפריט וידוא פעולה</string>
+	<string name="quick_dial_number">מספר לחיוג מהיר</string>
+	<string name="quick_dial_note">השאר ריק על מנת לבטל</string>
+	<string name="disabled">מבוטל</string>
+	<string name="icon_color_title">צבע האייקונים</string>
+	<string name="reboot_methods_title">אפשרויות הפעלה מחדש</string>
+	<string name="expand_statusbar_title">פתח מרכז התראות</string>
+	<string name="expand_statusbar_summ">מוסיף כפתור לפתיחת מרכז ההתראות</string>
+	<!-- Do not translate or include the "default" strings in other languages -->
+	<string name="confirm_dialog_default">0</string>
+	<string name="icon_color_title_default">0</string>
+	
+	<string name="sect_debug">אפשרויות האפליקציה</string>
+	<string name="verbose_log_title">רישום Verbose</string>
+	<string name="verbose_log_summ">הכנס רישום מלא /data/xposed/debug.log</string>
+	<string name="hide_ic_launcher_title">החבא ממגירת האפליקציות</string>
+	<string name="hide_ic_launcher_dialog">אולי תצטרך להמתין או לבצע הפעלה מחדש כדי שהשינויים יכנסו לתוקף.\nתוכל להכנס לאפליקציה מחדש דרך Xposed Installer> Modules> תפריט כיבוי מתקדם (לחץ על השורה לא על כפתור הביטול).</string>
+	
+	<string name="sect_about">אודות</string>
+	<string name="app_info_title">מידע על האפליקציה</string>
+	<string name="app_info_before">""תפריט כיבוי מתקדם" גרסא:"</string>
+	<string name="app_info_after">\nע"י Kenneth So (kennethso168 מxda)תורגם ע"י Lear95</string>
+	<string name="readme_title">זכויות יוצרים</string>
+	<!-- It's quite "impossible" to translate the string below. No need to translate it -->
+	<string name="readme_content">זכויות יוצרים (c) 2013 So Kei Hong. כל הזכויות שמורות.\n\n
+	    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</string>
+	
+	<string name="license_title">רשיון קוד פתוח</string>
+	<string name="special_thanks_title">תודות</string>
+	<string name="xda_title">כנס לאשכול האפליקציה בxda</string>
+	<string name="email_title">צור קשר עם המפתח</string>
+	<string name="donate_title">תרמו למפתח</string>
+	
+</resources>

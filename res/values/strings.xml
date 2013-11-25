@@ -39,9 +39,14 @@
 	<string name="reboot_methods_title">Reboot methods to show</string>
 	<string name="expand_statusbar_title">Expand status bar</string>
 	<string name="expand_statusbar_summ">Add the option which expands the status bar</string>
+	<string name="data_toggle">Toggle mobile data</string>
+	<string name="data_toggle_summ">Add the option which toggles mobile data connection.</string>
 	<!-- Do not translate or include the "default" strings in other languages -->
 	<string name="confirm_dialog_default">0</string>
 	<string name="icon_color_title_default">0</string>
+	<string name="no_locked_off_title">Shutdown Protection</string>
+	<string name="no_locked_off_summ">Disable shutdown and reboot functions while the device is still at the lockscreen and not yet unlocked.</string>
+	<string name="no_locked_off_dialog">Because shutdown protection is on, you may not power off the phone while the device is locked. Unlock the device and try again.</string>
 	
 	<string name="sect_debug">App Options</string>
 	<string name="verbose_log_title">Verbose logging</string>
