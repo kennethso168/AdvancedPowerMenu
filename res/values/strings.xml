@@ -23,6 +23,10 @@
 	<!-- Quick dial  -->
 	<string name="quick_dial">Quick dial</string>
 	
+	<!-- Toggle Mobile Data -->
+	<string name="mobile_data_on">Enable mobile data</string>
+	<string name="mobile_data_off">Disable mobile data</string>
+	
 	<!-- Preference Screen -->
 	<string name="note_title">Note</string>
 	<string name="note_summ">You may need to reboot for changes to take effect</string>
@@ -60,7 +64,7 @@
 	<string name="app_info_after">\nby Kenneth So (kennethso168@xda)</string>
 	<string name="readme_title">Copyright and Disclaimer</string>
 	<!-- It's quite "impossible" to translate the string below. No need to translate it -->
-	<string name="readme_content">Copyright (c) 2013 So Kei Hong. All rights reserved.\n\n
+	<string name="readme_content">Copyright &#169; 2013 So Kei Hong. All rights reserved.\n\n
 	    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</string>
 	
 	<string name="license_title">Open source license</string>
@@ -68,5 +72,9 @@
 	<string name="xda_title">View xda thread</string>
 	<string name="email_title">Email the developer</string>
 	<string name="donate_title">Donate</string>
+	
+	<string name="email_note_title">Note for emails</string>
+	<string name="email_note_content">Everyday, I am overwhelmed with tons of emails (not related to this app). Therefore, please note the following points before sending me emails.\n1. I can better notice your message if you use xda posts/PMs\n2. Please read the \"What can you do if the app doesn\'t work / if issue happens?\" before sending me an email (found in Xposed Installer > Download > Advanced Power Menu)\n3. Please begin your subject with [APM] so I can better sort my emails. Thanks.\n4. Please note that I can\'t solve the problem with insufficient information. I will also IGNORE any email with NO BODY TEXT (I use gmail).\n5. I understand only English and Chinese.\nThank you for your cooperation.</string>
+	
 	
 </resources>

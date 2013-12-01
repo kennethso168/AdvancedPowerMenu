@@ -3,6 +3,7 @@ package hk.kennethso168.xposed.advancedrebootmenu;
 import hk.kennethso168.xposed.advancedrebootmenu.actions.ExpandStatusBarAction;
 import hk.kennethso168.xposed.advancedrebootmenu.actions.QuickDialAction;
 import hk.kennethso168.xposed.advancedrebootmenu.actions.ScreenshotAction;
+import hk.kennethso168.xposed.advancedrebootmenu.actions.ToggleDataAction;
 import hk.kennethso168.xposed.advancedrebootmenu.adapters.BasicIconListItem;
 import hk.kennethso168.xposed.advancedrebootmenu.adapters.IIconListAdapterItem;
 import hk.kennethso168.xposed.advancedrebootmenu.adapters.IconListAdapter;
@@ -24,7 +25,6 @@ import android.content.DialogInterface;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.os.PowerManager;
-import android.os.RemoteException;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -55,6 +55,8 @@ public class ModRebootMenu {
     private static String mQuickDialLabel;
     private static String mExpandStatusBarLabel;
     private static String mToggleDataLabel;
+    private static String mToggleDataOnLabel;
+    private static String mToggleDataOffLabel;
     private static Drawable mRebootIcon;
     private static Drawable mRebootSoftIcon;
     private static Drawable mRecoveryIcon;
@@ -136,6 +138,8 @@ public class ModRebootMenu {
                    mQuickDialLabel = armRes.getString(R.string.quick_dial);
                    mExpandStatusBarLabel = armRes.getString(R.string.expand_statusbar_title);
                    mToggleDataLabel = armRes.getString(R.string.data_toggle);
+                   mToggleDataOnLabel = armRes.getString(R.string.mobile_data_on);
+                   mToggleDataOffLabel = armRes.getString(R.string.mobile_data_off);
                    noLockedOffDialogTitle = armRes.getString(R.string.no_locked_off_title);
                    noLockedOffDialogMsg = armRes.getString(R.string.no_locked_off_dialog);
                    
@@ -153,6 +157,7 @@ public class ModRebootMenu {
                    int[] mRecoveryIconSet = {R.drawable.ic_lock_recovery, R.drawable.ic_lock_recovery_dark, R.drawable.ic_lock_recovery_color};
                    int[] mBootloaderIconSet = {R.drawable.ic_lock_reboot_bootloader, R.drawable.ic_lock_reboot_bootloader_dark, R.drawable.ic_lock_reboot_bootloader_color};
                    int[] mExpandStatusBarIconSet = {R.drawable.ic_expand_statusbar, R.drawable.ic_expand_statusbar_dark, R.drawable.ic_expand_statusbar_color};
+                   int[] mToggleDataIconSet = {R.drawable.ic_data, R.drawable.ic_data_dark, R.drawable.ic_data_color};
                    
                    //Set the icons appropriately
                    //1st level icons
@@ -160,7 +165,7 @@ public class ModRebootMenu {
                    mScreenshotIcon = armRes.getDrawable(mScreenshotIconSet[IconColorInt]);
                    mQuickDialIcon = armRes.getDrawable(mQuickDialIconSet[IconColorInt]);
                    mExpandStatusBarIcon = armRes.getDrawable(mExpandStatusBarIconSet[IconColorInt]);
-                   mToggleDataIcon = armRes.getDrawable(R.drawable.ic_wip);
+                   mToggleDataIcon = armRes.getDrawable(mToggleDataIconSet[IconColorInt]);
                    //2nd level icons
                    //note that the icon for normal reboot is reused.
                    mRebootSoftIcon = armRes.getDrawable(mRebootSoftIconSet[IconColorInt]);
@@ -306,15 +311,14 @@ public class ModRebootMenu {
                         	// continue
                         }
                         
-                        // TODO NOT WORKING
                         // search for power off
                         // search for drawable
                         try {
                             Field f = XposedHelpers.findField(o.getClass(), "mIconResId");
                             String resName = res.getResourceEntryName((Integer) f.get(o)).toLowerCase(Locale.US);
                             log("Drawable resName = " + resName);
-                            if (resName.contains("power off") || resName.contains("shutdown") 
-                            		|| resName.contains("shut down")||resName.contains("off")) {
+                            if (resName.contains("power") || resName.contains("shutdown") 
+                            		|| resName.contains("shut")||resName.contains("off")) {
                                 powerOffActionItem = o;
                                 break;
                             }
@@ -330,8 +334,8 @@ public class ModRebootMenu {
                             Field f = XposedHelpers.findField(o.getClass(), "mMessageResId");
                             String resName = res.getResourceEntryName((Integer) f.get(o)).toLowerCase(Locale.US);
                             log("Text resName = " + resName);
-                            if (resName.contains("power off") || resName.contains("shutdown") 
-                            		|| resName.contains("shut down")||resName.contains("off")) {
+                            if (resName.contains("power") || resName.contains("shutdown") 
+                            		|| resName.contains("shut")||resName.contains("off")) {
                                 powerOffActionItem = o;
                                 break;
                             }
@@ -404,15 +408,46 @@ public class ModRebootMenu {
                     }
                     boolean dataToggleEnabled = pref.getBoolean("pref_data_toggle", false);
                     if (dataToggleEnabled){
-                    	//TODO change new class
                     	Object action = Proxy.newProxyInstance(classLoader, new Class<?>[] { actionClass },
-                                new ExpandStatusBarAction(mContext, mToggleDataLabel, mToggleDataIcon));
+                                new ToggleDataAction(mContext, mToggleDataOnLabel, mToggleDataOffLabel, mToggleDataIcon));
                         // add to the second/third position (before Screenshot, if it exists)
                         mItems.add(advRebootEnabled?2:1, action);
                         BaseAdapter mAdapter = (BaseAdapter) XposedHelpers.getObjectField(param.thisObject, "mAdapter");
                         mAdapter.notifyDataSetChanged();
                     }
-                    
+                    boolean noLockedOff = pref.getBoolean("pref_no_locked_off", false);
+                    if (noLockedOff){
+                    	if (powerOffActionItem != null) {
+	                    	log("Existing Power off action item found!");
+	                    	mPowerOffActionHook = XposedHelpers.findAndHookMethod(powerOffActionItem.getClass(), 
+	                                "onPress", new XC_MethodHook () {
+	                    		//TODO prevent multiple dialogs
+	                    		@Override
+	                    		protected void beforeHookedMethod(MethodHookParam param) throws Throwable {
+	                    			KeyguardManager myKM = (KeyguardManager) mContext.getSystemService(Context.KEYGUARD_SERVICE);
+	                                if( myKM.inKeyguardRestrictedInputMode()) {
+	                                	// show a dialog
+	                                	AlertDialog.Builder builder = new AlertDialog.Builder(mContext)
+	                	                .setTitle(noLockedOffDialogTitle)
+	                	                .setMessage(noLockedOffDialogMsg)
+	                	                .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+	                	
+	                	                    @Override
+	                	                    public void onClick(DialogInterface dialog, int which) {
+	                	                    	dialog.dismiss();
+	                	                    }
+	                	                });
+	                	            	AlertDialog dialog = builder.create();
+	                	            	dialog.getWindow().setType(WindowManager.LayoutParams.TYPE_KEYGUARD_DIALOG);
+	                	            	dialog.show();
+	                	            	return;
+	                                }
+	                    		}
+	                        });
+	                    } else {
+	                    	log("Existing Power off action item NOT found!");
+	                    }
+                    }
                 }
             });
         } catch (Exception e) {
@@ -569,7 +604,6 @@ public class ModRebootMenu {
             } else if (methodName.equals("onPress")) {
                 KeyguardManager myKM = (KeyguardManager) mContext.getSystemService(Context.KEYGUARD_SERVICE);
                 if( myKM.inKeyguardRestrictedInputMode()&&noLockedOff) {
-                	//TODO show a dialog
                 	AlertDialog.Builder builder = new AlertDialog.Builder(mContext)
 	                .setTitle(noLockedOffDialogTitle)
 	                .setMessage(noLockedOffDialogMsg)
