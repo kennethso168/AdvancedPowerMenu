@@ -6,6 +6,8 @@ Developers
 Translators
 ===========
 - aljohanei for Arablic translation
+- Philipp Schumann for German translation
+- Lear95 for Hebrew translation
 - RyokoN for Japanese translation
 - greatslon for Russian translation
 - mapleshadow for Simplified Chinese translation
