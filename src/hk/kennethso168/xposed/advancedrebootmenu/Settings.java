@@ -7,6 +7,7 @@ import android.app.DialogFragment;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.content.pm.PackageInfo;
@@ -14,6 +15,8 @@ import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.preference.Preference;
+import android.preference.Preference.OnPreferenceClickListener;
 import android.preference.PreferenceFragment;
 import de.robv.android.xposed.XposedBridge;
 
@@ -105,6 +108,33 @@ public class Settings extends Activity {
 		    }
 		}
 		
+		public static class EmailDialogFragment extends DialogFragment {
+		    @Override
+		    public Dialog onCreateDialog(Bundle savedInstanceState) {
+		        // Use the Builder class for convenient dialog construction
+		        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+		        builder.setMessage(R.string.email_note_content)
+		        	.setTitle(R.string.email_note_title)
+		        	.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                   public void onClick(DialogInterface dialog, int id) {
+						Intent mailto = new Intent(Intent.ACTION_SEND); 
+						mailto.setType("message/rfc822") ; // use from live device
+						mailto.putExtra(Intent.EXTRA_EMAIL, new String[]{"kennethso168@gmail.com"});
+						mailto.putExtra(Intent.EXTRA_SUBJECT,"[APM]");
+						mailto.putExtra(Intent.EXTRA_TEXT,"");
+						startActivity(Intent.createChooser(mailto, "Select email application"));
+                   }
+		        })
+		        	.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+                   public void onClick(DialogInterface dialog, int id) {
+                       // do nothing
+                   }
+		        });
+		        // Create the AlertDialog object and return it
+		        return builder.create();
+		    }
+		}
+		
 		@Override
 		public void onCreate(Bundle savedInstanceState) {
 			super.onCreate(savedInstanceState);
@@ -125,6 +155,15 @@ public class Settings extends Activity {
 			String aboutAfter = getResources().getString(R.string.app_info_after);
 			findPreference(KEY_PREF_APP_INFO).setSummary(aboutBefore + versionName + aboutAfter);
 			setIconVis();
+			
+			Preference email = (Preference) findPreference("pref_email");
+			email.setOnPreferenceClickListener(new OnPreferenceClickListener() {
+				public boolean onPreferenceClick(Preference preference){				   
+					DialogFragment df = new EmailDialogFragment();
+					df.show(getFragmentManager(), "APM_email_dialog");
+					return true;
+				}
+			});
 		}
 		
 		@Override
@@ -158,5 +197,7 @@ public class Settings extends Activity {
 		    getPreferenceScreen().getSharedPreferences()
 		            .unregisterOnSharedPreferenceChangeListener(this);
 		}
+		
+		// TODO show email note
 	}
 }
