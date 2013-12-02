@@ -23,6 +23,10 @@
 	<!-- Quick dial -->
 	<string name="quick_dial">クイック発信</string>
 	
+	<!-- Toggle Mobile Data -->
+	<string name="mobile_data_on">モバイルデータを有効化</string>
+	<string name="mobile_data_off">モバイルデータを無効化</string>
+	
 	<!-- Preference Screen -->
 	<string name="note_title">注意</string>
 	<string name="note_summ">変更を反映させるには再起動してください。</string>
@@ -39,6 +43,11 @@
 	<string name="reboot_methods_title">表示する再起動方法</string>
 	<string name="expand_statusbar_title">通知領域を開く</string>
 	<string name="expand_statusbar_summ">通知領域を開くオプションを追加します。</string>
+	<string name="data_toggle">モバイルデータトグル</string>
+	<string name="data_toggle_summ">モバイルデータ通信をオンオフするオプションを追加します。</string>
+	<string name="no_locked_off_title">シャットダウン保護</string>
+	<string name="no_locked_off_summ">ロック画面でロック解除されていないときに「電源を切る」と「再起動」を出来ないようにします。</string>
+	<string name="no_locked_off_dialog">シャットダウン保護が有効なためロック中は電源を切ったり再起動したり出来ません。ロックを解除してやり直してください。</string>
 
 	<string name="sect_debug">アプリオプション</string>
 	<string name="verbose_log_title">詳細なログを残す</string>
