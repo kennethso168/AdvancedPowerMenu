@@ -216,34 +216,34 @@ public class ModRebootMenu {
                         mRebootActionHook.unhook();
                         mRebootActionHook = null;
                     }
+                    if (mPowerOffActionHook != null) {
+                    	log("Unhooking previous hook of poweroff action item");
+                        mPowerOffActionHook.unhook();
+                        mPowerOffActionHook = null;
+                    }
                 }
 
                 @Override
                 protected void afterHookedMethod(final MethodHookParam param) throws Throwable {
                     if (mContext == null) return;
 
-                    /*prefs.reload();
-                    if (!prefs.getBoolean(GravityBoxSettings.PREF_KEY_POWEROFF_ADVANCED, false)) {
-                        return;
-                    }*/
                     pref.reload();
                     boolean advRebootEnabled = pref.getBoolean("pref_enable_reboot", false);
                     boolean screenshotEnabled = pref.getBoolean("pref_enable_screenshot", false);
                     @SuppressWarnings("unchecked")
                     List<Object> mItems = (List<Object>) XposedHelpers.getObjectField(param.thisObject, "mItems");
 
-                    // try to find out if reboot/screenshot action item 
+                    // try to find out if reboot/screenshot/poweroff action item 
                     // already exists in the list of GlobalActions items
                     // strategy:
                     // 1) check if Action has mIconResId field or mMessageResId field
                     // 2) check if the name of the corresponding resource contains "reboot" or "restart" substring
-                    log("Searching for existing reboot & screenshot action item...");
+                    log("Searching for existing reboot, screenshot and poweroff action item...");
                     Object rebootActionItem = null;
                     Object screenshotActionItem = null;
                     Object powerOffActionItem = null;
                     Resources res = mContext.getResources();
                     for (Object o : mItems) {
-                    	// search for reboot/restart
                     	// search for drawable
                         try {
                             Field f = XposedHelpers.findField(o.getClass(), "mIconResId");
@@ -251,7 +251,13 @@ public class ModRebootMenu {
                             log("Drawable resName = " + resName);
                             if (resName.contains("reboot") || resName.contains("restart")) {
                                 rebootActionItem = o;
-                                break;
+                            }
+                            if (resName.contains("screenshot")) {
+                                screenshotActionItem = o;
+                            }
+                            if (resName.contains("power") || resName.contains("shutdown") 
+                            		|| resName.contains("shut")||resName.contains("off")) {
+                                powerOffActionItem = o;
                             }
                         } catch (NoSuchFieldError nfe) {
                             // continue
@@ -267,7 +273,15 @@ public class ModRebootMenu {
                             log("Text resName = " + resName);
                             if (resName.contains("reboot")|| resName.contains("restart")) {
                                 rebootActionItem = o;
-                                break;
+                            }
+                            if (resName.contains("screenshot")) {
+                                screenshotActionItem = o;
+
+                            }
+                            if (resName.contains("power") || resName.contains("shutdown") 
+                            		|| resName.contains("shut")||resName.contains("off")) {
+                                powerOffActionItem = o;
+
                             }
                         } catch (NoSuchFieldError nfe) {
                         	// continue
@@ -277,75 +291,6 @@ public class ModRebootMenu {
                         	// continue
                         }
                          
-                        // search for screenshot
-                        // search for drawable
-                        try {
-                            Field f = XposedHelpers.findField(o.getClass(), "mIconResId");
-                            String resName = res.getResourceEntryName((Integer) f.get(o)).toLowerCase(Locale.US);
-                            log("Drawable resName = " + resName);
-                            if (resName.contains("screenshot")) {
-                                screenshotActionItem = o;
-                                break;
-                            }
-                        } catch (NoSuchFieldError nfe) {
-                            // continue
-                        } catch (Resources.NotFoundException resnfe) { 
-                            // continue
-                        } catch (IllegalArgumentException iae) {
-                            // continue
-                        }
-                        // search for text
-                        try {
-                            Field f = XposedHelpers.findField(o.getClass(), "mMessageResId");
-                            String resName = res.getResourceEntryName((Integer) f.get(o)).toLowerCase(Locale.US);
-                            log("Text resName = " + resName);
-                            if (resName.contains("screenshot")) {
-                                screenshotActionItem = o;
-                                break;
-                            }
-                        } catch (NoSuchFieldError nfe) {
-                        	// continue
-                        } catch (Resources.NotFoundException resnfe) { 
-                        	// continue
-                        } catch (IllegalArgumentException iae) {
-                        	// continue
-                        }
-                        
-                        // search for power off
-                        // search for drawable
-                        try {
-                            Field f = XposedHelpers.findField(o.getClass(), "mIconResId");
-                            String resName = res.getResourceEntryName((Integer) f.get(o)).toLowerCase(Locale.US);
-                            log("Drawable resName = " + resName);
-                            if (resName.contains("power") || resName.contains("shutdown") 
-                            		|| resName.contains("shut")||resName.contains("off")) {
-                                powerOffActionItem = o;
-                                break;
-                            }
-                        } catch (NoSuchFieldError nfe) {
-                            // continue
-                        } catch (Resources.NotFoundException resnfe) { 
-                            // continue
-                        } catch (IllegalArgumentException iae) {
-                            // continue
-                        }
-                        // search for text
-                        try {
-                            Field f = XposedHelpers.findField(o.getClass(), "mMessageResId");
-                            String resName = res.getResourceEntryName((Integer) f.get(o)).toLowerCase(Locale.US);
-                            log("Text resName = " + resName);
-                            if (resName.contains("power") || resName.contains("shutdown") 
-                            		|| resName.contains("shut")||resName.contains("off")) {
-                                powerOffActionItem = o;
-                                break;
-                            }
-                        } catch (NoSuchFieldError nfe) {
-                        	// continue
-                        } catch (Resources.NotFoundException resnfe) { 
-                        	// continue
-                        } catch (IllegalArgumentException iae) {
-                        	// continue
-                        }
                     }
                     if(advRebootEnabled){
 	                    if (rebootActionItem != null) {
@@ -356,7 +301,13 @@ public class ModRebootMenu {
 	                            protected Object replaceHookedMethod(MethodHookParam param) throws Throwable {
 	                                if(normalRebootOnly){
 	                                	// TODO handle this when shutdown protection is on
-	                                	handleReboot(mContext, mRebootStr, SEQ_REBOOT_NORMAL);
+	                                	KeyguardManager myKM = (KeyguardManager) mContext.getSystemService(Context.KEYGUARD_SERVICE);
+	                                    if( myKM.inKeyguardRestrictedInputMode()&&noLockedOff) {
+	                                    	log("Is at lockscreen and shutdown protection is on");
+	                                    	showLockedDialog();
+	                                    }else{
+		                                	handleReboot(mContext, mRebootStr, SEQ_REBOOT_NORMAL);
+	                                    }
 	                                }else{
 	                                	showDialog();
 	                                }
@@ -416,38 +367,26 @@ public class ModRebootMenu {
                         mAdapter.notifyDataSetChanged();
                     }
                     boolean noLockedOff = pref.getBoolean("pref_no_locked_off", false);
-                    if (noLockedOff){
-                    	if (powerOffActionItem != null) {
-	                    	log("Existing Power off action item found!");
-	                    	mPowerOffActionHook = XposedHelpers.findAndHookMethod(powerOffActionItem.getClass(), 
-	                                "onPress", new XC_MethodHook () {
-	                    		//TODO prevent multiple dialogs
-	                    		@Override
-	                    		protected void beforeHookedMethod(MethodHookParam param) throws Throwable {
-	                    			KeyguardManager myKM = (KeyguardManager) mContext.getSystemService(Context.KEYGUARD_SERVICE);
-	                                if( myKM.inKeyguardRestrictedInputMode()) {
-	                                	// show a dialog
-	                                	AlertDialog.Builder builder = new AlertDialog.Builder(mContext)
-	                	                .setTitle(noLockedOffDialogTitle)
-	                	                .setMessage(noLockedOffDialogMsg)
-	                	                .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
-	                	
-	                	                    @Override
-	                	                    public void onClick(DialogInterface dialog, int which) {
-	                	                    	dialog.dismiss();
-	                	                    }
-	                	                });
-	                	            	AlertDialog dialog = builder.create();
-	                	            	dialog.getWindow().setType(WindowManager.LayoutParams.TYPE_KEYGUARD_DIALOG);
-	                	            	dialog.show();
-	                	            	return;
-	                                }
-	                    		}
+
+                	if (powerOffActionItem != null) {
+                    	log("Existing Power off action item found!");
+                    	KeyguardManager myKM = (KeyguardManager) mContext.getSystemService(Context.KEYGUARD_SERVICE);
+                        if( myKM.inKeyguardRestrictedInputMode()&&noLockedOff) {
+                        	log("Is at lockscreen & shutdown protection is on. Replacing onPress");
+                        	
+                        	mPowerOffActionHook = XposedHelpers.findAndHookMethod(powerOffActionItem.getClass(), 
+	                                "onPress", new XC_MethodReplacement () {
+	                            @Override
+	                            protected Object replaceHookedMethod(MethodHookParam param) throws Throwable {
+	                            	showLockedDialog();
+	                            	return null;
+	                            }
 	                        });
-	                    } else {
-	                    	log("Existing Power off action item NOT found!");
-	                    }
+                        }
+                    } else {
+                    	log("Existing Power off action item NOT found!");
                     }
+                    
                 }
             });
         } catch (Exception e) {
@@ -490,6 +429,22 @@ public class ModRebootMenu {
         } catch (Exception e) {
             XposedBridge.log(e);
         }
+    }
+    
+    private static void showLockedDialog(){
+    	AlertDialog.Builder builder = new AlertDialog.Builder(mContext)
+        .setTitle(noLockedOffDialogTitle)
+        .setMessage(noLockedOffDialogMsg)
+        .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+            	dialog.dismiss();
+            }
+        });
+    	AlertDialog dialog = builder.create();
+    	dialog.getWindow().setType(WindowManager.LayoutParams.TYPE_KEYGUARD_DIALOG);
+    	dialog.show();
     }
 
     private static void handleReboot(Context context, String caption, final int mode) {
@@ -604,19 +559,7 @@ public class ModRebootMenu {
             } else if (methodName.equals("onPress")) {
                 KeyguardManager myKM = (KeyguardManager) mContext.getSystemService(Context.KEYGUARD_SERVICE);
                 if( myKM.inKeyguardRestrictedInputMode()&&noLockedOff) {
-                	AlertDialog.Builder builder = new AlertDialog.Builder(mContext)
-	                .setTitle(noLockedOffDialogTitle)
-	                .setMessage(noLockedOffDialogMsg)
-	                .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
-	
-	                    @Override
-	                    public void onClick(DialogInterface dialog, int which) {
-	                    	dialog.dismiss();
-	                    }
-	                });
-	            	AlertDialog dialog = builder.create();
-	            	dialog.getWindow().setType(WindowManager.LayoutParams.TYPE_KEYGUARD_DIALOG);
-	            	dialog.show();
+                	showLockedDialog();
                 } else {
                  //it is not locked
                 	if(normalRebootOnly){
@@ -629,20 +572,7 @@ public class ModRebootMenu {
             } else if (methodName.equals("onLongPress")) {
             	KeyguardManager myKM = (KeyguardManager) mContext.getSystemService(Context.KEYGUARD_SERVICE);
                 if( myKM.inKeyguardRestrictedInputMode()&&noLockedOff) {
-                	//TODO show a dialog
-                	AlertDialog.Builder builder = new AlertDialog.Builder(mContext)
-	                .setTitle(noLockedOffDialogTitle)
-	                .setMessage(noLockedOffDialogMsg)
-	                .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
-	
-	                    @Override
-	                    public void onClick(DialogInterface dialog, int which) {
-	                    	dialog.dismiss();
-	                    }
-	                });
-	            	AlertDialog dialog = builder.create();
-	            	dialog.getWindow().setType(WindowManager.LayoutParams.TYPE_KEYGUARD_DIALOG);
-	            	dialog.show();
+                	showLockedDialog();
                 } else {
                  //it is not locked
                 	handleReboot(mContext, mRebootStr, SEQ_REBOOT_NORMAL);

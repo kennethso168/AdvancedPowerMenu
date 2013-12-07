@@ -4,7 +4,7 @@
     <PreferenceCategory android:title="@string/sect_menu_options" android:key="pref_menu_options">
         <CheckBoxPreference android:summary="@string/enable_reboot_summ" android:key="pref_enable_reboot" android:title="@string/enable_reboot_title" android:defaultValue="true"/>
         <ListPreference android:entries="@array/confirm_dialog" android:key="pref_confirm_dialog" android:title="@string/confirm_dialog_title" android:defaultValue="@string/confirm_dialog_default" android:entryValues="@array/confirm_dialog_values" />
-<!--         <CheckBoxPreference android:summary="@string/no_locked_off_summ" android:title="@string/no_locked_off_title" android:key="pref_no_locked_off" android:defaultValue="false"/> -->
+<CheckBoxPreference android:summary="@string/no_locked_off_summ" android:title="@string/no_locked_off_title" android:key="pref_no_locked_off" android:defaultValue="false"/>
         <PreferenceScreen android:title="@string/reboot_methods_title" android:key="pref_reboot_methods" android:persistent="false">
             <CheckBoxPreference android:defaultValue="true" android:key="pref_rebootsub_soft" android:title="@string/reboot_soft"/>
             <CheckBoxPreference android:defaultValue="true" android:key="pref_rebootsub_recovery" android:title="@string/reboot_recovery"/>
@@ -32,6 +32,10 @@
             <intent android:action="android.intent.action.VIEW"
             		android:data="https://raw.github.com/kennethso168/AdvancedPowerMenu/master/SpecialThanks.md" />
         </Preference> 
+        <hk.kennethso168.xposed.advancedrebootmenu.DialogExPreference
+        android:title="@string/troubleshoot_title"
+        android:dialogMessage="@string/troubleshoot_content"
+        android:negativeButtonText="@null"/>
         <Preference android:title="@string/xda_title" android:key="pref_xda">
             <intent android:action="android.intent.action.VIEW"
             		android:data="http://forum.xda-developers.com/showthread.php?t=2404042" />

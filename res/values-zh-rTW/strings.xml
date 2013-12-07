@@ -38,22 +38,29 @@
 	<string name="disabled">已停用</string>
 	<string name="icon_color_title">圖示色調</string>
 	<string name="reboot_methods_title">顯示的重啟模式</string>
+	<string name="data_toggle">流動數據切換</string>
+	<string name="data_toggle_summ">增加「流動數據切換」選項</string>
+	<string name="no_locked_off_title">關機保護</string>
+	<string name="no_locked_off_summ">當裝置未解除鎖定時禁止關機和重啟</string>
+	<string name="no_locked_off_dialog">由於您啟動了關機保護，您不能在裝置未解除鎖定時關機。請解除鎖定並重試</string>
 	
 	<string name="sect_debug">程式選項</string>
 	<string name="verbose_log_title">詳細除錯記錄</string>
 	<string name="verbose_log_summ">在 /data/xposed/debug.log 中作詳細的除錯記錄</string>
 	<string name="hide_ic_launcher_title">隱藏啟動器圖示</string>
-	<string name="hide_ic_launcher_dialog">要使變更生效，請等候或重新啟動您的啟動器。\n另外，你可在  Xposed外掛模組 > 應用模組 > 進階重啟目錄(Advanced Reboot Menu) 進入本程式 (按一下清單項目而非勾選框)。</string>
+	<string name="hide_ic_launcher_dialog">要使變更生效，請等候或重新啟動您的啟動器。\n另外，你可在  Xposed外掛模組 > 應用模組 > 進階重啟目錄(Advanced Reboot Menu) 進入本程式 ﹝按一下清單項目而非勾選框﹞。</string>
 	
 	<string name="sect_about">關於</string>
 	<string name="app_info_title">應用程式資訊</string>
 	<string name="app_info_before">"進階重啟目錄(Advanced Reboot Menu) 版本 "</string>
 	<string name="app_info_after">\n開發者︰kennethso168@xda</string>
-	
+	<string name="readme_title">版權及免責聲明</string>
 	<string name="license_title">開源許可證</string>
 	<string name="special_thanks_title">鳴謝</string>
+	<string name="troubleshoot_title">疑難排解﹝只有英文版本﹞</string>
 	<string name="xda_title">瀏覽 xda 討論帖</string>
 	<string name="email_title">發送電郵給開發者</string>
+	<string name="email_note_content">請以[APM]作為郵件標題的起首，並提供足夠的資料﹝例如附上 /data/xposed/debug.log﹞。謝謝合作。</string>
 	<string name="donate_title">捐款</string>
 	
 	
