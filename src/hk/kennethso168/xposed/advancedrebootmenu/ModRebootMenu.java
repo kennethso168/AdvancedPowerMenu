@@ -76,7 +76,7 @@ public class ModRebootMenu {
     private static String noLockedOffDialogMsg;
     private static Unhook mRebootActionHook;
     private static Unhook mPowerOffActionHook;
-    private static Method mPowerOffOrigMethod;
+    private static Unhook mAirplaneActionHook;
     private static XSharedPreferences xPref;
     
     //reboot shell commands
@@ -221,6 +221,11 @@ public class ModRebootMenu {
                         mPowerOffActionHook.unhook();
                         mPowerOffActionHook = null;
                     }
+                    if (mAirplaneActionHook != null) {
+                    	log("Unhooking previous hook of airplane action item");
+                    	mAirplaneActionHook.unhook();
+                    	mAirplaneActionHook = null;
+                    }
                 }
 
                 @Override
@@ -242,6 +247,7 @@ public class ModRebootMenu {
                     Object rebootActionItem = null;
                     Object screenshotActionItem = null;
                     Object powerOffActionItem = null;
+                    Object airplaneActionItem = null;
                     Resources res = mContext.getResources();
                     for (Object o : mItems) {
                     	// search for drawable
@@ -258,6 +264,9 @@ public class ModRebootMenu {
                             if (resName.contains("power") || resName.contains("shutdown") 
                             		|| resName.contains("shut")||resName.contains("off")) {
                                 powerOffActionItem = o;
+                            }
+                            if (resName.contains("airplane")){
+                            	airplaneActionItem = o;
                             }
                         } catch (NoSuchFieldError nfe) {
                             // continue
@@ -276,12 +285,13 @@ public class ModRebootMenu {
                             }
                             if (resName.contains("screenshot")) {
                                 screenshotActionItem = o;
-
                             }
                             if (resName.contains("power") || resName.contains("shutdown") 
                             		|| resName.contains("shut")||resName.contains("off")) {
                                 powerOffActionItem = o;
-
+                            }
+                            if (resName.contains("airplane")){
+                            	airplaneActionItem = o;
                             }
                         } catch (NoSuchFieldError nfe) {
                         	// continue
@@ -300,7 +310,6 @@ public class ModRebootMenu {
 	                            @Override
 	                            protected Object replaceHookedMethod(MethodHookParam param) throws Throwable {
 	                                if(normalRebootOnly){
-	                                	// TODO handle this when shutdown protection is on
 	                                	KeyguardManager myKM = (KeyguardManager) mContext.getSystemService(Context.KEYGUARD_SERVICE);
 	                                    if( myKM.inKeyguardRestrictedInputMode()&&noLockedOff) {
 	                                    	log("Is at lockscreen and shutdown protection is on");
@@ -386,7 +395,28 @@ public class ModRebootMenu {
                     } else {
                     	log("Existing Power off action item NOT found!");
                     }
-                    
+                	// TODO Find a way to disable the airplaneActionItem
+                	// airplaneActionItem is differently coded so that it doesn't have the onPress method
+                	/*
+                	if (airplaneActionItem != null) {
+                    	log("Existing airplane action item found!");
+                    	KeyguardManager myKM = (KeyguardManager) mContext.getSystemService(Context.KEYGUARD_SERVICE);
+                        if( myKM.inKeyguardRestrictedInputMode()&&noLockedOff) {
+                        	log("Is at lockscreen & shutdown protection is on. Replacing onPress");
+                        	
+                        	mAirplaneActionHook = XposedHelpers.findAndHookMethod(airplaneActionItem.getClass(), 
+	                                "onPress", new XC_MethodReplacement () {
+	                            @Override
+	                            protected Object replaceHookedMethod(MethodHookParam param) throws Throwable {
+	                            	showLockedDialog();
+	                            	return null;
+	                            }
+	                        });
+                        }
+                    } else {
+                    	log("Existing airplane action item NOT found!");
+                    }
+                    */
                 }
             });
         } catch (Exception e) {
