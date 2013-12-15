@@ -9,6 +9,7 @@ Translators
 - Philipp Schumann for German translation
 - Lear95 for Hebrew translation
 - RyokoN for Japanese translation
+- LaraCraft304 for Portuguese translation
 - greatslon for Russian translation
 - mapleshadow for Simplified Chinese translation
 
