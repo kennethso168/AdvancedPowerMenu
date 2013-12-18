@@ -49,8 +49,10 @@
 	<string name="confirm_dialog_default">0</string>
 	<string name="icon_color_title_default">0</string>
 	<string name="no_locked_off_title">Anti-theft helper</string>
-	<string name="no_locked_off_summ">Disable shutdown, reboot and airplane mode functions while the device is still at the lockscreen and not yet unlocked</string>
-	<string name="no_locked_off_dialog">Because anti-theft helper is on, you may not power off the phone or turn on airplane mode while the device is locked. Unlock the device and try again.</string>
+	
+	<!--  TODO add back airplane mode -->
+	<string name="no_locked_off_summ">Disable shutdown and reboot functions while the device is still at the lockscreen and not yet unlocked</string>
+	<string name="no_locked_off_dialog">Because anti-theft helper is on, you may not power off the phone while the device is locked. Unlock the device and try again.</string>
 	
 	<string name="sect_debug">App Options</string>
 	<string name="verbose_log_title">Verbose logging</string>
