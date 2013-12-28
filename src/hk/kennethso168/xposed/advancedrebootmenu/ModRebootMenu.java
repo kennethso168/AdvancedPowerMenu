@@ -1,5 +1,6 @@
 package hk.kennethso168.xposed.advancedrebootmenu;
 
+import hk.kennethso168.xposed.advancedrebootmenu.actions.AntiTheftHelperAction;
 import hk.kennethso168.xposed.advancedrebootmenu.actions.ExpandStatusBarAction;
 import hk.kennethso168.xposed.advancedrebootmenu.actions.QuickDialAction;
 import hk.kennethso168.xposed.advancedrebootmenu.actions.ScreenshotAction;
@@ -32,6 +33,7 @@ import android.view.WindowManager;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 import de.robv.android.xposed.XC_MethodHook;
 import de.robv.android.xposed.XC_MethodHook.Unhook;
 import de.robv.android.xposed.XC_MethodReplacement;
@@ -57,6 +59,7 @@ public class ModRebootMenu {
     private static String mToggleDataLabel;
     private static String mToggleDataOnLabel;
     private static String mToggleDataOffLabel;
+    private static String mDeviceLockedLabel;
     private static Drawable mRebootIcon;
     private static Drawable mRebootSoftIcon;
     private static Drawable mRecoveryIcon;
@@ -65,9 +68,10 @@ public class ModRebootMenu {
     private static Drawable mQuickDialIcon;
     private static Drawable mExpandStatusBarIcon;
     private static Drawable mToggleDataIcon;
+    private static Drawable mDeviceLockedIcon;
     private static int[] rebootSubMenu = new int[4];
     private static boolean normalRebootOnly = false;
-    private static boolean noLockedOff = false;
+    private static boolean antiTheftHelperOn = false;
     private static List<IIconListAdapterItem> mRebootItemList;
     private static String mRebootConfirmStr;
     private static String mRebootConfirmRecoveryStr;
@@ -78,6 +82,8 @@ public class ModRebootMenu {
     private static Unhook mPowerOffActionHook;
     private static Unhook mAirplaneActionHook;
     private static XSharedPreferences xPref;
+    private static int afterPowerPos = 0;
+    private static int afterRebootPos = 0;
     
     //reboot shell commands
     //  \n executes the command
@@ -140,6 +146,7 @@ public class ModRebootMenu {
                    mToggleDataLabel = armRes.getString(R.string.data_toggle);
                    mToggleDataOnLabel = armRes.getString(R.string.mobile_data_on);
                    mToggleDataOffLabel = armRes.getString(R.string.mobile_data_off);
+                   mDeviceLockedLabel = armRes.getString(R.string.device_is_locked);
                    noLockedOffDialogTitle = armRes.getString(R.string.no_locked_off_title);
                    noLockedOffDialogMsg = armRes.getString(R.string.no_locked_off_dialog);
                    
@@ -158,6 +165,7 @@ public class ModRebootMenu {
                    int[] mBootloaderIconSet = {R.drawable.ic_lock_reboot_bootloader, R.drawable.ic_lock_reboot_bootloader_dark, R.drawable.ic_lock_reboot_bootloader_color};
                    int[] mExpandStatusBarIconSet = {R.drawable.ic_expand_statusbar, R.drawable.ic_expand_statusbar_dark, R.drawable.ic_expand_statusbar_color};
                    int[] mToggleDataIconSet = {R.drawable.ic_data, R.drawable.ic_data_dark, R.drawable.ic_data_color};
+                   int[] mDeviceLockedIconSet = {R.drawable.ic_device_locked, R.drawable.ic_device_locked_dark, R.drawable.ic_device_locked_color};
                    
                    //Set the icons appropriately
                    //1st level icons
@@ -166,13 +174,14 @@ public class ModRebootMenu {
                    mQuickDialIcon = armRes.getDrawable(mQuickDialIconSet[IconColorInt]);
                    mExpandStatusBarIcon = armRes.getDrawable(mExpandStatusBarIconSet[IconColorInt]);
                    mToggleDataIcon = armRes.getDrawable(mToggleDataIconSet[IconColorInt]);
+                   mDeviceLockedIcon = armRes.getDrawable(mDeviceLockedIconSet[IconColorInt]);
                    //2nd level icons
                    //note that the icon for normal reboot is reused.
                    mRebootSoftIcon = armRes.getDrawable(mRebootSoftIconSet[IconColorInt]);
                    mRecoveryIcon = armRes.getDrawable(mRecoveryIconSet[IconColorInt]);
                    mBootloaderIcon = armRes.getDrawable(mBootloaderIconSet[IconColorInt]);
 
-                   noLockedOff = pref.getBoolean("pref_no_locked_off", false);
+                   antiTheftHelperOn = pref.getBoolean("pref_no_locked_off", false);
                    boolean SoftEnabled = pref.getBoolean("pref_rebootsub_soft", true);
                    boolean RecoveryEnabled = pref.getBoolean("pref_rebootsub_recovery", true);
                    boolean BootloaderEnabled = pref.getBoolean("pref_rebootsub_bootloader", true);
@@ -238,6 +247,7 @@ public class ModRebootMenu {
                     @SuppressWarnings("unchecked")
                     List<Object> mItems = (List<Object>) XposedHelpers.getObjectField(param.thisObject, "mItems");
 
+                    // I. Search for relevant existing items
                     // try to find out if reboot/screenshot/poweroff action item 
                     // already exists in the list of GlobalActions items
                     // strategy:
@@ -302,6 +312,62 @@ public class ModRebootMenu {
                         }
                          
                     }
+                    
+                    // II. Determine the suitable positions to insert new items
+                    if(powerOffActionItem != null) afterPowerPos =  mItems.indexOf(powerOffActionItem) + 1;
+                    if(rebootActionItem != null) 
+                    	afterRebootPos = mItems.indexOf(rebootActionItem) + 1;
+                    else
+                    	afterRebootPos = afterPowerPos;
+                    
+                    // III. Remove action items and update positions accordingly
+                    final boolean antiTheftHelperOn = pref.getBoolean("pref_no_locked_off", false);
+                    final boolean removeReboot = pref.getBoolean("pref_remove_reboot", false);
+                    final boolean removeScreenshot = pref.getBoolean("pref_remove_screenshot", false);
+                    final boolean removeAirplane = pref.getBoolean("pref_remove_airplane", false);
+                    KeyguardManager myKM = (KeyguardManager) mContext.getSystemService(Context.KEYGUARD_SERVICE);
+                    if( myKM.inKeyguardRestrictedInputMode()&&antiTheftHelperOn) {
+                    	if(powerOffActionItem != null){
+                    		mItems.remove(powerOffActionItem);
+                    		afterPowerPos--;
+                    		afterRebootPos--;
+                    	}
+                    	if(rebootActionItem != null){
+                    		mItems.remove(rebootActionItem);
+                    		afterRebootPos--;
+                    	}
+                    	if(airplaneActionItem != null){
+                    		mItems.remove(airplaneActionItem);
+                    	}
+                        BaseAdapter mAdapter = (BaseAdapter) XposedHelpers.getObjectField(param.thisObject, "mAdapter");
+                        mAdapter.notifyDataSetChanged();
+                    }
+                    if(removeReboot && !advRebootEnabled){
+                    	if(mItems.remove(rebootActionItem)){
+                    		afterRebootPos--;
+                    	}
+                    }
+                    if(removeScreenshot && !screenshotEnabled){
+                    	mItems.remove(screenshotActionItem);
+                    }
+                    if(removeAirplane){
+                    	mItems.remove(airplaneActionItem);
+                    }
+                    
+                    
+                    
+                    // IV. Add/replace action items and update positions accordingly
+
+                    if( myKM.inKeyguardRestrictedInputMode()&&antiTheftHelperOn) {
+                    	Object action = Proxy.newProxyInstance(classLoader, new Class<?>[] { actionClass },
+                                new AntiTheftHelperAction(mContext, mDeviceLockedLabel, mDeviceLockedIcon, noLockedOffDialogTitle, noLockedOffDialogMsg));
+                        mItems.add(0, action);
+                        afterPowerPos++;
+                        afterRebootPos++;
+                        BaseAdapter mAdapter = (BaseAdapter) XposedHelpers.getObjectField(param.thisObject, "mAdapter");
+                        mAdapter.notifyDataSetChanged();
+                    }
+                    
                     if(advRebootEnabled){
 	                    if (rebootActionItem != null) {
 	                        log("Existing Reboot action item found! Replacing onPress()");
@@ -311,7 +377,7 @@ public class ModRebootMenu {
 	                            protected Object replaceHookedMethod(MethodHookParam param) throws Throwable {
 	                                if(normalRebootOnly){
 	                                	KeyguardManager myKM = (KeyguardManager) mContext.getSystemService(Context.KEYGUARD_SERVICE);
-	                                    if( myKM.inKeyguardRestrictedInputMode()&&noLockedOff) {
+	                                    if( myKM.inKeyguardRestrictedInputMode()&&antiTheftHelperOn) {
 	                                    	log("Is at lockscreen and shutdown protection is on");
 	                                    	showLockedDialog();
 	                                    }else{
@@ -323,14 +389,16 @@ public class ModRebootMenu {
 	                                return null;
 	                            }
 	                        });
-	                    } else {
+	                    } else if(!(myKM.inKeyguardRestrictedInputMode()&&antiTheftHelperOn)){
 	                        log("Existing Reboot action item NOT found! Adding new RebootAction item");
+
 	                        Object action = Proxy.newProxyInstance(classLoader, new Class<?>[] { actionClass }, 
 	                                new RebootAction());
-	                        // add to the second position
-	                        mItems.add(1, action);
+	                        mItems.add(afterPowerPos, action);
+	                        afterRebootPos++;
 	                        BaseAdapter mAdapter = (BaseAdapter) XposedHelpers.getObjectField(param.thisObject, "mAdapter");
 	                        mAdapter.notifyDataSetChanged(); 
+
 	                    }
                     }
                     if(screenshotEnabled){
@@ -342,8 +410,7 @@ public class ModRebootMenu {
 	                    	log("Existing Screenshot action item NOT found! Adding new ScreenshotAction item");
 	                    	Object action = Proxy.newProxyInstance(classLoader, new Class<?>[] { actionClass }, 
 	                                new ScreenshotAction(mContext, mScreenshotLabel, mScreenshotIcon));
-	                    	// add to the second/third position
-	                    	mItems.add(advRebootEnabled?2:1, action);
+	                    	mItems.add(afterRebootPos, action);
 	                        BaseAdapter mAdapter = (BaseAdapter) XposedHelpers.getObjectField(param.thisObject, "mAdapter");
 	                        mAdapter.notifyDataSetChanged(); 
 	                    }
@@ -352,8 +419,7 @@ public class ModRebootMenu {
                     if (quickDial.length() > 0) {
                         Object action = Proxy.newProxyInstance(classLoader, new Class<?>[] { actionClass },
                                 new QuickDialAction(mContext, mQuickDialLabel, quickDial, mQuickDialIcon));
-                        // add to the second/third position (before Screenshot, if it exists)
-                        mItems.add(advRebootEnabled?2:1, action);
+                        mItems.add(afterRebootPos, action);
                         BaseAdapter mAdapter = (BaseAdapter) XposedHelpers.getObjectField(param.thisObject, "mAdapter");
                         mAdapter.notifyDataSetChanged();
                     }
@@ -361,26 +427,22 @@ public class ModRebootMenu {
                     if (expandStatusBarEnabled){
                     	Object action = Proxy.newProxyInstance(classLoader, new Class<?>[] { actionClass },
                                 new ExpandStatusBarAction(mContext, mExpandStatusBarLabel, mExpandStatusBarIcon));
-                        // add to the second/third position (before Screenshot, if it exists)
-                        mItems.add(advRebootEnabled?2:1, action);
+                        mItems.add(afterRebootPos, action);
                         BaseAdapter mAdapter = (BaseAdapter) XposedHelpers.getObjectField(param.thisObject, "mAdapter");
                         mAdapter.notifyDataSetChanged();
                     }
                     boolean dataToggleEnabled = pref.getBoolean("pref_data_toggle", false);
-                    if (dataToggleEnabled){
+                    if (dataToggleEnabled && !(myKM.inKeyguardRestrictedInputMode()&&antiTheftHelperOn)){
                     	Object action = Proxy.newProxyInstance(classLoader, new Class<?>[] { actionClass },
                                 new ToggleDataAction(mContext, mToggleDataOnLabel, mToggleDataOffLabel, mToggleDataIcon));
-                        // add to the second/third position (before Screenshot, if it exists)
-                        mItems.add(advRebootEnabled?2:1, action);
+                        mItems.add(afterRebootPos, action);
                         BaseAdapter mAdapter = (BaseAdapter) XposedHelpers.getObjectField(param.thisObject, "mAdapter");
                         mAdapter.notifyDataSetChanged();
                     }
-                    boolean noLockedOff = pref.getBoolean("pref_no_locked_off", false);
 
                 	if (powerOffActionItem != null) {
                     	log("Existing Power off action item found!");
-                    	KeyguardManager myKM = (KeyguardManager) mContext.getSystemService(Context.KEYGUARD_SERVICE);
-                        if( myKM.inKeyguardRestrictedInputMode()&&noLockedOff) {
+                        if( myKM.inKeyguardRestrictedInputMode()&&antiTheftHelperOn) {
                         	log("Is at lockscreen & shutdown protection is on. Replacing onPress");
                         	
                         	mPowerOffActionHook = XposedHelpers.findAndHookMethod(powerOffActionItem.getClass(), 
@@ -395,28 +457,6 @@ public class ModRebootMenu {
                     } else {
                     	log("Existing Power off action item NOT found!");
                     }
-                	// TODO Find a way to disable the airplaneActionItem
-                	// airplaneActionItem is differently coded so that it doesn't have the onPress method
-                	/*
-                	if (airplaneActionItem != null) {
-                    	log("Existing airplane action item found!");
-                    	KeyguardManager myKM = (KeyguardManager) mContext.getSystemService(Context.KEYGUARD_SERVICE);
-                        if( myKM.inKeyguardRestrictedInputMode()&&noLockedOff) {
-                        	log("Is at lockscreen & shutdown protection is on. Replacing onPress");
-                        	
-                        	mAirplaneActionHook = XposedHelpers.findAndHookMethod(airplaneActionItem.getClass(), 
-	                                "onPress", new XC_MethodReplacement () {
-	                            @Override
-	                            protected Object replaceHookedMethod(MethodHookParam param) throws Throwable {
-	                            	showLockedDialog();
-	                            	return null;
-	                            }
-	                        });
-                        }
-                    } else {
-                    	log("Existing airplane action item NOT found!");
-                    }
-                    */
                 }
             });
         } catch (Exception e) {
@@ -588,7 +628,7 @@ public class ModRebootMenu {
                 return v;
             } else if (methodName.equals("onPress")) {
                 KeyguardManager myKM = (KeyguardManager) mContext.getSystemService(Context.KEYGUARD_SERVICE);
-                if( myKM.inKeyguardRestrictedInputMode()&&noLockedOff) {
+                if( myKM.inKeyguardRestrictedInputMode()&&antiTheftHelperOn) {
                 	showLockedDialog();
                 } else {
                  //it is not locked
@@ -601,7 +641,7 @@ public class ModRebootMenu {
                 return null;
             } else if (methodName.equals("onLongPress")) {
             	KeyguardManager myKM = (KeyguardManager) mContext.getSystemService(Context.KEYGUARD_SERVICE);
-                if( myKM.inKeyguardRestrictedInputMode()&&noLockedOff) {
+                if( myKM.inKeyguardRestrictedInputMode()&&antiTheftHelperOn) {
                 	showLockedDialog();
                 } else {
                  //it is not locked

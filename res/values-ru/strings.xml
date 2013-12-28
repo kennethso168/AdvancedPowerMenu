@@ -40,5 +40,18 @@
 	<string name="quick_dial_number">Номер быстрого набора</string>
 	<string name="quick_dial_note">Оставьте пустым для отключения функции</string>
 	<string name="disabled">Отключено</string>
+	<string name="mobile_data_on">Включить мобильный интернет</string>
+	<string name="mobile_data_off">Выключить мобильный интернет</string>
+	<string name="expand_statusbar_title">Развернуть строку состояния</string>
+	<string name="expand_statusbar_summ">Добавить опцию открытия строки состояния</string>
+	<string name="data_toggle">Вкл/выкл мобильный интернет</string>
+	<string name="data_toggle_summ">Добавить опцию переключения мобильного интернета</string>
+	<string name="no_locked_off_title">Анти-вор</string>
+	<string name="no_locked_off_summ">Отключить выключение и перезагрузку при заблокированном экране</string>
+	<string name="no_locked_off_dialog">Вы не можете выключить телефон, т.к. включён режим "Анти-вот". Пожалуйста разблокируйте телефон и повторите попытку.</string>
+	<string name="readme_title">Копирайт и отказ от ответственности</string>
+	<string name="readme_content">Копирайт © 2013 So Kei Hong. Все права защищены.\n\nПРОГРАММА ПОСТОВЛЯЕТСЯ \"КАК ЕСТЬ \", БЕЗ ГАРАНТИЙ ЛЮБОГО РОДА, ЯВНЫХ ИЛИ ПОДРАЗУМЕВАЕМЫХ, АВТОРЫ ИЛИ ВЛАДЕЛЬЦЫ АВТОРСКИХ ПРАВ НЕ НЕСУТ ОТВЕТСТВЕННОСТИ ЗА ЛЮБЫЕ ПРЕТЕНЗИИ, ИЛИ УБЫТКИ.</string>
+	<string name="email_note_title">Примечание для писем</string>
+	<string name="email_note_content">Каждый день, меня переполняет тонн писем (не связанных с этим приложением). Поэтому, пожалуйста, внимание на следующие моменты, прежде чем посылать мне сообщения.\n1. Я скорее всего увижу ваше сообщение при отправе через личные сообщения на XDA\n2. Пожалуйста ознакомьтесь с \"What can you do if the app doesn\'t work / if issue happens?\" перед отправкой мне писем (можно найти в Xposed Installer > Download > Advanced Power Menu)\n3. Пожалуйста начинайте своё сообщение с [APM], чтобы я мог легче сортировать свою почту. Спасибо.\n4.Обратите внимание, что я не могу решить проблему с недостаточной информацией. Я также ИГНОРИРУЮ любые сообщения с пустым "телом письма" (Я использую gmail).\n5. Я понимаю только Английский и Китайский языки.\nБлагодарю за сотрудничество.</string>
 
 </resources>

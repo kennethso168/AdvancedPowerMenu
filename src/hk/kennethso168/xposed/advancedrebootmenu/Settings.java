@@ -198,6 +198,5 @@ public class Settings extends Activity {
 		            .unregisterOnSharedPreferenceChangeListener(this);
 		}
 		
-		// TODO show email note
 	}
 }
