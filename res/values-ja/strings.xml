@@ -2,20 +2,20 @@
 
 	<!--Basic Information -->
 	<!--Not necessary to translate as these are just descriptions. However if you like you can still translate these. -->
-    <string name="app_name">Advanced Power Menu</string>
-    <string name="launcher_name">Adv. Power Menu</string>
+	<string name="app_name">Advanced Power Menu</string>
+	<string name="launcher_name">Adv. Power Menu</string>
 	<string name="xposed_description">再起動やスクリーンショットオプションを電源メニューに追加します。\n開発者: kennethso168@xda</string>
 	<string name="credits_msg">開発者: kennethso168@xda</string>
    
 	<!-- Reboot Options -->
 	<string name="reboot_soft">ソフトリブート</string>
-    <string name="reboot_recovery">リカバリ</string>
-    <string name="reboot_bootloader">Bootloader</string>
+	<string name="reboot_recovery">リカバリ</string>
+	<string name="reboot_bootloader">Bootloader</string>
 	
 	<!-- Confirmation Dialogs -->
-    <string name="reboot_confirm">端末を再起動します。</string>
-    <string name="reboot_confirm_recovery">リカバリへ再起動します。</string>
-    <string name="reboot_confirm_bootloader">Bootloaderへ再起動します。</string>
+	<string name="reboot_confirm">端末を再起動します。</string>
+	<string name="reboot_confirm_recovery">リカバリへ再起動します。</string>
+	<string name="reboot_confirm_bootloader">Bootloaderへ再起動します。</string>
 	
 	<!-- Screenshot  -->
 	<string name="take_screenshot">スクリーンショット</string>
@@ -27,12 +27,20 @@
 	<string name="mobile_data_on">モバイルデータを有効化</string>
 	<string name="mobile_data_off">モバイルデータを無効化</string>
 	
+	<!-- Anti-theft helper -->
+	<string name="no_locked_off_dialog">誤操作･盗難防止機能が有効なためロック中は電源を切ったりデータ通信をオフにしたり出来ません。ロックを解除してやり直してください。</string>
+	<!-- Christmas Easter Egg -->
+	<string name="device_is_locked">メリークリスマス</string>
+	
 	<!-- Preference Screen -->
 	<string name="note_title">注意</string>
 	<string name="note_summ">変更を反映させるには再起動してください。</string>
 	<string name="sect_menu_options">メニューオプション</string>
+	<string name="modify_menu_items">電源メニューの編集&#8230;</string>
+	<string name="sect_reboot_item">再起動メニューアイテム</string>
 	<string name="enable_reboot_title">再起動オプション</string>
 	<string name="enable_reboot_summ">様々な再起動ができるオプションを電源メニューに追加します。</string>
+	<string name="sect_add_items">メニューアイテムの追加</string>
 	<string name="enable_screenshot_title">スクリーンショット</string>
 	<string name="enable_screenshot_summ">電源メニューにスクリーンショットを撮影できる項目を追加します。</string>
 	<string name="confirm_dialog_title">確認ダイアログ</string>
@@ -40,14 +48,20 @@
 	<string name="quick_dial_note">空のままにするとこの機能を無効にします。</string>
 	<string name="disabled">無効</string>
 	<string name="icon_color_title">アイコンのテーマ色</string>
-	<string name="reboot_methods_title">表示する再起動方法</string>
+	<string name="reboot_methods_title">表示する再起動方法&#8230;</string>
 	<string name="expand_statusbar_title">通知領域を開く</string>
 	<string name="expand_statusbar_summ">通知領域を開くオプションを追加します。</string>
 	<string name="data_toggle">モバイルデータトグル</string>
 	<string name="data_toggle_summ">モバイルデータ通信をオンオフするオプションを追加します。</string>
-	<string name="no_locked_off_title">シャットダウン保護</string>
-	<string name="no_locked_off_summ">ロック画面でロック解除されていないときに「電源を切る」と「再起動」を出来ないようにします。</string>
-	<string name="no_locked_off_dialog">シャットダウン保護が有効なためロック中は電源を切ったり再起動したり出来ません。ロックを解除してやり直してください。</string>
+	<string name="sect_remove_items">メニューアイテムの削除</string>
+	<string name="no_locked_off_title">誤操作･盗難防止</string>
+	<string name="no_locked_off_summ">ロックされている時に電源を切ったり再起動したり、データ通信をオフにしたりできないようにします。</string>
+	<string name="remove_reboot_title">再起動アイテムの削除</string>
+	<string name="remove_reboot_summ">元からある再起動アイテムを削除します。</string>
+	<string name="remove_screenshot_title">スクリーンショットの削除</string>
+	<string name="remove_screenshot_summ">元から「スクリーンショット」があり「メニューアイテムの追加」で無効にしたときに電源メニューに表示しないようにします。</string>
+	<string name="remove_airplane_title">機内モードトグルの削除</string>
+	<string name="remove_airplane_summ">元から機内モードトグルがある場合電源メニューに表示しないようにします。</string>
 
 	<string name="sect_debug">アプリオプション</string>
 	<string name="verbose_log_title">詳細なログを残す</string>
