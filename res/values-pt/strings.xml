@@ -23,15 +23,23 @@
 	<string name="quick_dial">Discagem rápida</string>
 	
 	<!-- Toggle Mobile Data -->
-	<string name="mobile_data_on">Habilitar dados móveis</string>
+	<string name="mobile_data_on">Habilitar dados    móveis</string>
 	<string name="mobile_data_off">Desabilitar dados móveis</string>
+
+	<!-- Anti-theft helper -->
+	<string name="no_locked_off_dialog">Devido o auxílio anti roubo estar ativado, você não vai poder desligar ou desabilitar a conexão de dados enquanto o dispositivo não for desbloqueado. Desbloqueio o dispositivo e tente novamente.</string>
+	<!-- Christmas Easter Egg -->
+	<string name="device_is_locked">Feliz Natal</string>
 	
-	<!-- Preference Screen -->
+<!-- Preference Screen -->
 	<string name="note_title">Nota</string>
 	<string name="note_summ">Você precisa reiniciar para as mudanças surtirem efeito</string>
 	<string name="sect_menu_options">Opções do menu de energia</string>
+	<string name="modify_menu_items">Modifica itens do menu de energia&#8230;</string>
+	<string name="sect_reboot_item">Itens do menu de Reiniciar</string>
 	<string name="enable_reboot_title">Reinicialização avançada</string>
 	<string name="enable_reboot_summ">Adiciona/substitui a opção de reiniciar para permitir vários métodos de reinicialização</string>
+	<string name="sect_add_items">Adiciona itens ao menu</string>
 	<string name="enable_screenshot_title">Screenshot</string>
 	<string name="enable_screenshot_summ">Adiciona a opção para habilitar a funcionalidade de Screenshot se nenhuma existir</string>
 	<string name="confirm_dialog_title">Dialogos de confirmação</string>
@@ -44,9 +52,16 @@
 	<string name="expand_statusbar_summ">Adiciona a opção para expandir a barra de status</string>
 	<string name="data_toggle">Alternar dados móveis</string>
 	<string name="data_toggle_summ">Adiciona a opção para alternar a conexão de dados móveis</string>
+	<string name="sect_remove_items">Remove itens do menu</string>
 	<string name="no_locked_off_title">Proteção de desligamento</string>
 	<string name="no_locked_off_summ">Desabilita as funções de desligamento e reinicialização enquanto o dispositivo estiver na tela de bloqueio e ainda não tenha sido desbloqueado</string>
 	<string name="no_locked_off_dialog">Devido ao método de proteção de desligamento estar ativado, você não pode desligar o telefone enquanto o dispositivo estiver na tela de bloqueio. Desbloqueio o dispositivo e tente novamente.</string>
+	<string name="remove_reboot_title">Remover item de reinício</string>
+	<string name="remove_reboot_summ">Remove o item original de reinício se ele existir, e desliga o reinício avançado</string>
+	<string name="remove_screenshot_title">Remover o item de screenshoot</string>
+	<string name="remove_screenshot_summ">Remove o item original de screenshot e desabilita na seção \'Adicionar itens ao menu\'</string>
+	<string name="remove_airplane_title">Remover o seletor de modo avião</string>
+	<string name="remove_airplane_summ">Remove o seletor original de modo avião se ele existir</string>
 	
 	<string name="sect_debug">Opções do Aplicativo</string>
 	<string name="verbose_lg_title">Log verboso</string>
