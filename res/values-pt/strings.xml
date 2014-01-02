@@ -55,7 +55,6 @@
 	<string name="sect_remove_items">Remove itens do menu</string>
 	<string name="no_locked_off_title">Proteção de desligamento</string>
 	<string name="no_locked_off_summ">Desabilita as funções de desligamento e reinicialização enquanto o dispositivo estiver na tela de bloqueio e ainda não tenha sido desbloqueado</string>
-	<string name="no_locked_off_dialog">Devido ao método de proteção de desligamento estar ativado, você não pode desligar o telefone enquanto o dispositivo estiver na tela de bloqueio. Desbloqueio o dispositivo e tente novamente.</string>
 	<string name="remove_reboot_title">Remover item de reinício</string>
 	<string name="remove_reboot_summ">Remove o item original de reinício se ele existir, e desliga o reinício avançado</string>
 	<string name="remove_screenshot_title">Remover o item de screenshoot</string>

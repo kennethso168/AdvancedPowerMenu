@@ -29,8 +29,7 @@
 	
 	<!-- Anti-theft helper -->
 	<string name="no_locked_off_dialog">Because anti-theft helper is on, you may not power off the phone or disable mobile data while the device is locked. Unlock the device and try again.</string>
-	<!-- Christmas Easter Egg -->
-	<string name="device_is_locked">Merry Christmas</string>
+	<string name="device_is_locked">Device is locked</string>
 	
 	<!-- Preference Screen -->
 	<string name="note_title">Note</string>

@@ -32,14 +32,7 @@
         
     </PreferenceCategory>
     <PreferenceCategory android:title="@string/sect_about" android:key="pref_about">
-        <!-- Christmas Easter Egg -->
-        <hk.kennethso168.xposed.advancedrebootmenu.DialogExPreference
-        android:title="@string/app_info_title"
-        android:key="pref_app_info"
-        android:dialogTitle="Merry Christmas!"
-        android:dialogMessage="We wish you a Merry Chirstmas;\nWe wish you a Merry Chirstmas;\nWe wish you a Merry Chirstmas;\nAnd a Happy New Year!"
-        android:negativeButtonText="@null"/>
-        <!--  <Preference android:title="@string/app_info_title" android:key="pref_app_info"/> -->
+        <Preference android:title="@string/app_info_title" android:key="pref_app_info"/>
         <hk.kennethso168.xposed.advancedrebootmenu.DialogExPreference
         android:title="@string/readme_title"
         android:dialogMessage="@string/readme_content"
