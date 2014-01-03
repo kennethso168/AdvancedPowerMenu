@@ -157,15 +157,16 @@ public class ModRebootMenu {
                    int IconColorInt = Integer.parseInt(IconColorMode);
                    
                    //Create "sets" of icons with different color themes of the same icon in one set
-                   int[] mRebootIconSet = {R.drawable.ic_lock_reboot, R.drawable.ic_lock_reboot_dark, R.drawable.ic_lock_reboot_color};
-                   int[] mScreenshotIconSet = {R.drawable.ic_screenshot, R.drawable.ic_screenshot_dark, R.drawable.ic_screenshot_color};
-                   int[] mQuickDialIconSet = {R.drawable.ic_call, R.drawable.ic_call_dark, R.drawable.ic_call_color};
-                   int[] mRebootSoftIconSet = {R.drawable.ic_lock_reboot_soft, R.drawable.ic_lock_reboot_soft_dark, R.drawable.ic_lock_reboot_soft_color};
-                   int[] mRecoveryIconSet = {R.drawable.ic_lock_recovery, R.drawable.ic_lock_recovery_dark, R.drawable.ic_lock_recovery_color};
-                   int[] mBootloaderIconSet = {R.drawable.ic_lock_reboot_bootloader, R.drawable.ic_lock_reboot_bootloader_dark, R.drawable.ic_lock_reboot_bootloader_color};
-                   int[] mExpandStatusBarIconSet = {R.drawable.ic_expand_statusbar, R.drawable.ic_expand_statusbar_dark, R.drawable.ic_expand_statusbar_color};
-                   int[] mToggleDataIconSet = {R.drawable.ic_data, R.drawable.ic_data_dark, R.drawable.ic_data_color};
-                   int[] mDeviceLockedIconSet = {R.drawable.ic_device_locked, R.drawable.ic_device_locked_dark, R.drawable.ic_device_locked_color};
+                   //TODO replace all WIPs with eXistenZ theme icons
+                   int[] mRebootIconSet = {R.drawable.ic_lock_reboot, R.drawable.ic_lock_reboot_dark, R.drawable.ic_lock_reboot_color, R.drawable.ic_wip};
+                   int[] mScreenshotIconSet = {R.drawable.ic_screenshot, R.drawable.ic_screenshot_dark, R.drawable.ic_screenshot_color, R.drawable.ic_wip};
+                   int[] mQuickDialIconSet = {R.drawable.ic_call, R.drawable.ic_call_dark, R.drawable.ic_call_color, R.drawable.ic_wip};
+                   int[] mRebootSoftIconSet = {R.drawable.ic_lock_reboot_soft, R.drawable.ic_lock_reboot_soft_dark, R.drawable.ic_lock_reboot_soft_color, R.drawable.ic_wip};
+                   int[] mRecoveryIconSet = {R.drawable.ic_lock_recovery, R.drawable.ic_lock_recovery_dark, R.drawable.ic_lock_recovery_color, R.drawable.ic_wip};
+                   int[] mBootloaderIconSet = {R.drawable.ic_lock_reboot_bootloader, R.drawable.ic_lock_reboot_bootloader_dark, R.drawable.ic_lock_reboot_bootloader_color, R.drawable.ic_wip};
+                   int[] mExpandStatusBarIconSet = {R.drawable.ic_expand_statusbar, R.drawable.ic_expand_statusbar_dark, R.drawable.ic_expand_statusbar_color, R.drawable.ic_wip};
+                   int[] mToggleDataIconSet = {R.drawable.ic_data, R.drawable.ic_data_dark, R.drawable.ic_data_color, R.drawable.ic_wip};
+                   int[] mDeviceLockedIconSet = {R.drawable.ic_device_locked, R.drawable.ic_device_locked_dark, R.drawable.ic_device_locked_color, R.drawable.ic_wip};
                    
                    //Set the icons appropriately
                    //1st level icons
@@ -322,6 +323,7 @@ public class ModRebootMenu {
                     
                     // III. Remove action items and update positions accordingly
                     final boolean antiTheftHelperOn = pref.getBoolean("pref_no_locked_off", false);
+                    final boolean hideATHDesc = pref.getBoolean("pref_ath_hide_desc", false);
                     final boolean removeReboot = pref.getBoolean("pref_remove_reboot", false);
                     final boolean removeScreenshot = pref.getBoolean("pref_remove_screenshot", false);
                     final boolean removeAirplane = pref.getBoolean("pref_remove_airplane", false);
@@ -358,7 +360,7 @@ public class ModRebootMenu {
                     
                     // IV. Add/replace action items and update positions accordingly
 
-                    if( myKM.inKeyguardRestrictedInputMode()&&antiTheftHelperOn) {
+                    if( myKM.inKeyguardRestrictedInputMode()&&antiTheftHelperOn&&(!hideATHDesc)) {
                     	Object action = Proxy.newProxyInstance(classLoader, new Class<?>[] { actionClass },
                                 new AntiTheftHelperAction(mContext, mDeviceLockedLabel, mDeviceLockedIcon, noLockedOffDialogTitle, noLockedOffDialogMsg));
                         mItems.add(0, action);

@@ -4,7 +4,7 @@
         <item name="enable">Show all dialogs</item>
         <item name="disable">Disable all reboot dialogs</item>
     </string-array>
-    <!-- Don't translate all the below strings -->
+    <!-- Don't change the digits -->
     <string-array name="confirm_dialog_values">
         <item name="enable">0</item>
         <item name="disable">1</item>
@@ -13,12 +13,14 @@
         <item name="default">Default (White)</item>
         <item name="dark">Dark</item>
         <item name="color">Colorful</item>
+        <!--<item name="existenz">eXistenZ</item>-->
     </string-array>
-    <!-- Don't translate all the below strings -->
+    <!-- Don't change the digits -->
     <string-array name="icon_color_values">
         <item name="default">0</item>
         <item name="dark">1</item>
         <item name="color">2</item>
+        <!--<item name="existenz">3</item>-->
     </string-array>
     
 </resources>

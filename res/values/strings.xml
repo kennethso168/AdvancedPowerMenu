@@ -56,8 +56,10 @@
 	<!-- Do not translate or include the "default" strings in other languages -->
 	<string name="confirm_dialog_default">0</string>
 	<string name="icon_color_title_default">0</string>
-	<string name="no_locked_off_title">Anti-theft helper</string>
+	<string name="no_locked_off_title">Anti-theft helper (ATH)</string>
 	<string name="no_locked_off_summ">Disable shutdown, reboot, airplane mode toggle and mobile data toggle functions while the device is still at the lockscreen and not yet unlocked</string>
+	<string name="ath_hide_desc_title">Hide ATH description</string>
+	<string name="ath_hide_desc_summ">Hide the \'Device is locked\' option in the power menu, so a thief will have no idea what\'s going on</string>
 	<string name="remove_reboot_title">Remove reboot item</string>
 	<string name="remove_reboot_summ">Remove the original reboot item if it exists and advanced reboot is turned off</string>
 	<string name="remove_screenshot_title">Remove screenshot item</string>
