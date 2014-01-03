@@ -13,14 +13,14 @@
         <item name="default">Default (White)</item>
         <item name="dark">Dark</item>
         <item name="color">Colorful</item>
-        <!--<item name="existenz">eXistenZ</item>-->
+        <item name="existenz">eXistenZ</item>
     </string-array>
     <!-- Don't change the digits -->
     <string-array name="icon_color_values">
         <item name="default">0</item>
         <item name="dark">1</item>
         <item name="color">2</item>
-        <!--<item name="existenz">3</item>-->
+        <item name="existenz">3</item>
     </string-array>
     
 </resources>

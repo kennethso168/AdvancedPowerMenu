@@ -158,15 +158,15 @@ public class ModRebootMenu {
                    
                    //Create "sets" of icons with different color themes of the same icon in one set
                    //TODO replace all WIPs with eXistenZ theme icons
-                   int[] mRebootIconSet = {R.drawable.ic_lock_reboot, R.drawable.ic_lock_reboot_dark, R.drawable.ic_lock_reboot_color, R.drawable.ic_wip};
-                   int[] mScreenshotIconSet = {R.drawable.ic_screenshot, R.drawable.ic_screenshot_dark, R.drawable.ic_screenshot_color, R.drawable.ic_wip};
-                   int[] mQuickDialIconSet = {R.drawable.ic_call, R.drawable.ic_call_dark, R.drawable.ic_call_color, R.drawable.ic_wip};
-                   int[] mRebootSoftIconSet = {R.drawable.ic_lock_reboot_soft, R.drawable.ic_lock_reboot_soft_dark, R.drawable.ic_lock_reboot_soft_color, R.drawable.ic_wip};
-                   int[] mRecoveryIconSet = {R.drawable.ic_lock_recovery, R.drawable.ic_lock_recovery_dark, R.drawable.ic_lock_recovery_color, R.drawable.ic_wip};
-                   int[] mBootloaderIconSet = {R.drawable.ic_lock_reboot_bootloader, R.drawable.ic_lock_reboot_bootloader_dark, R.drawable.ic_lock_reboot_bootloader_color, R.drawable.ic_wip};
-                   int[] mExpandStatusBarIconSet = {R.drawable.ic_expand_statusbar, R.drawable.ic_expand_statusbar_dark, R.drawable.ic_expand_statusbar_color, R.drawable.ic_wip};
-                   int[] mToggleDataIconSet = {R.drawable.ic_data, R.drawable.ic_data_dark, R.drawable.ic_data_color, R.drawable.ic_wip};
-                   int[] mDeviceLockedIconSet = {R.drawable.ic_device_locked, R.drawable.ic_device_locked_dark, R.drawable.ic_device_locked_color, R.drawable.ic_wip};
+                   int[] mRebootIconSet = {R.drawable.ic_lock_reboot, R.drawable.ic_lock_reboot_dark, R.drawable.ic_lock_reboot_color, R.drawable.ic_lock_reboot_existenz};
+                   int[] mScreenshotIconSet = {R.drawable.ic_screenshot, R.drawable.ic_screenshot_dark, R.drawable.ic_screenshot_color, R.drawable.ic_screenshot_existenz};
+                   int[] mQuickDialIconSet = {R.drawable.ic_call, R.drawable.ic_call_dark, R.drawable.ic_call_color, R.drawable.ic_call_existenz};
+                   int[] mRebootSoftIconSet = {R.drawable.ic_lock_reboot_soft, R.drawable.ic_lock_reboot_soft_dark, R.drawable.ic_lock_reboot_soft_color, R.drawable.ic_lock_reboot_soft_existenz};
+                   int[] mRecoveryIconSet = {R.drawable.ic_lock_recovery, R.drawable.ic_lock_recovery_dark, R.drawable.ic_lock_recovery_color, R.drawable.ic_lock_recovery_existenz};
+                   int[] mBootloaderIconSet = {R.drawable.ic_lock_reboot_bootloader, R.drawable.ic_lock_reboot_bootloader_dark, R.drawable.ic_lock_reboot_bootloader_color, R.drawable.ic_lock_reboot_bootloader_existenz};
+                   int[] mExpandStatusBarIconSet = {R.drawable.ic_expand_statusbar, R.drawable.ic_expand_statusbar_dark, R.drawable.ic_expand_statusbar_color, R.drawable.ic_expand_statusbar_existenz};
+                   int[] mToggleDataIconSet = {R.drawable.ic_data, R.drawable.ic_data_dark, R.drawable.ic_data_color, R.drawable.ic_data_existenz};
+                   int[] mDeviceLockedIconSet = {R.drawable.ic_device_locked, R.drawable.ic_device_locked_dark, R.drawable.ic_device_locked_color, R.drawable.ic_device_locked_existenz};
                    
                    //Set the icons appropriately
                    //1st level icons
