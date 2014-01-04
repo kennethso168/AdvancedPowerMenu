@@ -6,6 +6,7 @@ Developers
 Translators
 ===========
 - aljohanei for Arabic translation
+- Jan Žák for Czech translation
 - Philipp Schumann for German translation
 - Lear95 for Hebrew translation
 - RyokoN for Japanese translation
