@@ -12,11 +12,13 @@
         <item name="default">預設 (白色)</item>
         <item name="dark">深色</item>
         <item name="color">彩色</item>
+        <item name="existenz">eXistenZ</item>
     </string-array>
     <!-- Don't translate all the below strings -->
     <string-array name="icon_color_values">
         <item name="default">0</item>
         <item name="dark">1</item>
         <item name="color">2</item>
+        <item name="existenz">3</item>
     </string-array>
 </resources>

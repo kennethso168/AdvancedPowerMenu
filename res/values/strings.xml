@@ -45,7 +45,9 @@
 	<string name="confirm_dialog_title">Confirmation dialogs</string>
 	<string name="quick_dial_number">Quick dial number</string>
 	<string name="quick_dial_note">Leave blank to disable this feature</string>
+	<string name="quick_dial_label">Quick dial option text</string>
 	<string name="disabled">Disabled</string>
+	<string name="label_default">Default</string>
 	<string name="icon_color_title">Color theme for icons</string>
 	<string name="reboot_methods_title">Reboot methods to show&#8230;</string>
 	<string name="expand_statusbar_title">Expand status bar</string>

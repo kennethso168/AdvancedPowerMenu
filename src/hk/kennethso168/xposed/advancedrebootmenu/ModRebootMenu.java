@@ -157,7 +157,6 @@ public class ModRebootMenu {
                    int IconColorInt = Integer.parseInt(IconColorMode);
                    
                    //Create "sets" of icons with different color themes of the same icon in one set
-                   //TODO replace all WIPs with eXistenZ theme icons
                    int[] mRebootIconSet = {R.drawable.ic_lock_reboot, R.drawable.ic_lock_reboot_dark, R.drawable.ic_lock_reboot_color, R.drawable.ic_lock_reboot_existenz};
                    int[] mScreenshotIconSet = {R.drawable.ic_screenshot, R.drawable.ic_screenshot_dark, R.drawable.ic_screenshot_color, R.drawable.ic_screenshot_existenz};
                    int[] mQuickDialIconSet = {R.drawable.ic_call, R.drawable.ic_call_dark, R.drawable.ic_call_color, R.drawable.ic_call_existenz};
@@ -418,9 +417,11 @@ public class ModRebootMenu {
 	                    }
                     }
                     String quickDial = pref.getString("pref_quick_dial_number", "");
+                    String customQuickDialLbl = pref.getString("pref_quick_dial_label", "");
+                    String QuickDialLbl = (customQuickDialLbl.length()>0)?customQuickDialLbl:mQuickDialLabel;
                     if (quickDial.length() > 0) {
                         Object action = Proxy.newProxyInstance(classLoader, new Class<?>[] { actionClass },
-                                new QuickDialAction(mContext, mQuickDialLabel, quickDial, mQuickDialIcon));
+                                new QuickDialAction(mContext, QuickDialLbl, quickDial, mQuickDialIcon));
                         mItems.add(afterRebootPos, action);
                         BaseAdapter mAdapter = (BaseAdapter) XposedHelpers.getObjectField(param.thisObject, "mAdapter");
                         mAdapter.notifyDataSetChanged();
