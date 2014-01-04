@@ -1,6 +1,96 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="reboot_recovery">Recovery</string>
-	<string name="reboot_confirm">Váš telefon bude restartovaný</string>
-    <string name="reboot_confirm_recovery">Váš telefon bude restartovaný do režimu Recovery</string>
+
+        <!--Basic Information -->
+        <!--Not necessary to translate as these are just descriptions. However if you like you can still translate these. -->
+    <string name="app_name">Advanced Power Menu</string>
+    <string name="launcher_name">Adv. Power Menu</string>
+        <string name="xposed_description">Rozšiřte si Power MENU o Restart, Lehký Restart, Restart do Recovery a Snímek obrazovky.\nVyvíjeno kennethso168@xda</string>
+        <string name="credits_msg">Vyvíjeno kennethso168@xda</string>
+    
+        <!-- Reboot Options -->
+        <string name="reboot_soft">Soft reboot</string>
+    <string name="reboot_recovery">Recovery</string>
+    <string name="reboot_bootloader">Bootloader</string>
+        
+        <!-- Confirmation Dialogs -->
+    <string name="reboot_confirm">Vaše zařízení se restartuje.</string>
+    <string name="reboot_confirm_recovery">Vaše zařízení se restartuje do Recovery.</string>
+    <string name="reboot_confirm_bootloader">Vaše zařízení se restartuje do Bootloaderu.</string>
+        
+        <!-- Screenshot  -->
+        <string name="take_screenshot">Screenshot</string>
+        
+        <!-- Quick dial  -->
+        <string name="quick_dial">Rychlý kontakt</string>
+        
+        <!-- Toggle Mobile Data -->
+        <string name="mobile_data_on">Zapnout data</string>
+        <string name="mobile_data_off">Vypnout data</string>
+        
+        <!-- Anti-theft helper -->
+        <string name="no_locked_off_dialog">Protože je ochrana proti krádeži zapnuta, nemůžete vypnout zařízení, nebo zakázat datové pakety, pokud je zařízení zamknuto. Odemkněte zařízení a zkuste to znovu.</string>
+        <string name="device_is_locked">Zařízení je uzamknuto</string>
+        
+        <!-- Preference Screen -->
+        <string name="note_title">Poznámka</string>
+        <string name="note_summ">Pro správnou funkci nastavených položek restartujte zařízení.</string>
+        <string name="sect_menu_options">Možnosti Power MENU</string>
+        <string name="modify_menu_items">Přispůsobte si položky Power MENU&#8230;</string>
+        <string name="sect_reboot_item">Položky při restartu</string>
+        <string name="enable_reboot_title">Pokročilý restart</string>
+        <string name="enable_reboot_summ">Přidejte/nahraďte možnosti, které umožňují jiné druhy restartu.</string>
+        <string name="sect_add_items">Přidejte položky menu</string>
+        <string name="enable_screenshot_title">Snímek obrazovky (Screenshot)</string>
+        <string name="enable_screenshot_summ">Přidá možnost Snímku obrazovky, když normálně neexistuje.</string>
+        <string name="confirm_dialog_title">Potvrzující dialogy</string>
+        <string name="quick_dial_number">Číslo Rychlého kontaktu</string>
+        <string name="quick_dial_note">Ponechte volné pro vypnutí funkce</string>
+        <string name="disabled">Vypnuto</string>
+        <string name="icon_color_title">Barva ikon</string>
+        <string name="reboot_methods_title">Zobrazované druhy restartu&#8230;</string>
+        <string name="expand_statusbar_title">Otevři Stavovou lištu</string>
+        <string name="expand_statusbar_summ">Přidá možnost, která otevře Stavovou lištu</string>
+        <string name="data_toggle">Přepínač Mobilních paketů</string>
+        <string name="data_toggle_summ">Přidá přepínač dat. (Zapnuto/Vypnuto)</string>
+        <string name="sect_remove_items">Odstranění položek menu</string>
+        <!-- Do not translate or include the "default" strings in other languages
+        <string name="confirm_dialog_default">0</string>
+        <string name="icon_color_title_default">0</string> -->
+        <string name="no_locked_off_title">Ochrana proti krádeži (ATH)</string>
+        <string name="no_locked_off_summ">Zakáže Vypnutí, Restart, Režim Letadlo a vypne přepínač mobilních dat když je zařízení zamčeno, třebaže je zapnuta obrazovka.</string>
+        <string name="ath_hide_desc_title">Skrýt popis ATH</string>
+        <string name="ath_hide_desc_summ">Skrýt položku \"Zařízení je uzamčeno\" v Power MENU, takže zloděj bude nahraný - nebude vědět, co se děje.</string>
+        <string name="remove_reboot_title">Odstranit položku Restart</string>
+        <string name="remove_reboot_summ">Odstraní originální položku Restart, pokud existuje a rozšířené možnosti restartu jsou vypnuty</string>
+        <string name="remove_screenshot_title">Odstranit možnost Snímku obrazovky</string>
+        <string name="remove_screenshot_summ">Odstraní originální položku Snímku obrazovky pokud není zapnut touto aplikací. </string>
+        <string name="remove_airplane_title">Odstranit položku Režim Letadlo</string>
+        <string name="remove_airplane_summ">Odstraní originální položku Režim Letadlo.</string>
+        
+        <string name="sect_debug">Nastavení aplikace</string>
+        <string name="verbose_log_title">Záznamy</string>
+        <string name="verbose_log_summ">Zapíše všechny logy do /data/xposed/debug.log</string>
+        <string name="hide_ic_launcher_title">Skrýt ikonu</string>
+        <string name="hide_ic_launcher_dialog">Musíte chvíli počkat, nebo restartovat launcher pro efekt.\nPamatujte, že musíte pro zapnutí Advanced Power Menu klepnout na levou část položky Xposed Instalátoru (Xposed Installer > Moduly > Advanced Power Menu)</string>
+        
+        <string name="sect_about">O aplikaci</string>
+        <string name="app_info_title">Informace o aplikaci</string>
+        <string name="app_info_before">"verze Advaced Power Menu "</string>
+        <string name="app_info_after">\nby Kenneth So (kennethso168@xda)</string>
+        <string name="readme_title">Licence a prohlášení</string>
+        <!-- It's quite "impossible" to translate the string below. No need to translate it -->
+        <string name="readme_content">Copyright &#169; 2013 So Kei Hong. Všechna práva vyhrazena.\n\n Autor nenese žádnou zodpovědnost za chování programu. THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</string>
+        
+        <string name="license_title">Open source licence</string>
+        <string name="special_thanks_title">Zvláštní poděkování</string>
+        <string name="troubleshoot_title">Řešení problémů</string>
+        <string name="troubleshoot_content">What can you do if the app doesn\'t work / if issue happens?\n\nStep 1: Try fixing it yourself\n1. Make sure that you have read the prerequisites and installation guide thoroughly/\n2. Reboot your phone TWICE (TWO TIMES)\nFor every single xposed mod, a reboot after installation is necessary. But that might not be enough as users have reported that the app doesn\'t work after a single reboot, but things get right when they reboot again. So rebooting TWICE is recommended\n3. Disable all other Xposed Mod\nXposed framework do take care of mods that hook the same method, but sometimes conflicts can still happen. Try disabling all mods except mine in the Xposed Installer. Then reboot and see if things get right.\n4. Clear app data/reinstalling my app\nThe settings may get messed up when my app updates, so try reinstalling and see if it helps.\n5. Use an older version of my app\nTry this and see if it helps. If so that means a new update breaks something old and please tell me about that!\nIf all the above doesn\'t work, you can then send me an issue report.\n\nStep 2: Tell me and see if I can fix it\n(Please don\'t do this before doing step 1)\nPlease send me an issue report including\n1) a description of the issue\n2) screenshots (if it helps explain the situation)\n3) The device, ROM, Android OS version, and the app version\n4) debug.log (Please enable verbose logging in my app first, then do something like long-pressing the power button)(you may obtain the log in xposed installer 2.4)\n5) Anything else you think it\'s important\nthrough one of the following means:\n1) xda forum thread/PM (preferred)\n2) e-mail (NOTE: please begin your subject with [APM] so I can better sort my emails. Thanks)\nPlease note that I can\'t solve the problem with insufficient information. I will also IGNORE any email with NO BODY TEXT (I use gmail)\n\nKeep in mind that even with all the information I still may not be able to fix your problem because I do not own your device and I\'m only a novice android developer. Sorry.</string>
+        <string name="xda_title">Zobrazit xda fórum</string>
+        <string name="email_title">Email vývojáři (Anglicky nebo Čínsky)</string>
+        <string name="donate_title">Podpořit</string>
+        
+        <string name="email_note_title">Poznámka k e-mailům</string>
+        <string name="email_note_content">Everyday, I am overwhelmed with tons of emails (not related to this app). Therefore, please note the following points before sending me emails.\n1. I can better notice your message if you use xda posts/PMs\n2. Please read the \"What can you do if the app doesn\'t work / if issue happens?\" before sending me an email (found in Xposed Installer > Download > Advanced Power Menu)\n3. Please begin your subject with [APM] so I can better sort my emails. Thanks.\n4. Please note that I can\'t solve the problem with insufficient information. I will also IGNORE any email with NO BODY TEXT (I use gmail).\n5. I understand only English and Chinese.\nThank you for your cooperation.</string>
+        
+        
 </resources>
