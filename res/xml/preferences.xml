@@ -50,7 +50,7 @@
         android:negativeButtonText="@null"/>
         <Preference android:title="@string/xda_title" android:key="pref_xda">
             <intent android:action="android.intent.action.VIEW"
-            		android:data="http://forum.xda-developers.com/showthread.php?t=2404042" />
+            		android:data="http://forum.xda-developers.com/showthread.php?t=2594642" />
         </Preference>    
         <Preference android:title="@string/email_title" android:key="pref_email">
 
