@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="confirm_dialog">
+        <item name="enable">Zobraziť všetky dialógy</item>
+        <item name="disable">Zakázať všetky dialógy reštartu</item>
+    </string-array>
+    <!-- Don't change the digits -->
+    <string-array name="confirm_dialog_values">
+        <item name="enable">0</item>
+        <item name="disable">1</item>
+    </string-array>
+    <string-array name="icon_color">
+        <item name="default">Predvolené (Biele)</item>
+        <item name="dark">Tmavé</item>
+        <item name="color">Farebné</item>
+        <item name="existenz">eXistenZ</item>
+    </string-array>
+    <!-- Don't change the digits -->
+    <string-array name="icon_color_values">
+        <item name="default">0</item>
+        <item name="dark">1</item>
+        <item name="color">2</item>
+        <item name="existenz">3</item>
+    </string-array>
+    
+</resources>
