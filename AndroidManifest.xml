@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="hk.kennethso168.xposed.advancedrebootmenu"
     android:versionCode="17"
-    android:versionName="8.2.1" >
+    android:versionName="8.2.2" >
     
     <uses-sdk
         android:minSdkVersion="14"

@@ -4,9 +4,9 @@
 
 	<!--Basic Information -->
 	<!--Not necessary to translate as these are just desciptions. However if you like you can still translate these. -->
-    <string name="app_name">進階重啟目錄(Advanced Reboot Menu)</string>
-    <string name="launcher_name">進階重啟目錄</string>
-	<string name="xposed_description">於電源目錄增加重啟、軟重啟、重啟至Recovery及螢幕截圖選項。\n開發者︰kennethso168@xda</string>
+    <string name="app_name">進階電源選單</string>
+    <string name="launcher_name">進階電源選單</string>
+	<string name="xposed_description">於電源選單增加重啟、軟重啟、重啟至 Recovery 及螢幕截圖選項。\n開發者︰kennethso168@xda</string>
 	<string name="credits_msg">開發者︰kennethso168@xda</string>
     
 	<!-- Reboot Options -->
@@ -15,9 +15,9 @@
     <string name="reboot_bootloader">Bootloader</string>
 	
 	<!-- Confirmation Dialogs -->
-	<string name="reboot_confirm">您的手機將重新啟動</string>
-    <string name="reboot_confirm_recovery">您的手機將重新啟動至 Recovery</string>
-	<string name="reboot_confirm_bootloader">您的手機將重新啟動至 Bootloader</string>
+	<string name="reboot_confirm">您的手機將重新啟動。</string>
+    <string name="reboot_confirm_recovery">您的手機將重新啟動至 Recovery。</string>
+	<string name="reboot_confirm_bootloader">您的手機將重新啟動至 Bootloader。</string>
     
 	<!-- Screenshot  -->
 	<string name="take_screenshot">螢幕截圖</string>
@@ -25,18 +25,22 @@
 	<!-- Quick dial  -->
 	<string name="quick_dial">快速撥號</string>
 	
+	<!-- Toggle Mobile Data -->
+	<string name="mobile_data_on">開啟行動數據</string>
+	<string name="mobile_data_off">關閉行動數據</string>
+	
 	<!-- Anti-theft helper -->
-	<string name="no_locked_off_dialog">因為防盜助手已經開啟，您不能在裝置鎖定時關機或關閉流動數據。請解除鎖定並重試</string>
+	<string name="no_locked_off_dialog">因為防盜助手已經開啟，您不能在裝置鎖定時關機或關閉行動數據。請解除鎖定並重試</string>
 	<string name="device_is_locked">裝置已被鎖定</string>
 	
 	<!-- Preference Screen -->
 	<string name="note_title">注意</string>
 	<string name="note_summ">要使變更生效，您可能需要重新啟動您的手機。</string>
-	<string name="sect_menu_options">電源目錄選項</string>
-	<string name="modify_menu_items">修改電源目錄選項&#8230;</string>
+	<string name="sect_menu_options">電源選單選項</string>
+	<string name="modify_menu_items">修改電源選單選項&#8230;</string>
 	<string name="sect_reboot_item">重啟選項</string>
 	<string name="enable_reboot_title">進階重啟</string>
-	<string name="enable_reboot_summ">增加/取代「重新啟動」選項，使您可以選擇不同的重啟模式</string>
+	<string name="enable_reboot_summ">增加／取代「重新啟動」選項，使您可以選擇不同的重啟模式</string>
 	<string name="sect_add_items">增加選項</string>
 	<string name="enable_screenshot_title">螢幕截圖</string>
 	<string name="enable_screenshot_summ">增加「螢幕截圖」選項（若已有此選項存在則維持不變）</string>
@@ -47,39 +51,39 @@
 	<string name="label_default">預設</string>
 	<string name="disabled">已停用</string>
 	<string name="icon_color_title">圖示色調</string>
-	<string name="reboot_methods_title">顯示的重啟模式&#8230;</string>
-	<string name="data_toggle">流動數據切換</string>
-	<string name="data_toggle_summ">增加「流動數據切換」選項</string>
+	<string name="reboot_methods_title">欲顯示的重啟模式&#8230;</string>
+	<string name="data_toggle">行動數據切換</string>
+	<string name="data_toggle_summ">增加「行動數據切換」選項</string>
 	<string name="no_locked_off_title">防盜助手</string>
-	<string name="no_locked_off_summ">當裝置未解除鎖定時禁止關機、重啟、切換飛航模式及切換流動數據</string>
+	<string name="no_locked_off_summ">當裝置未解除鎖定時禁止關機、重啟、切換飛航模式及切換行動數據</string>
 	<string name="ath_hide_desc_title">隱藏防盜助手</string>
 	<string name="ath_hide_desc_summ">隱藏顯示於電源目錄中的「裝置已被鎖定」選項，使得小偷不知道防盜助手已開啟而感疑惑</string>
 	<string name="sect_remove_items">移除選項</string>
 	<string name="remove_reboot_title">移除「重新啟動」選項</string>
-	<string name="remove_reboot_summ">移除原本的「重新啟動」選項（如已存在和關閉進階重啟）</string>
+	<string name="remove_reboot_summ">移除原本的「重新啟動」選項（如已存在並且關閉進階重啟）</string>
 	<string name="remove_screenshot_title">移除「螢幕截圖」選項</string>
-	<string name="remove_screenshot_summ">移除原本的「螢幕截圖」選項（如已存在和於增加選項部份關閉螢幕截圖）</string>
+	<string name="remove_screenshot_summ">移除原本的「螢幕截圖」選項（如已存在並且於增加選項部份關閉螢幕截圖）</string>
 	<string name="remove_airplane_title">移除「飛航模式」選項</string>
 	<string name="remove_airplane_summ">移除原本的「飛航模式」選項（如已存在）</string>
 	
-	<string name="sect_debug">程式選項</string>
+	<string name="sect_debug">應用程式選項</string>
 	<string name="verbose_log_title">詳細除錯記錄</string>
 	<string name="verbose_log_summ">在 /data/xposed/debug.log 中作詳細的除錯記錄</string>
 	<string name="hide_ic_launcher_title">隱藏啟動器圖示</string>
-	<string name="hide_ic_launcher_dialog">要使變更生效，請等候或重新啟動您的啟動器。\n另外，你可在  Xposed外掛模組 > 應用模組 > 進階重啟目錄(Advanced Reboot Menu) 進入本程式 （按一下清單項目而非勾選框）。</string>
+	<string name="hide_ic_launcher_dialog">要使變更生效，請等候或重新啟動您的啟動器。\n另外，你可在  Xposed 外掛模組 > 模組 > 進階電源選單  進入本程式 （按一下清單項目而非勾選框）。</string>
 	
 	<string name="sect_about">關於</string>
 	<string name="app_info_title">應用程式資訊</string>
-	<string name="app_info_before">"進階重啟目錄(Advanced Reboot Menu) 版本 "</string>
+	<string name="app_info_before">進階電源選單版本&#160;</string>
 	<string name="app_info_after">\n開發者︰kennethso168@xda</string>
 	<string name="readme_title">版權及免責聲明</string>
-	<string name="license_title">開源許可證</string>
+	<string name="license_title">開源憑證</string>
 	<string name="special_thanks_title">鳴謝</string>
 	<string name="troubleshoot_title">疑難排解（只有英文版本）</string>
-	<string name="xda_title">瀏覽 xda 討論帖</string>
+	<string name="xda_title">瀏覽 xda 討論文章</string>
 	<string name="email_title">發送電郵給開發者</string>
-	<string name="email_note_content">請以[APM]作為郵件標題的起首，並提供足夠的資料（例如附上 /data/xposed/debug.log）。謝謝合作。</string>
-	<string name="donate_title">捐款</string>
+	<string name="email_note_content">請以[APM]作為郵件標題的開頭，並提供足夠的資料（例如附上 /data/xposed/debug.log）。謝謝合作。</string>
+	<string name="donate_title">捐贈</string>
 	
 	
 </resources>

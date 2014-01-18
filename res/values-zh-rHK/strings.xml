@@ -70,7 +70,7 @@
 	
 	<string name="sect_about">關於</string>
 	<string name="app_info_title">應用程式資訊</string>
-	<string name="app_info_before">"進階重啟目錄(Advanced Reboot Menu) 版本 "</string>
+	<string name="app_info_before">進階重啟目錄(Advanced Reboot Menu) 版本&#160;</string>
 	<string name="app_info_after">\n開發者︰kennethso168@xda</string>
 	<string name="readme_title">版權及免責聲明</string>
 	<string name="license_title">開源許可證</string>
