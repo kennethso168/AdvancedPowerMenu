@@ -29,8 +29,7 @@
 	
 	<!-- Anti-theft helper -->
 	<string name="no_locked_off_dialog">Because anti-theft helper is on, you may not power off the phone or disable mobile data while the device is locked. Unlock the device and try again.</string>
-	<!-- Christmas Easter Egg -->
-	<string name="device_is_locked">Merry Christmas</string>
+	<string name="device_is_locked">Device is locked</string>
 	
 	<!-- Preference Screen -->
 	<string name="note_title">Note</string>
@@ -46,7 +45,9 @@
 	<string name="confirm_dialog_title">Confirmation dialogs</string>
 	<string name="quick_dial_number">Quick dial number</string>
 	<string name="quick_dial_note">Leave blank to disable this feature</string>
+	<string name="quick_dial_label">Quick dial option text</string>
 	<string name="disabled">Disabled</string>
+	<string name="label_default">Default</string>
 	<string name="icon_color_title">Color theme for icons</string>
 	<string name="reboot_methods_title">Reboot methods to show&#8230;</string>
 	<string name="expand_statusbar_title">Expand status bar</string>
@@ -57,8 +58,10 @@
 	<!-- Do not translate or include the "default" strings in other languages -->
 	<string name="confirm_dialog_default">0</string>
 	<string name="icon_color_title_default">0</string>
-	<string name="no_locked_off_title">Anti-theft helper</string>
+	<string name="no_locked_off_title">Anti-theft helper (ATH)</string>
 	<string name="no_locked_off_summ">Disable shutdown, reboot, airplane mode toggle and mobile data toggle functions while the device is still at the lockscreen and not yet unlocked</string>
+	<string name="ath_hide_desc_title">Hide ATH description</string>
+	<string name="ath_hide_desc_summ">Hide the \'Device is locked\' option in the power menu, so a thief will have no idea what\'s going on</string>
 	<string name="remove_reboot_title">Remove reboot item</string>
 	<string name="remove_reboot_summ">Remove the original reboot item if it exists and advanced reboot is turned off</string>
 	<string name="remove_screenshot_title">Remove screenshot item</string>
@@ -74,7 +77,7 @@
 	
 	<string name="sect_about">About</string>
 	<string name="app_info_title">App info</string>
-	<string name="app_info_before">"Advaced Power Menu version "</string>
+	<string name="app_info_before">Advaced Power Menu version&#160;</string>
 	<string name="app_info_after">\nby Kenneth So (kennethso168@xda)</string>
 	<string name="readme_title">Copyright and Disclaimer</string>
 	<!-- It's quite "impossible" to translate the string below. No need to translate it -->

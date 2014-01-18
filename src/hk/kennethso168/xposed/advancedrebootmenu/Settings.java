@@ -77,6 +77,7 @@ public class Settings extends Activity {
 		public static final String KEY_PREF_HIDE_IC_LAUNCHER = "pref_hide_ic_launcher";
 		public static final String KEY_PREF_QUICK_DIAL_NUMBER = "pref_quick_dial_number";
 		public static String disabledStr;
+		public static String defaultStr;
 		
 		public void updateListPrefSumm(String key, int r_array){
 			Resources res = getResources();
@@ -89,6 +90,15 @@ public class Settings extends Activity {
 			String text = getPreferenceScreen().getSharedPreferences().getString(key, emptyText);
 			if (text.equals("")) text = emptyText;
 			findPreference(key).setSummary(text);
+		}
+		
+		public void updateDependencyFromEditTextPref(String key_master, String key_child){
+			String text = getPreferenceScreen().getSharedPreferences().getString(key_master, "");
+			if (text.equals("")){
+				findPreference(key_child).setEnabled(false);
+			}else{
+				findPreference(key_child).setEnabled(true);
+			}
 		}
 		
 		public static class HideIconDialogFragment extends DialogFragment {
@@ -146,10 +156,13 @@ public class Settings extends Activity {
 			addPreferencesFromResource(R.xml.preferences);
 			
 			disabledStr = getResources().getString(R.string.disabled);
+			defaultStr = getResources().getString(R.string.label_default);
 			
 			updateListPrefSumm(KEY_PREF_CONFIRM_DIALOG, R.array.confirm_dialog);
 			updateListPrefSumm(KEY_PREF_ICON_COLOR, R.array.icon_color);
 			updateEditTextPrefSumm(KEY_PREF_QUICK_DIAL_NUMBER, disabledStr);
+			updateEditTextPrefSumm("pref_quick_dial_label", defaultStr);
+			updateDependencyFromEditTextPref(KEY_PREF_QUICK_DIAL_NUMBER, "pref_quick_dial_label");
 			
 			String aboutBefore = getResources().getString(R.string.app_info_before);
 			String aboutAfter = getResources().getString(R.string.app_info_after);
@@ -181,6 +194,10 @@ public class Settings extends Activity {
 	        }
 			if (key.equals(KEY_PREF_QUICK_DIAL_NUMBER)){
 				updateEditTextPrefSumm(key, disabledStr);
+				updateDependencyFromEditTextPref(KEY_PREF_QUICK_DIAL_NUMBER, "pref_quick_dial_label");
+			}
+			if (key.equals("pref_quick_dial_label")){
+				updateEditTextPrefSumm(key, defaultStr);
 			}
 	    }
 		

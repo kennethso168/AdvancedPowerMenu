@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Advanced Power Menu</string>
     <string name="launcher_name">Adv. Power Menu</string>
@@ -6,10 +6,8 @@
 التي وضعتها kennethso168 @ XDA "</string>
     <string name="credits_msg">تطوير kennethso168@xda</string>
     <string name="reboot_soft">اعادة تشغيل سريعة</string>
-    <string name="reboot_استرداد">استرداد</string>
     <string name="reboot_bootloader">اعادة الإقلاع</string>
     <string name="reboot_confirm">يتم اعادة تشغيل الهاتف</string>
-    <string name="reboot_confirm_استرداد">يتم اعادة تشغي الهاتف والدخول لوضع الاسترداد .</string>
     <string name="reboot_confirm_bootloader">يتم اعادة التشغيل والدخول في وضع الاقلاع.</string>
     <string name="take_screenshot">إلتقاط صورة للشاشة</string>
     <string name="quick_dial">الطلب السريع</string>
