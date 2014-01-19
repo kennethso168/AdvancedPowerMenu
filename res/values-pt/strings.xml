@@ -28,8 +28,7 @@
 
 	<!-- Anti-theft helper -->
 	<string name="no_locked_off_dialog">Devido o auxílio anti roubo estar ativado, você não vai poder desligar ou desabilitar a conexão de dados enquanto o dispositivo não for desbloqueado. Desbloqueio o dispositivo e tente novamente.</string>
-	<!-- Christmas Easter Egg -->
-	<string name="device_is_locked">Feliz Natal</string>
+	<string name="device_is_locked">O dispositivo está bloqueado</string>
 	
 <!-- Preference Screen -->
 	<string name="note_title">Nota</string>
@@ -55,6 +54,8 @@
 	<string name="sect_remove_items">Remove itens do menu</string>
 	<string name="no_locked_off_title">Proteção de desligamento</string>
 	<string name="no_locked_off_summ">Desabilita as funções de desligamento e reinicialização enquanto o dispositivo estiver na tela de bloqueio e ainda não tenha sido desbloqueado</string>
+	<string name="ath_hide_desc_title">Ocultar descrição ATH</string>
+	<string name="ath_hide_desc_summ">Oculta a opção \'O dispositivo está bloqueado\' no menu de energia, assim um ladrão não terá ideia do que está acontecendo</string>
 	<string name="remove_reboot_title">Remover item de reinício</string>
 	<string name="remove_reboot_summ">Remove o item original de reinício se ele existir, e desliga o reinício avançado</string>
 	<string name="remove_screenshot_title">Remover o item de screenshoot</string>
