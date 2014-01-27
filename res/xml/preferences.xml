@@ -12,6 +12,7 @@
             <CheckBoxPreference android:defaultValue="true" android:key="pref_rebootsub_soft" android:title="@string/reboot_soft" />
             <CheckBoxPreference android:defaultValue="true" android:key="pref_rebootsub_recovery" android:title="@string/reboot_recovery" />
             <CheckBoxPreference android:defaultValue="true" android:key="pref_rebootsub_bootloader" android:title="@string/reboot_bootloader" />
+            <CheckBoxPreference android:defaultValue="true" android:key="pref_rebootsub_system12" android:title="@string/reboot_system12" />
         </PreferenceScreen></PreferenceCategory>
             <PreferenceCategory android:key="pref_add_items" android:title="@string/sect_add_items"><CheckBoxPreference android:summary="@string/enable_screenshot_summ" android:key="pref_enable_screenshot" android:title="@string/enable_screenshot_title" android:defaultValue="true" android:disableDependentsState="true"/><EditTextPreference android:key="pref_quick_dial_number" android:title="@string/quick_dial_number" android:inputType="phone" android:dialogMessage="@string/quick_dial_note"/>
         
