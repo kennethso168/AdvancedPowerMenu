@@ -195,8 +195,8 @@ public class ModRebootMenu {
                    boolean System2Enabled = false;
                    boolean System1Enabled = false;
                    if(prefSystem12Enabled) {
-                	   System2Enabled = Main.getSyspart()==0;
-                	   System1Enabled = Main.getSyspart()==1 || !System2Enabled;
+                	   System2Enabled = DualBoot.getSyspart()==0;
+                	   System1Enabled = DualBoot.getSyspart()==1 || !System2Enabled;
                    }
                    int cnt = 0;
                    
@@ -619,11 +619,11 @@ public class ModRebootMenu {
 			pm.reboot("bootloader");
 	    } else if (mode == SEQ_REBOOT_SYSTEM1){
         	final PowerManager pm = (PowerManager) mContext.getSystemService(Context.POWER_SERVICE);
-        	Main.setDualSystemBootmode("boot-system0");
+        	DualBoot.setDualSystemBootmode("boot-system0");
         	pm.reboot(null);
         } else if (mode == SEQ_REBOOT_SYSTEM2){
         	final PowerManager pm = (PowerManager) mContext.getSystemService(Context.POWER_SERVICE);
-        	Main.setDualSystemBootmode("boot-system1");
+        	DualBoot.setDualSystemBootmode("boot-system1");
         	pm.reboot(null);
         }
     }
