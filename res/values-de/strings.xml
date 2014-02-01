@@ -1,61 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-	<!--Basic Information -->
-	<!--Not necessary to translate as these are just descriptions. However if you like you can still translate these. -->
-	<string name="xposed_description">Füge Neustart, Soft Neustart, Neustart in die Recovery und Bildschirmfoto zum Power Menü hinzu.\nEntwickelt von kennethso168@xda</string>
-	<string name="credits_msg">Entwickelt von kennethso168@xda</string>
+        <!--Basic Information -->
+        <!--Not necessary to translate as these are just descriptions. However if you like you can still translate these. -->
+    <string name="app_name">Advanced Power Menu</string>
+    <string name="launcher_name">Adv. Power Menu</string>
+        <string name="xposed_description">Fügt Hardware-Neustart, Software-Neustart, Start in Recovery-Menü oder Bootloader, Screenshot und Schnellwahl zum Power Menü hinzu.\nEntwickelt von kennethso168@xda übersetzt von Fabian2103@xda</string>
+        <string name="credits_msg">Entwicklet von kennethso168@xda übersetzt von Fabian2103@xda</string>
     
-	<!-- Reboot Options -->
-	<string name="reboot_soft">Soft Neustart</string>
-    <string name="reboot_recovery">Recovery</string>
-    <string name="reboot_bootloader">Bootloader</string>
-	
-	<!-- Confirmation Dialogs -->
-    <string name="reboot_confirm">Telefon wird neu gestartet.</string>
-    <string name="reboot_confirm_recovery">Telefon wird neu in die Recovery gestartet.</string>
-    <string name="reboot_confirm_bootloader">Telefon wird neu in den Bootloader gestartet.</string>
-	
-	<!-- Screenshot  -->
-	<string name="take_screenshot">Bildschirmfoto</string>
-	
-	<!-- Quick dial  -->
-	<string name="quick_dial">Schnellanruf</string>
-	
-	<!-- Preference Screen -->
-	<string name="note_title">Notiz</string>
-	<string name="note_summ">Ein Neustart könnte notwendig sein, damit alle Änderungen übernommen werden.</string>
-	<string name="sect_menu_options">Power Menu Options</string>
-	<string name="enable_reboot_title">Erweiterter Neustart</string>
-	<string name="enable_reboot_summ">Hinzufügen/entfernen von verschiednen Neustart Methoden</string>
-	<string name="enable_screenshot_title">Bildschirmfoto</string>
-	<string name="enable_screenshot_summ">Fügt die Möglichkeit ein Bildschirmfoto aufzunehmen hinzu, sofern nicht vorhaden</string>
-	<string name="confirm_dialog_title">Bestätigungsdialoge</string>
-	<string name="quick_dial_number">Schnellanruf Nummer</string>
-	<string name="quick_dial_note">Frei lassen, um diese Funktion zu deaktivieren</string>
-	<string name="disabled">Deaktiviert</string>
-	<string name="icon_color_title">Farb-Thema der Icons</string>
-	<string name="reboot_methods_title">Anzuzeigende Neustart Möglichkeiten</string>
-	<!-- Do not translate or include the "default" strings in other languages -->
-	
-	<string name="sect_debug">App Optionen</string>
-	<string name="verbose_log_title">Vollständiger Log</string>
-	<string name="verbose_log_summ">Schreibe vollständigen Log nach /data/xposed/debug.log</string>
-	<string name="hide_ic_launcher_title">Verstecke Launcher Icon</string>
-	<string name="hide_ic_launcher_dialog">Es könnte eine Weile dauern oder der Launcher muss nneu gestartet werden, damit die Änderungen aktiv werden.\nAlso, you may access Advanced Power Menu from Xposed Installer &gt; Modules &gt; Advanced Power Menu (Press the item instead of the checkbox).</string>
-	
-	<string name="sect_about">Über</string>
-	<string name="app_info_title">App Info</string>
-	<string name="app_info_before">&quot;Advaced Power Menu Version &quot;</string>
-	<string name="app_info_after">\nvon Kenneth So (kennethso168@xda)</string>
-	<string name="readme_title">Urheberrecht und Haftungsausschluss</string>
-	<!-- It's quite "impossible" to translate the string below. No need to translate it -->
-	<string name="readme_content">Copyright (c) 2013 So Kei Hong. All rights reserved.\n\n
-	    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</string>
-	
-	<string name="license_title">Open Source Lizenz</string>
-	<string name="special_thanks_title">Besonderer Dank</string>
-	<string name="xda_title">Zeige xda-Thread</string>
-	<string name="email_title">Sende dem Entwickler eine E-Mail</string>
-	<string name="donate_title">Spenden</string>
-	
+        <!-- Reboot Options -->
+        <string name="reboot_soft">Software-Neustart</string>
+    <string name="reboot_recovery">In Recovery starten</string>
+    <string name="reboot_bootloader">In Bootloader starten</string>
+        
+        <!-- Confirmation Dialogs -->
+    <string name="reboot_confirm">Ihr Telefon wird neu gestartet.</string>
+    <string name="reboot_confirm_recovery">Ihr Telefon wird ins Recovery-Menü gestartet.</string>
+    <string name="reboot_confirm_bootloader">Ihr Telefon wird in den Bootloader gestartet.</string>
+        
+        <!-- Screenshot  -->
+        <string name="take_screenshot">Screenshot</string>
+        
+        <!-- Quick dial  -->
+        <string name="quick_dial">Schnellwahl</string>
+        
+        <!-- Toggle Mobile Data -->
+        <string name="mobile_data_on">Mobile Datenverbindung einschalten</string>
+        <string name="mobile_data_off">Mobile Datenverbindung ausschalten</string>
+        
+        <!-- Anti-theft helper -->
+        <string name="no_locked_off_dialog">Da der Diebstahlschutz aktiv ist, können Sie auf dem Lockscreen nicht auf das Power-Menü zugreifen. Entsperren Sie Ihr Gerät und versuchen Sie es erneut.</string>
+        <string name="device_is_locked">Zugriff auf Powermenü im Lockscreen nicht möglich.</string>
+        
+        <!-- Preference Screen -->
+        <string name="note_title">-Wichtige Bemerkung-</string>
+        <string name="note_summ">Starten Sie Ihr Gerät neu, damit die Änderungen übernommen werden.</string>
+        <string name="sect_menu_options">Power Menü Einstellungen</string>
+        <string name="modify_menu_items">Festlegen was im Powermenü angezeigt wird…</string>
+        <string name="sect_reboot_item">Im Menü anzeigen</string>
+        <string name="enable_reboot_title">Erweiterter Neustart</string>
+        <string name="enable_reboot_summ">Systemeigenes Powermenü mit besonderen Optionen erweitern</string>
+        <string name="sect_add_items">Optionen verwalten</string>
+        <string name="enable_screenshot_title">Screenshot</string>
+        <string name="enable_screenshot_summ">Fügt die Möglichkeit eines Screenshots hinzu, sofern von Werk nicht unterstützt.</string>
+        <string name="confirm_dialog_title">Bestätigungen</string>
+        <string name="quick_dial_number">Nummer der Schnellwahl</string>
+        <string name="quick_dial_note">Tragen Sie hier nichts ein, falls Sie diese Funktion nicht benötigen.</string>
+        <string name="quick_dial_label">Schnellwahl-Text</string>
+        <string name="disabled">Deaktiviert</string>
+        <string name="label_default">Standart</string>
+        <string name="icon_color_title">Icon-Design ändern</string>
+        <string name="reboot_methods_title">Neustart-Optionen verwalten…</string>
+        <string name="expand_statusbar_title">Statusbar erweitern</string>
+        <string name="expand_statusbar_summ">Option hinzufügen, die die Statusbar erweitert</string>
+        <string name="data_toggle">Mobile Datenverbindung</string>
+        <string name="data_toggle_summ">Option hinzufügen, die mobile Datenverbindung ein-/auszuschalten</string>
+        <string name="sect_remove_items">Optionen entfernen</string>
+        <!-- Do not translate or include the "default" strings in other languages -->
+        <string name="confirm_dialog_default">0</string>
+        <string name="icon_color_title_default">0</string>
+        <string name="no_locked_off_title">Diebstahlschutz / Anti-Theft-Helper (ATH)</string>
+        <string name="no_locked_off_summ">Entfernt die Ausschalten-, Neustarten-, Flugzeugmodus- und Datenverbindungs- Option, während das Gerät sich im Lockscreen befindet.</string>
+        <string name="ath_hide_desc_title">Beschreibung verstecken</string>
+        <string name="ath_hide_desc_summ">Versteckt die \'Zugriff auf Powermenü im Lockscreen nicht möglich.\' Meldung im Lockscreen, sodass ein Dieb nicht weiß, was los ist.</string>
+        <string name="remove_reboot_title">Reboot-Option entfernen</string>
+        <string name="remove_reboot_summ">Entfernt die Reboot-Möglichkeit vom originalen Power-Menü, falls sie existiert und die Option Erweiterter Neustart im APM deaktiviert ist.</string>
+        <string name="remove_screenshot_title">Entfernt Screenshot-Möglichkeit</string>
+        <string name="remove_screenshot_summ">Entfernt die Screenshot-Möglichkeit vom originalen Power-Menü, falls sie existiert und die Option Screenshot im APM deaktiviert ist.</string>
+        <string name="remove_airplane_title">Entfernt Flugzeugmodus-option</string>
+        <string name="remove_airplane_summ">Entfernt die Flugzeugmodus-Option vom originalen Power-Menü, falls vorhanden.</string>
+        
+        <string name="sect_debug">App-Optionen</string>
+        <string name="verbose_log_title">Ausführliches Protokoll</string>
+        <string name="verbose_log_summ">Speichert ein ausführliches Protokoll unter /data/xposed/debug.log</string>
+        <string name="hide_ic_launcher_title">APM-Icon nicht im App-Drawer anzeigen</string>
+        <string name="hide_ic_launcher_dialog">Es könnte eine Weile dauern oder der Launcher muss neu gestartet werden, damit die Änderungen übernommen werden.\nAußerdem muss APM danach über den Xposed-Installer gestartet werden.</string>
+        
+        <string name="sect_about">Über diese App</string>
+        <string name="app_info_title">Versions-Info</string>
+        <string name="app_info_before">Advanced Power Menu version*</string>
+        <string name="app_info_after">\nvon Kenneth So (kennethso168@xda), übersetzt Fabian2103 (Fabian2103@xda)</string>
+        <string name="readme_title">Urheberrecht und Haftungsausschluss</string>
+        <!-- It's quite "impossible" to translate the string below. No need to translate it -->
+        <string name="readme_content">Sinngemäße Übersetzung (rechtskräftig ist nur die englische Originalversion siehe unten)\n Copyright © 2013 So Kei Hong. Alle Rechte vorbehalten.\n\nDie Software wird bereitgestellt, wie sie ist. Ich gebe keinerlei Garantie auf Funktionalität und hafte für keine Schäden, die durch die Nutzung diese Modules entstehen. Die App wurde nach bestem Wissen und Gewissen programmiert und unterliegt dem Copyright. Mit Nutzung dieser Software bestätigen Sie, dass sie dies verstanden haben, aktzeptieren und einhalten werden. \n
+		(Original und rechtskräftige Version): \nCopyright © 2013 So Kei Hong. All rights reserved.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+		</string>
+        
+        <string name="license_title">Open source license</string>
+        <string name="special_thanks_title">Besonderes Dankeschön</string>
+        <string name="troubleshoot_title">Häufige Fehler</string>
+        <string name="troubleshoot_content">........Bitte bedenken Sie, dass der Entwickler dieser APP kein Deutsch versteht! Die App wurde von Fabian2103@xda übersetzt. Kontakt mit dem Entwickler nur in Englisch oder Chinesisch........ \n\n Was kann ich machen, wenn die App nicht läuft?\n\nStep 1: Versuchen Sie, sich selbst zu helfen\n1. Stellen Sie sicher, dass sie die Hinweise und Anleitungen gelesen und befolgt haben/\n2. Starten Sie Ihr Gerät ZWEI MAL neu, falls möglich entfernen Sie den Akku.\nBitte bedenken Sie, dass jedes nach der Installation eines Xposed-Modules ein Neustart notwendig ist. Einige Nutzer berichten, dass es erst nach einem doppelten Neustart funktioniert. Deshalb starten Sie ihr Gerät bitte ZWEI MAL neu.\n3. Deaktivieren Sie vorsichtshalber alle anderen Xposed-Module und starten Sie neu. \n4. Löschen Sie die App-Daten, oder installieren Sie APM neu.\nManchmal passieren bei einem Update von APM Fehler, also deinstallieren Sie die geupdatete Version und installieren sie erneut, oder \n5. installieren Sie eine ältere Version von APM.\nFalls dies helfen sollte, habe ich bei dem Update einen Fehler gemacht, benachrichtigen Sie mich bitte!\nFalls all dies nicht funktioniert, können Sie mir einen Fehlerbericht senden.\n\nStep 2: Benachrichten Sie mich und haben Sie bitte Gedult.\n(bitte zuerst Step1 machen!)\nIn den Fehlerbericht schreiben Sie folgendes\n1) eine Fehlerbeschreibung\n2) Screenshots (falls sie dem Verständnis dienen)\n3) Modellname des Gerätes, ROM, Android-OS-Version, App-Version\n4) debug.log (Zuerst Detaillierte Protokollierung in der App einschalten, dann Power-Taste gedrückt halten zB.)(Log kann eventuell vom Xposed-Installer aufgerufen werden)\n5) Alles was wichtig sein könnte\nund senden ihn mir über:\n1) Xda-Thread oder PM (bevorzugt)\n2) E-mail (Achtung! Schreiben Sie in den Betreff bitte [APM], sodass ich meine Emails besser sortieren kann.)\nBedenken Sie, dass ich mit nicht ausreichenden Informationen nichts anfangen kann. Außerdem werden Emails ohne BODY TEXT ignoriert (Ich nutze gmail)\n\nTrotz alle dem kann es sein, dass ich Ihnen nicht weiterhelfen kann, da ich Ihr Gerät nicht besitze und ich auch nur ein kleiner Android-Entwickler bin. Entschuldigung. \n\n ........Bitte bedenken Sie, dass der Entwickler dieser APP kein Deutsch versteht! Die App wurde von Fabian2103@xda übersetzt. Kontakt mit dem Entwickler nur in Englisch oder Chinesisch........</string>
+        <string name="xda_title">Zum XDA-Thread</string>
+        <string name="email_title">Email an den Entwickler ( benutze [APM] als Präfix im Betreff ) </string>
+        <string name="donate_title">Bitte unterstützen Sie meine Arbeit mit einer Spende, klick hier.</string>
+        
+        <string name="email_note_title">Bemerkung für Emails</string>
+        <string name="email_note_content">Jeden Tag werde ich mit Tonnen von Emails vollgetextet. Deshalb beachten Sie folgendes, BEVOR SIE MIR EINE EMAIL SENDEN.\n1. Ich kann viel schneller antworten, wenn Sie den xda Thread/PMs verwenden\n2. Lesen Sie sich durch "Häufige Fehler", bevor Sie mir eine Email schreiben, die bitte [APM] als Präfix im Betreff hat!</string>
+        
+        
 </resources>

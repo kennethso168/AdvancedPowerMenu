@@ -1,6 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="reboot_recovery">Modo recuperación</string>
-	<string name="reboot_confirm">El teléfono se reiniciará</string>
-    <string name="reboot_confirm_recovery">El teléfono se reiniciaré en modo de restauración</string>
+	<!--Basic Information -->
+	<!--Not necessary to translate as these are just descriptions. However if you like you can still translate these. -->
+	<string name="app_name">Advanced Power Menu</string>
+	<string name="launcher_name">Adv. Power Menu</string>
+	<string name="xposed_description">Añade Reinicio, Reinicio Suave,Reinicio en Recovery y captura de pantalla al menu de Power.\nDesarrollado por kennethso168@xda</string>
+    <string name="credits_msg">Desarrollado por kennethso168@xda</string>
+    
+    <!-- Reboot Options -->
+    <string name="reboot_soft">Reinicio suave</string>
+    <string name="reboot_recovery">Recovery</string>
+    <string name="reboot_bootloader">Bootloader</string>
+    
+    <!-- Confirmation Dialogs -->
+    <string name="reboot_confirm">Tu teléfono se reiniciará.</string>
+    <string name="reboot_confirm_recovery">Tu teléfono se reiniciará en el Recovery.</string>
+    <string name="reboot_confirm_bootloader">Tu teléfono se reiniciará en el Bootloader.</string>
+    
+    <!-- Screenshot -->
+    <string name="take_screenshot">Captura de pantalla</string>
+        
+    <!-- Quick dial -->
+    <string name="quick_dial">Marcación Rápida</string>
+        
+    <!-- Toggle Mobile Data -->
+    <string name="mobile_data_on">Habilitar datos móviles</string>
+    <string name="mobile_data_off">Desactivar datos móviles</string>
+    
+    <!-- Anti-theft helper -->
+    <string name="no_locked_off_dialog">Como el ayudante antirrobo está activado, es posible que no pueda apagar el teléfono o desactivar los datos móviles, mientras el dispositivo está bloqueado. Desbloquee el dispositivo y vuelva a intentarlo.</string>
+    <string name="device_is_locked">Dispositivo bloqueado</string>
+    
+    <!-- Preference Screen -->
+        <string name="note_title">Nota</string>
+        <string name="note_summ">Necesitas reiniciar para aplicar los cambios</string>
+        <string name="sect_menu_options">Opciones menú Power</string>
+        <string name="modify_menu_items">Modificar elementos del menú Power&#8230;</string>
+        <string name="sect_reboot_item">Elementos menú reinicio</string>
+        <string name="enable_reboot_title">Reinicio avanzado</string>
+        <string name="enable_reboot_summ">Añadir/Quitar la opción de reinicio que permite diferentes métodos de reinicio</string>
+        <string name="sect_add_items">Añadir elementos al menú</string>
+        <string name="enable_screenshot_title">Captura de pantalla</string>
+        <string name="enable_screenshot_summ">Añadir la opción que permite la funcionalidad de captura de pantalla si no existe originalmente</string>
+        <string name="confirm_dialog_title">Mensajes de confirmación</string>
+        <string name="quick_dial_number">Número de marcación rápida</string>
+        <string name="quick_dial_note">Dejar en blanco para desactivar esta función</string>
+        <string name="quick_dial_label">Texto a mostrar en marcación rápida</string>
+        <string name="disabled">Desactivado</string>
+        <string name="label_default">Defecto</string>
+        <string name="icon_color_title">Tema de color para los iconos</string>
+        <string name="reboot_methods_title">Métodos de reinicio a mostrar&#8230;</string>
+        <string name="expand_statusbar_title">Expandir la barra de estado</string>
+        <string name="expand_statusbar_summ">Añade la opción al desplegra la barra de notificaciones</string>
+        <string name="data_toggle">Conmutar datos móviles</string>
+        <string name="data_toggle_summ">Añadir la opción que conmuta conexión de datos móviles</string>
+        <string name="sect_remove_items">Quitar elementos del menú</string>
+        <!-- Do not translate or include the "default" strings in other languages -->
+        <string name="confirm_dialog_default">0</string>
+        <string name="icon_color_title_default">0</string>
+        <string name="no_locked_off_title">Ayudante antirrobo (ATH)</string>
+        <string name="no_locked_off_summ">Desactivar el apagado, reinicio, activar el modo avión y datos móviles (On Off) mientras el dispositivo se encuentra todavía en la pantalla de bloqueo y sin desbloquear</string>
+        <string name="ath_hide_desc_title">Oculta la descripción ATH</string>
+        <string name="ath_hide_desc_summ">Oculata la opcion \'Equipo Bloqueado\' en el menú Power, por lo que un ladrón no tiene idea de lo que esta pasando</string>
+        <string name="remove_reboot_title">Quitar el elemento reinicio</string>
+        <string name="remove_reboot_summ">Quitar el elemento reinicio original si existe y reinicio avanzado esta en apagado</string>
+        <string name="remove_screenshot_title">Quitar el elemento captura de pantalla</string>
+        <string name="remove_screenshot_summ">Quitar el elemento Captura de pantalla original si existe y Captura de pantalla está desactivado en la sección Añadir Elementos Al Menú</string>
+        <string name="remove_airplane_title">Quitar el Modo Vuelo</string>
+        <string name="remove_airplane_summ">Quitar el Modo Vuelo original si existe</string>
+        
+        <string name="sect_debug">Opciones aplicación</string>
+        <string name="verbose_log_title">Registro detallado</string>
+        <string name="verbose_log_summ">Escribe los registros completos en /data/xposed/debug.log</string>
+        <string name="hide_ic_launcher_title">Oculta el icono de la Aplicacion</string>
+        <string name="hide_ic_launcher_dialog">Es posible que tenga que esperar por un tiempo o reiniciar el lanzador para que los cambios surtan efecto. \ N También, usted puede acceder al menú Advanced Power de Xposed Instalador> Módulos> Menú avanzada de energía (Pulse el elemento en lugar de la casilla de verificación).</string>
+        
+        <string name="sect_about">Acerca</string>
+        <string name="app_info_title">Información aplicación</string>
+        <string name="app_info_before">Advaced Power Menu version&#160;</string>
+        <string name="app_info_after">\nby Kenneth So (kennethso168@xda)</string>
+        <string name="readme_title">Derechos de autor y responsabilidad</string>
+        <!-- It's quite "impossible" to translate the string below. No need to translate it -->
+        <string name="readme_content">Copyright &#169; 2013 So Kei Hong. RESERVADOS TODOS LOS DERECHOS.\n\nEL SOFTWARE SE PROPORCIONA \"TAL CUAL\", SIN GARANTIA DE NINGUN TIPO, EXPRESA O IMPLÍCITA, INCLUYENDO PERO NO LIMITADO A LAS GARANTIAS DE COMERCIALIZACIÓN, IDONEIDAD PARA UN PROPÓSITO PARTICULAR Y NO INFRACCIÓN. EN NINGÚN CASO, LOS AUTORES O TITULARES DEL COPYRIGHT SERÁN RESPONSABLES DE NINGUNA RECLAMACIÓN, DAÑO U OTRA RESPONSABILIDAD, YA SEA EN UNA ACCIÓN DE CONTRATO, AGRAVIO O DE OTRO TIPO, QUE SURJA DE O EN CONEXION CON EL SOFTWARE O EL USO U OTROS TRATOS EN EL SOFTWARE.</string>
+        
+        <string name="license_title">Open source license</string>
+        <string name="special_thanks_title">Agradecimientos especiales</string>
+        <string name="troubleshoot_title">Solución de problemas</string>
+        <string name="troubleshoot_content">¿Qué se puede hacer si la aplicación no esta trabajando? \ n \ nPaso 1 : tambien fijación de usted mismo \ n 1 . Asegúrese de que usted ha leído los requisitos y guía de instalación a fondo / \ n2 . Reinicie el teléfono dos veces ( DOS VECES) \ nPara cada mod Xposed individual, es necesario un reinicio después de la instalación. Pero eso podría no ser suficiente ya que los usuarios han informado de que la aplicación no funciona después de un reinicio, pero las cosas se ponen bien cuando se reinicie de nuevo. Así que se recomienda reiniciar dos veces \ n3 . Desactivar cualquier otro marco Xposed Mod \ nXposed no utilizar de mods que usaan el mismo método, ya que aveces los conflictos pueden ocurrir. Pruebe a desactivar todos los mods excepto la mía en el Xposed instalador . A continuación, reinicie y ver si las cosas se ponen bien. \ N4 . Datos de aplicaciones claras / reinstalar mis aplicaciones settings \ nLes pueden quedar en mal estado cuando mis aplicaciones son actualizadas, por lo que tratar de volver a instalar y ver si ayuda. \ N5 . Utilice una versión anterior de mi app \ nIntente esto y ver si ayuda. Si por lo que significa una nueva actualización rompe algo viejo y por favor, háblame de ese \ nSi todo lo anterior no funciona, puede enviarme un informe de problemas \ n \ nPaso 2 : . Dime a ver si puedo arreglarlo \ n ( Por favor, no hacer esto antes de realizar el paso 1 ) \ nPor favor, envíame un informe de problemas incluyendo \ n 1 ) una descripción del tema \ n2) imágenes ( si ayuda a explicar la situación) \ n3) el modelo de dispositivo , ROM, versión del sistema operativo Android, y la versión de app \ n4 ) debug.log ( Por favor, activa el registro detallado en mi primera aplicación , y luego hacer algo, pulsando el botón de encendido) (se puede obtener el registro en el instalador Xposed 2,4 ) \ n5 ) Cualquier otra cosa  importante \ Na través de uno de los medios siguientes : \ n1) xda hilo del foro / PM (preferido) \ n2) e- mail ( NOTA : por favor comience su tema con [ APM ] de modo que pueda ordenar mis correos electrónicos. , gracias ) \ nPor favor, note que no puedo resolver el problema con la información insuficiente. También voy a ignorar cualquier correo electrónico sin texto CUERPO (yo uso gmail ) \ n \ Nten en cuenta que incluso con toda la información, puede que sea incapaz de arreglar el problema , porque yo no tengo el dispositivo y yo soy un desarrollador android novato. triste.</string>
+        <string name="xda_title">Ver hilo en XDA</string>
+        <string name="email_title">Email al desarrollador</string>
+        <string name="donate_title">Donar</string>
+        
+        <string name="email_note_title">Nota para emails</string>
+        <string name="email_note_content">Todos los días, me siento abrumado con toneladas de correos electrónicos (no relacionados con esta aplicación). Por lo tanto, tenga en cuenta los siguientes puntos antes de enviarme correos electrónicos. \ N1. Puedo atender mejor su mensaje si usted utiliza mensajes pribados en xda \ n2. Por favor, lea la \ "¿Qué se puede hacer si la aplicación no esta trabajando / si el problema......? \" Antes de enviarme un correo electrónico a mi cuenta(que se encuentra en Xposed Instalador> Descargar> Advanced Power Menu) \ n3. Por favor, comience su tema con [APM] así puedo clasificar mejor mis correos electrónicos. Gracias. \ N4. Observe por favor que no puedo resolver el problema con la información insuficiente. También voy a ignorar cualquier correo electrónico sin texto CUERPO (yo uso gmail). \ N5. Entiendo sólo Inglés y Chino. \ NGracias por su cooperación.</string>
+    
+    
 </resources>

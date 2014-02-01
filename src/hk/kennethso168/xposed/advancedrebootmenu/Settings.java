@@ -181,6 +181,7 @@ public class Settings extends Activity {
 			
 			if(!DualBoot.supportsDualboot()) {
 				PreferenceScreen pref_reboot_methods = (PreferenceScreen) findPreference("pref_reboot_methods");
+				findPreference("pref_rebootsub_system12").setDefaultValue(false);
 				pref_reboot_methods.removePreference(findPreference("pref_rebootsub_system12"));
 			}
 		}

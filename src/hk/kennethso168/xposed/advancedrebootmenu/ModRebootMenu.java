@@ -2,6 +2,7 @@ package hk.kennethso168.xposed.advancedrebootmenu;
 
 import hk.kennethso168.xposed.advancedrebootmenu.actions.AntiTheftHelperAction;
 import hk.kennethso168.xposed.advancedrebootmenu.actions.ExpandStatusBarAction;
+import hk.kennethso168.xposed.advancedrebootmenu.actions.FakePowerOffAction;
 import hk.kennethso168.xposed.advancedrebootmenu.actions.QuickDialAction;
 import hk.kennethso168.xposed.advancedrebootmenu.actions.ScreenshotAction;
 import hk.kennethso168.xposed.advancedrebootmenu.actions.ToggleDataAction;
@@ -33,7 +34,6 @@ import android.view.WindowManager;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 import de.robv.android.xposed.XC_MethodHook;
 import de.robv.android.xposed.XC_MethodHook.Unhook;
 import de.robv.android.xposed.XC_MethodReplacement;
@@ -71,6 +71,7 @@ public class ModRebootMenu {
     private static Drawable mExpandStatusBarIcon;
     private static Drawable mToggleDataIcon;
     private static Drawable mDeviceLockedIcon;
+    private static Drawable mPowerOffIcon;
     private static int[] rebootSubMenu = new int[5];
     private static boolean normalRebootOnly = false;
     private static boolean antiTheftHelperOn = false;
@@ -186,18 +187,22 @@ public class ModRebootMenu {
                    mRebootSoftIcon = armRes.getDrawable(mRebootSoftIconSet[IconColorInt]);
                    mRecoveryIcon = armRes.getDrawable(mRecoveryIconSet[IconColorInt]);
                    mBootloaderIcon = armRes.getDrawable(mBootloaderIconSet[IconColorInt]);
+                   mPowerOffIcon = armRes.getDrawable(R.drawable.ic_wip); //as a fallback
 
                    antiTheftHelperOn = pref.getBoolean("pref_no_locked_off", false);
                    boolean SoftEnabled = pref.getBoolean("pref_rebootsub_soft", true);
                    boolean RecoveryEnabled = pref.getBoolean("pref_rebootsub_recovery", true);
                    boolean BootloaderEnabled = pref.getBoolean("pref_rebootsub_bootloader", true);
-                   boolean prefSystem12Enabled = pref.getBoolean("pref_rebootsub_system12", true);
+                   boolean prefSystem12Enabled = pref.getBoolean("pref_rebootsub_system12", false);
+                   log("pref_rebootsub_system12 = " + prefSystem12Enabled);
                    boolean System2Enabled = false;
                    boolean System1Enabled = false;
                    if(prefSystem12Enabled) {
                 	   System2Enabled = DualBoot.getSyspart()==0;
                 	   System1Enabled = DualBoot.getSyspart()==1 || !System2Enabled;
                    }
+                   log("System1Enabled = " + System1Enabled);
+                   log("System2Enabled = " + System2Enabled);
                    int cnt = 0;
                    
                    mRebootItemList = new ArrayList<IIconListAdapterItem>();
@@ -220,12 +225,12 @@ public class ModRebootMenu {
                 	   rebootSubMenu[cnt] = SEQ_REBOOT_BOOTLOADER;
                 	   cnt++;
                    }
-                   if(System1Enabled){
+                   if(System1Enabled&&DualBoot.supportsDualboot()){
                        mRebootItemList.add(new BasicIconListItem(mRebootSystem1Str, null, mRebootIcon, null));
                        rebootSubMenu[cnt] = SEQ_REBOOT_SYSTEM1;
                        cnt++;
                    }
-                   if(System2Enabled){
+                   if(System2Enabled&&DualBoot.supportsDualboot()){
                        mRebootItemList.add(new BasicIconListItem(mRebootSystem2Str, null, mRebootIcon, null));
                        rebootSubMenu[cnt] = SEQ_REBOOT_SYSTEM2;
                        cnt++;
@@ -297,6 +302,7 @@ public class ModRebootMenu {
                             if (resName.contains("power") || resName.contains("shutdown") 
                             		|| resName.contains("shut")||resName.contains("off")) {
                                 powerOffActionItem = o;
+                                mPowerOffIcon = res.getDrawable((Integer) f.get(o));
                             }
                             if (resName.contains("airplane")){
                             	airplaneActionItem = o;
@@ -383,8 +389,15 @@ public class ModRebootMenu {
                     // IV. Add/replace action items and update positions accordingly
 
                     if( myKM.inKeyguardRestrictedInputMode()&&antiTheftHelperOn&&(!hideATHDesc)) {
-                    	Object action = Proxy.newProxyInstance(classLoader, new Class<?>[] { actionClass },
-                                new AntiTheftHelperAction(mContext, mDeviceLockedLabel, mDeviceLockedIcon, noLockedOffDialogTitle, noLockedOffDialogMsg));
+                    	Boolean fakePowerOffEnabled = pref.getBoolean("pref_ath_fake_poweroff", false);
+                    	Object action;
+                    	if(fakePowerOffEnabled){
+                    		action = Proxy.newProxyInstance(classLoader, new Class<?>[] { actionClass },
+                            	new FakePowerOffAction(mContext, mPowerOffIcon));
+                    	}else{
+                    		action = Proxy.newProxyInstance(classLoader, new Class<?>[] { actionClass },
+                                    new AntiTheftHelperAction(mContext, mDeviceLockedLabel, mDeviceLockedIcon, noLockedOffDialogTitle, noLockedOffDialogMsg));
+                    	}
                         mItems.add(0, action);
                         afterPowerPos++;
                         afterRebootPos++;

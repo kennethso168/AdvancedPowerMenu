@@ -71,6 +71,9 @@
 	<string name="remove_screenshot_summ">Remove the original screenshot item if it exists and screenshot is disabled in the \'Add menu items\' section</string>
 	<string name="remove_airplane_title">Remove airplane mode toggle item</string>
 	<string name="remove_airplane_summ">Remove the original airplane mode toggle item if it exists</string>
+	<string name="ath_fake_poweroff_title">Fake power off</string>
+	<string name="ath_fake_poweroff_summ">Replace ATH description with a fake power off button to deceive thieves</string>
+	
 	
 	<string name="sect_debug">App Options</string>
 	<string name="verbose_log_title">Verbose logging</string>
