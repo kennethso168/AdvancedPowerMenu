@@ -11,6 +11,9 @@
 	<string name="reboot_soft">Soft reboot</string>
     <string name="reboot_recovery">Recovery</string>
     <string name="reboot_bootloader">Bootloader</string>
+    <string name="reboot_system1">System1</string>
+    <string name="reboot_system2">System2</string>
+    <string name="reboot_system12">System1/2</string>
 	
 	<!-- Confirmation Dialogs -->
     <string name="reboot_confirm">Your phone will reboot.</string>

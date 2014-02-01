@@ -18,6 +18,7 @@ import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceClickListener;
 import android.preference.PreferenceFragment;
+import android.preference.PreferenceScreen;
 import de.robv.android.xposed.XposedBridge;
 
 public class Settings extends Activity {
@@ -177,6 +178,11 @@ public class Settings extends Activity {
 					return true;
 				}
 			});
+			
+			if(!DualBoot.supportsDualboot()) {
+				PreferenceScreen pref_reboot_methods = (PreferenceScreen) findPreference("pref_reboot_methods");
+				pref_reboot_methods.removePreference(findPreference("pref_rebootsub_system12"));
+			}
 		}
 		
 		@Override

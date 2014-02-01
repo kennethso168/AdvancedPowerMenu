@@ -53,6 +53,8 @@ public class ModRebootMenu {
     private static String mRebootSoftStr;
     private static String mRecoveryStr;
     private static String mBootloaderStr;
+    private static String mRebootSystem1Str;
+    private static String mRebootSystem2Str;
     private static String mScreenshotLabel;
     private static String mQuickDialLabel;
     private static String mExpandStatusBarLabel;
@@ -69,7 +71,7 @@ public class ModRebootMenu {
     private static Drawable mExpandStatusBarIcon;
     private static Drawable mToggleDataIcon;
     private static Drawable mDeviceLockedIcon;
-    private static int[] rebootSubMenu = new int[4];
+    private static int[] rebootSubMenu = new int[5];
     private static boolean normalRebootOnly = false;
     private static boolean antiTheftHelperOn = false;
     private static List<IIconListAdapterItem> mRebootItemList;
@@ -101,6 +103,8 @@ public class ModRebootMenu {
     private static final int SEQ_REBOOT_SOFT = 1;
     private static final int SEQ_REBOOT_RECOVERY = 2;
     private static final int SEQ_REBOOT_BOOTLOADER = 3;
+    private static final int SEQ_REBOOT_SYSTEM1 = 4;
+    private static final int SEQ_REBOOT_SYSTEM2 = 5;
     
     //constants for modes of showing confirmation dialogs
     private static final int VALUE_ENABLE_DIALOGS = 0;
@@ -139,6 +143,8 @@ public class ModRebootMenu {
                    mRebootSoftStr = armRes.getString(R.string.reboot_soft);
                    mRecoveryStr = armRes.getString(R.string.reboot_recovery);
                    mBootloaderStr = armRes.getString(R.string.reboot_bootloader);
+                   mRebootSystem1Str = armRes.getString(R.string.reboot_system1);
+                   mRebootSystem2Str = armRes.getString(R.string.reboot_system2);
                    
                    mScreenshotLabel = armRes.getString(R.string.take_screenshot);
                    mQuickDialLabel = armRes.getString(R.string.quick_dial);
@@ -185,6 +191,13 @@ public class ModRebootMenu {
                    boolean SoftEnabled = pref.getBoolean("pref_rebootsub_soft", true);
                    boolean RecoveryEnabled = pref.getBoolean("pref_rebootsub_recovery", true);
                    boolean BootloaderEnabled = pref.getBoolean("pref_rebootsub_bootloader", true);
+                   boolean prefSystem12Enabled = pref.getBoolean("pref_rebootsub_system12", true);
+                   boolean System2Enabled = false;
+                   boolean System1Enabled = false;
+                   if(prefSystem12Enabled) {
+                	   System2Enabled = DualBoot.getSyspart()==0;
+                	   System1Enabled = DualBoot.getSyspart()==1 || !System2Enabled;
+                   }
                    int cnt = 0;
                    
                    mRebootItemList = new ArrayList<IIconListAdapterItem>();
@@ -207,6 +220,16 @@ public class ModRebootMenu {
                 	   rebootSubMenu[cnt] = SEQ_REBOOT_BOOTLOADER;
                 	   cnt++;
                    }
+                   if(System1Enabled){
+                       mRebootItemList.add(new BasicIconListItem(mRebootSystem1Str, null, mRebootIcon, null));
+                       rebootSubMenu[cnt] = SEQ_REBOOT_SYSTEM1;
+                       cnt++;
+                   }
+                   if(System2Enabled){
+                       mRebootItemList.add(new BasicIconListItem(mRebootSystem2Str, null, mRebootIcon, null));
+                       rebootSubMenu[cnt] = SEQ_REBOOT_SYSTEM2;
+                       cnt++;
+                       }
                    if(cnt==1) normalRebootOnly = true;
                    mRebootConfirmStr = armRes.getString(R.string.reboot_confirm);
                    mRebootConfirmRecoveryStr = armRes.getString(R.string.reboot_confirm_recovery);
@@ -523,7 +546,7 @@ public class ModRebootMenu {
     private static void handleReboot(Context context, String caption, final int mode) {
         try {
             String message;
-            if(mode == 0 || mode == 1){
+            if(mode == 0 || mode == 1 || mode == 4 || mode == 5){
             	message = mRebootConfirmStr;
             }else if (mode == 2){
             	message = mRebootConfirmRecoveryStr;
@@ -594,6 +617,14 @@ public class ModRebootMenu {
         } else if (mode == SEQ_REBOOT_BOOTLOADER){
         	final PowerManager pm = (PowerManager) mContext.getSystemService(Context.POWER_SERVICE);
 			pm.reboot("bootloader");
+	    } else if (mode == SEQ_REBOOT_SYSTEM1){
+        	final PowerManager pm = (PowerManager) mContext.getSystemService(Context.POWER_SERVICE);
+        	DualBoot.setDualSystemBootmode("boot-system0");
+        	pm.reboot(null);
+        } else if (mode == SEQ_REBOOT_SYSTEM2){
+        	final PowerManager pm = (PowerManager) mContext.getSystemService(Context.POWER_SERVICE);
+        	DualBoot.setDualSystemBootmode("boot-system1");
+        	pm.reboot(null);
         }
     }
     
