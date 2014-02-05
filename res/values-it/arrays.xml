@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="confirm_dialog">
+        <item>Mostra tutte le finestre</item>
+        <item>Disattiva tutte le finestre di riavvio</item>
+    </string-array>
+    <string-array name="icon_color">
+        <item>Default (Bianco)</item>
+        <item>Scuro</item>
+        <item>Colorato</item>
+		<item>eXistenZ</item>
+    </string-array>
+</resources>
