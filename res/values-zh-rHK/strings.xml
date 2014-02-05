@@ -125,6 +125,6 @@ Keep in mind that even with all the information I still may not be able to fix y
 <string name="xda_title">"瀏覽 xda 討論帖"</string>
 <string name="email_title">"發送電郵給開發者"</string>
 <string name="donate_title">"捐款"</string>
-<string name="email_note_title">"Note for emails"</string>
+<string name="email_note_title">"有關電郵的注意事項"</string>
 <string name="email_note_content">"請以[APM]作為郵件標題的起首，並提供足夠的資料（例如附上 /data/xposed/debug.log）。謝謝合作。"</string>
 </resources>
