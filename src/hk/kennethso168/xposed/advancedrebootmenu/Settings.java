@@ -170,14 +170,14 @@ public class Settings extends Activity {
 			findPreference(KEY_PREF_APP_INFO).setSummary(aboutBefore + versionName + aboutAfter);
 			setIconVis();
 			
-			Preference email = (Preference) findPreference("pref_email");
-			email.setOnPreferenceClickListener(new OnPreferenceClickListener() {
-				public boolean onPreferenceClick(Preference preference){				   
-					DialogFragment df = new EmailDialogFragment();
-					df.show(getFragmentManager(), "APM_email_dialog");
-					return true;
-				}
-			});
+//			Preference email = (Preference) findPreference("pref_email");
+//			email.setOnPreferenceClickListener(new OnPreferenceClickListener() {
+//				public boolean onPreferenceClick(Preference preference){				   
+//					DialogFragment df = new EmailDialogFragment();
+//					df.show(getFragmentManager(), "APM_email_dialog");
+//					return true;
+//				}
+//			});
 			
 			if(!DualBoot.supportsDualboot()) {
 				PreferenceScreen pref_reboot_methods = (PreferenceScreen) findPreference("pref_reboot_methods");
