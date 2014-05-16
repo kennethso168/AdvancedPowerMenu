@@ -16,9 +16,9 @@
     <string name="reboot_system12">System1/2</string>
 	
 	<!-- Confirmation Dialogs -->
-    <string name="reboot_confirm">Your phone will reboot.</string>
-    <string name="reboot_confirm_recovery">Your phone will reboot into recovery.</string>
-    <string name="reboot_confirm_bootloader">Your phone will reboot into bootloader.</string>
+    <string name="reboot_confirm">Your device will reboot.</string>
+    <string name="reboot_confirm_recovery">Your device will reboot into recovery.</string>
+    <string name="reboot_confirm_bootloader">Your device will reboot into bootloader.</string>
 	
 	<!-- Screenshot  -->
 	<string name="take_screenshot">Screenshot</string>
