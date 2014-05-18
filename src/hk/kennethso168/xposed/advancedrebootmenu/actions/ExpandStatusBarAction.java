@@ -1,6 +1,10 @@
 package hk.kennethso168.xposed.advancedrebootmenu.actions;
 
+import hk.kennethso168.xposed.advancedrebootmenu.Main;
+
 import java.lang.reflect.Method;
+
+import de.robv.android.xposed.XposedBridge;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
@@ -37,6 +41,7 @@ public class ExpandStatusBarAction extends SinglePressAction{
 	        Object service = mContext.getSystemService("statusbar");
 	        Class<?> statusbarManager = Class
 	                .forName("android.app.StatusBarManager");
+	        XposedBridge.log(statusbarManager.getName());
 	        Method expand = null;
 	        if (service != null) {
 	            if (currentApiVersion <= 16) {
@@ -45,11 +50,13 @@ public class ExpandStatusBarAction extends SinglePressAction{
 	                expand = statusbarManager
 	                        .getMethod("expandNotificationsPanel");
 	            }
-	            expand.setAccessible(true);
 	            expand.invoke(service);
+	        } else {
+	        	XposedBridge.log("APM: service is null");
 	        }
 
 	    } catch (Exception e) {
+	    	XposedBridge.log(e);
 	    }
 	}
 

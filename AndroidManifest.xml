@@ -1,13 +1,14 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="hk.kennethso168.xposed.advancedrebootmenu"
-    android:versionCode="19"
-    android:versionName="9.0.1" >
+    android:versionCode="20"
+    android:versionName="9.1.1" >
     
     <uses-sdk
         android:minSdkVersion="14"
         android:targetSdkVersion="17" />
     <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE"/>
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.EXPAND_STATUS_BAR"/>
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"

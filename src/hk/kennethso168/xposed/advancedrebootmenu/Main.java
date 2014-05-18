@@ -29,7 +29,7 @@ public class Main implements IXposedHookLoadPackage, IXposedHookZygoteInit{
 	    DualBoot.init();
     }
     
-    private static void log(String message) {
+    public static void log(String message) {
     	if(WRITE_LOGS) XposedBridge.log(LOG_APP_NAME + ": " + message);
     }
     

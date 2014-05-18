@@ -46,6 +46,7 @@ public class ModRebootMenu {
     public static final String PACKAGE_NAME = "android";
     public static final String CLASS_GLOBAL_ACTIONS = "com.android.internal.policy.impl.GlobalActions";
     public static final String CLASS_ACTION = "com.android.internal.policy.impl.GlobalActions.Action";
+    public static final String CLASS_SILENT_TRISTATE_ACTION = "com.android.internal.policy.impl.GlobalActions$SilentModeTriStateAction";
     
     private static Context mContext;
     private static Context armContext;
@@ -127,6 +128,7 @@ public class ModRebootMenu {
         try {
             final Class<?> globalActionsClass = XposedHelpers.findClass(CLASS_GLOBAL_ACTIONS, classLoader);
             final Class<?> actionClass = XposedHelpers.findClass(CLASS_ACTION, classLoader);
+            
 
             XposedBridge.hookAllConstructors(globalActionsClass, new XC_MethodHook() {
                @Override
@@ -286,8 +288,14 @@ public class ModRebootMenu {
                     Object screenshotActionItem = null;
                     Object powerOffActionItem = null;
                     Object airplaneActionItem = null;
+                    Object volumeTristateActionItem = null;
                     Resources res = mContext.getResources();
+                    Class<?> tristateClass = XposedHelpers.findClass(CLASS_SILENT_TRISTATE_ACTION, classLoader);
                     for (Object o : mItems) {
+                    	if (tristateClass.isInstance(o)){
+                    		log("successfully found the volume tristate object");
+                    		volumeTristateActionItem = o;
+                    	}
                     	// search for drawable
                         try {
                             Field f = XposedHelpers.findField(o.getClass(), "mIconResId");
@@ -332,6 +340,7 @@ public class ModRebootMenu {
                             if (resName.contains("airplane")){
                             	airplaneActionItem = o;
                             }
+                            log(o.toString());
                         } catch (NoSuchFieldError nfe) {
                         	// continue
                         } catch (Resources.NotFoundException resnfe) { 
@@ -355,12 +364,14 @@ public class ModRebootMenu {
                     final boolean removeReboot = pref.getBoolean("pref_remove_reboot", false);
                     final boolean removeScreenshot = pref.getBoolean("pref_remove_screenshot", false);
                     final boolean removeAirplane = pref.getBoolean("pref_remove_airplane", false);
+                    final boolean removeVolumeATH = pref.getBoolean("pref_ath_volume_toggle", false);
                     KeyguardManager myKM = (KeyguardManager) mContext.getSystemService(Context.KEYGUARD_SERVICE);
                     if( myKM.inKeyguardRestrictedInputMode()&&antiTheftHelperOn) {
                     	if(powerOffActionItem != null){
                     		mItems.remove(powerOffActionItem);
                     		afterPowerPos--;
                     		afterRebootPos--;
+                    		
                     	}
                     	if(rebootActionItem != null){
                     		mItems.remove(rebootActionItem);
@@ -368,6 +379,9 @@ public class ModRebootMenu {
                     	}
                     	if(airplaneActionItem != null){
                     		mItems.remove(airplaneActionItem);
+                    	}
+                    	if(removeVolumeATH){
+                    		mItems.remove(volumeTristateActionItem);
                     	}
                         BaseAdapter mAdapter = (BaseAdapter) XposedHelpers.getObjectField(param.thisObject, "mAdapter");
                         mAdapter.notifyDataSetChanged();

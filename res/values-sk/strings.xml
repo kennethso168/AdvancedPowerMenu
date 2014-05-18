@@ -68,6 +68,8 @@
 	<string name="remove_screenshot_summ">Oddstráni pôvodnú položku Snímka obrazovky, ak existuje a ak je v časti \'Pridať položky v menu\' funkcia Snímka obrazovky vypnutá</string>
 	<string name="remove_airplane_title">Odstrániť položku Režim v lietadle</string>
 	<string name="remove_airplane_summ">Oddstráni pôvodnú položku Režim v lietadle, ak existuje</string>
+	<string name="ath_fake_poweroff_title">Falošné vypnutie</string>
+	<string name="ath_fake_poweroff_summ">Nahradí skutočné vypnutie falošným na oklamanie zlodeja</string>
 	
 	<string name="sect_debug">Možnosti aplikácie</string>
 	<string name="verbose_log_title">Podrobný protokol</string>
