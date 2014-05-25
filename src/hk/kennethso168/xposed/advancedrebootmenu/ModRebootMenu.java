@@ -40,6 +40,7 @@ import de.robv.android.xposed.XC_MethodReplacement;
 import de.robv.android.xposed.XSharedPreferences;
 import de.robv.android.xposed.XposedBridge;
 import de.robv.android.xposed.XposedHelpers;
+import de.robv.android.xposed.XposedHelpers.ClassNotFoundError;
 
 public class ModRebootMenu {
     private static final String CLASS = "ModRebootMenu.java";
@@ -284,15 +285,27 @@ public class ModRebootMenu {
                     // 1) check if Action has mIconResId field or mMessageResId field
                     // 2) check if the name of the corresponding resource contains "reboot" or "restart" substring
                     log("Searching for existing reboot, screenshot and poweroff action item...");
+                    final boolean removeVolumeATH = pref.getBoolean("pref_ath_volume_toggle", false);
                     Object rebootActionItem = null;
                     Object screenshotActionItem = null;
                     Object powerOffActionItem = null;
                     Object airplaneActionItem = null;
                     Object volumeTristateActionItem = null;
+                    Class<?> tristateClass = null;
                     Resources res = mContext.getResources();
-                    Class<?> tristateClass = XposedHelpers.findClass(CLASS_SILENT_TRISTATE_ACTION, classLoader);
+                    if (removeVolumeATH){
+                    	log("removeATH enabled");
+                    	try{
+                    		tristateClass = XposedHelpers.findClass(CLASS_SILENT_TRISTATE_ACTION, classLoader);
+                    	}catch (ClassNotFoundError cnfe){
+                    		log("error: tristateClass cannot be found!");
+                    	}
+                    }else{
+                    	log("removeATH disabled");
+                    }
+                    
                     for (Object o : mItems) {
-                    	if (tristateClass.isInstance(o)){
+                    	if ((tristateClass != null)&&tristateClass.isInstance(o)){
                     		log("successfully found the volume tristate object");
                     		volumeTristateActionItem = o;
                     	}
@@ -364,7 +377,7 @@ public class ModRebootMenu {
                     final boolean removeReboot = pref.getBoolean("pref_remove_reboot", false);
                     final boolean removeScreenshot = pref.getBoolean("pref_remove_screenshot", false);
                     final boolean removeAirplane = pref.getBoolean("pref_remove_airplane", false);
-                    final boolean removeVolumeATH = pref.getBoolean("pref_ath_volume_toggle", false);
+                    
                     KeyguardManager myKM = (KeyguardManager) mContext.getSystemService(Context.KEYGUARD_SERVICE);
                     if( myKM.inKeyguardRestrictedInputMode()&&antiTheftHelperOn) {
                     	if(powerOffActionItem != null){
