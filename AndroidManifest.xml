@@ -1,11 +1,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="hk.kennethso168.xposed.advancedrebootmenu"
-    android:versionCode="22"
-    android:versionName="9.1.3" >
+    android:versionCode="23"
+    android:versionName="9.1.4" >
     
     <uses-sdk
         android:minSdkVersion="14"
-        android:targetSdkVersion="17" />
+        android:targetSdkVersion="19" />
     <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE"/>
     <uses-permission android:name="android.permission.INTERNET"/>
     <application

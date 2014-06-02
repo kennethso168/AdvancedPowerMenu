@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="confirm_dialog">
+        <item name="enable">Demander une confirmation</item>
+        <item name="disable">Ne pas demander de confirmation</item>
+    </string-array>
+    <!-- Don't change the digits -->
+    <string-array name="confirm_dialog_values">
+        <item name="enable">0</item>
+        <item name="disable">1</item>
+    </string-array>
+    <string-array name="icon_color">
+        <item name="default">Par défaut (Blanc)</item>
+        <item name="dark">Sombre</item>
+        <item name="color">Coloré</item>
+        <item name="existenz">eXistenZ</item>
+    </string-array>
+    <!-- Don't change the digits -->
+    <string-array name="icon_color_values">
+        <item name="default">0</item>
+        <item name="dark">1</item>
+        <item name="color">2</item>
+        <item name="existenz">3</item>
+    </string-array>
+    
+</resources>

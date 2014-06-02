@@ -15,6 +15,7 @@
     <string name="reboot_system1">System1</string>
     <string name="reboot_system2">System2</string>
     <string name="reboot_system12">System1/2</string>
+    <string name="reboot_safe">Safe Mode</string>
 	
 	<!-- Confirmation Dialogs -->
     <string name="reboot_confirm">Your device will reboot.</string>
@@ -74,7 +75,10 @@
 	<string name="remove_airplane_summ">Remove the original airplane mode toggle item if it exists</string>
 	<string name="ath_fake_poweroff_title">Fake power off</string>
 	<string name="ath_fake_poweroff_summ">Replace ATH description with a fake power off button to deceive thieves</string>
-	<string name="remove_volume_state_when_locked">Remove volume state toggle when device is locked</string>
+	<string name="remove_volume_state_when_locked">Remove volume toggle when locked</string>
+	<string name="remove_vol_state_when_locked_summ">Also remove the volume state toggle when the device is at the lockscreen</string>
+	<string name="remove_vol_state_workaround_title">Remove last power menu option</string>
+	<string name="remove_vol_state_workaround_summ">Blindly remove the last option instead of detecting the volume state toggle option. Check this option if removing the volume state toggle doesn\'t work properly and you have the volume state toggle as the last option</string>
 	
 	
 	<string name="sect_debug">App Options</string>

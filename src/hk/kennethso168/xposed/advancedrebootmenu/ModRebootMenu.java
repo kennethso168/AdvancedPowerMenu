@@ -34,6 +34,7 @@ import android.view.WindowManager;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import de.robv.android.xposed.XC_MethodHook;
 import de.robv.android.xposed.XC_MethodHook.Unhook;
 import de.robv.android.xposed.XC_MethodReplacement;
@@ -57,6 +58,7 @@ public class ModRebootMenu {
     private static String mBootloaderStr;
     private static String mRebootSystem1Str;
     private static String mRebootSystem2Str;
+    private static String mRebootSafeStr;
     private static String mScreenshotLabel;
     private static String mQuickDialLabel;
     private static String mExpandStatusBarLabel;
@@ -149,6 +151,7 @@ public class ModRebootMenu {
                    mBootloaderStr = armRes.getString(R.string.reboot_bootloader);
                    mRebootSystem1Str = armRes.getString(R.string.reboot_system1);
                    mRebootSystem2Str = armRes.getString(R.string.reboot_system2);
+                   mRebootSafeStr = armRes.getString(R.string.reboot_safe);
                    
                    mScreenshotLabel = armRes.getString(R.string.take_screenshot);
                    mQuickDialLabel = armRes.getString(R.string.quick_dial);
@@ -286,6 +289,7 @@ public class ModRebootMenu {
                     // 2) check if the name of the corresponding resource contains "reboot" or "restart" substring
                     log("Searching for existing reboot, screenshot and poweroff action item...");
                     final boolean removeVolumeATH = pref.getBoolean("pref_ath_volume_toggle", false);
+                    final boolean removeVolumeATHWorkaround = pref.getBoolean("pref_ath_volume_toggle_workaround", false);
                     Object rebootActionItem = null;
                     Object screenshotActionItem = null;
                     Object powerOffActionItem = null;
@@ -299,6 +303,10 @@ public class ModRebootMenu {
                     		tristateClass = XposedHelpers.findClass(CLASS_SILENT_TRISTATE_ACTION, classLoader);
                     	}catch (ClassNotFoundError cnfe){
                     		log("error: tristateClass cannot be found!");
+                    		if (removeVolumeATHWorkaround){
+                    			log("removeATH workaround enabled. use the last object as the volume tristate object");
+                    			volumeTristateActionItem = mItems.get(mItems.size()-1);
+                    		}		
                     	}
                     }else{
                     	log("removeATH disabled");
@@ -586,12 +594,12 @@ public class ModRebootMenu {
     private static void handleReboot(Context context, String caption, final int mode) {
         try {
             String message;
-            if(mode == 0 || mode == 1 || mode == 4 || mode == 5){
-            	message = mRebootConfirmStr;
-            }else if (mode == 2){
+            if (mode == SEQ_REBOOT_RECOVERY){
             	message = mRebootConfirmRecoveryStr;
-            }else{
+            }else if (mode == SEQ_REBOOT_BOOTLOADER){
             	message = mRebootConfirmBootloaderStr;
+            }else{
+            	message = mRebootConfirmStr;
             }
             xPref.reload();
             String showDialogMode = xPref.getString("pref_confirm_dialog", "3");  //3 is a temp indicator for error
