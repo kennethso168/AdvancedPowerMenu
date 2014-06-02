@@ -8,6 +8,7 @@ Translators
 ===========
 - aljohanei for Arabic translation
 - Jan Žák for Czech translation
+- Christophe Gernez for French translation
 - Philipp Schumann and Fabian2103 for German translation
 - Lear95 for Hebrew translation
 - usb2 for Italian translation
