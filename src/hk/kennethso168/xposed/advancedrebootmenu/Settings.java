@@ -14,6 +14,7 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.Resources;
+import android.os.Build;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceClickListener;
@@ -184,6 +185,12 @@ public class Settings extends Activity {
 				findPreference("pref_rebootsub_system12").setDefaultValue(false);
 				pref_reboot_methods.removePreference(findPreference("pref_rebootsub_system12"));
 			}
+			
+			if (!Build.MANUFACTURER.toLowerCase().contains("sony")) {
+                final PreferenceScreen pref_reboot_methods = (PreferenceScreen) findPreference("pref_reboot_methods");
+                findPreference("pref_rebootsub_flashmode").setDefaultValue(false);
+                pref_reboot_methods.removePreference(findPreference("pref_rebootsub_flashmode"));
+            }
 		}
 		
 		@Override
