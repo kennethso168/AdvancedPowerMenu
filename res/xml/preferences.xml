@@ -14,6 +14,7 @@
             <CheckBoxPreference android:defaultValue="true" android:key="pref_rebootsub_soft" android:title="@string/reboot_soft" />
             <CheckBoxPreference android:defaultValue="true" android:key="pref_rebootsub_recovery" android:title="@string/reboot_recovery" />
             <CheckBoxPreference android:defaultValue="true" android:key="pref_rebootsub_bootloader" android:title="@string/reboot_bootloader" />
+            <CheckBoxPreference android:defaultValue="true" android:key="pref_rebootsub_flashmode" android:title="@string/reboot_flashmode" />
             <CheckBoxPreference android:defaultValue="true" android:key="pref_rebootsub_system12" android:title="@string/reboot_system12" />
             <CheckBoxPreference android:key="pref_rebootsub_safe" android:defaultValue="false" android:enabled="false" android:title="@string/reboot_safe"/>
         </PreferenceScreen></PreferenceCategory>
