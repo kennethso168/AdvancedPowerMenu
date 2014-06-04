@@ -11,11 +11,13 @@
 	<string name="reboot_soft">Soft. reštart</string>
     <string name="reboot_recovery">Recovery</string>
     <string name="reboot_bootloader">Bootloader</string>
+    <string name="reboot_flashmode">Flash režim</string>
 	
 	<!-- Confirmation Dialogs -->
     <string name="reboot_confirm">Vaše zariadenie sa reštaruje.</string>
     <string name="reboot_confirm_recovery">Vaše zariadenie sa reštaruje do recovery.</string>
     <string name="reboot_confirm_bootloader">Vaše zariadenie sa reštaruje do bootloadera.</string>
+    <string name="reboot_confirm_flashmode">Vaše zariadenie sa reštaruje do flash režimu.</string>
 	
 	<!-- Screenshot  -->
 	<string name="take_screenshot">Snímka obrazovky</string>
