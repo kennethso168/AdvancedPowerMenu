@@ -16,6 +16,7 @@
     <string name="reboot_system1">System1</string>
     <string name="reboot_system2">System2</string>
     <string name="reboot_system12">System1/2</string>
+    <string name="reboot_safe">Mode sans échec</string>
 
 <!-- Confirmation Dialogs -->
     <string name="reboot_confirm">Votre appareil va redémarrer.</string>
@@ -76,6 +77,9 @@
 <string name="ath_fake_poweroff_title">Menu éteindre fictif</string>
 <string name="ath_fake_poweroff_summ">Remplace la description PAV par un faux bouton \'Eteindre\'</string>
 <string name="remove_volume_state_when_locked">Masquer le contrôle du volume lorsque l\'appareil est verrouillé</string>
+<string name="remove_vol_state_when_locked_summ">Supprime également le contrôle du volume lorsque l\'appareil est sur l\'écran de verrouillage</string>
+<string name="remove_vol_state_workaround_title">Supprimer le dernier menu</string>
+<string name="remove_vol_state_workaround_summ">Supprime aveuglément le dernier menu au lieu de détecter l\'option de contrôle du volume. Cochez cette option uniquement si l\'option "Supprimer le contrôle du volume" ne fonctionne pas correctement et que le dernier menu est bien le contrôle du volume</string>
 
 
 <string name="sect_debug">Options de l\'appli</string>

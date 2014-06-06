@@ -305,6 +305,8 @@ public class ModRebootMenu {
                     log("Searching for existing reboot, screenshot and poweroff action item...");
                     final boolean removeVolumeATH = pref.getBoolean("pref_ath_volume_toggle", false);
                     final boolean removeVolumeATHWorkaround = pref.getBoolean("pref_ath_volume_toggle_workaround", false);
+                    final boolean removeVolume = pref.getBoolean("pref_remove_volume", false);
+                    final boolean removeVolumeWorkaround = pref.getBoolean("pref_remove_volume_workaround", false);
                     Object rebootActionItem = null;
                     Object screenshotActionItem = null;
                     Object powerOffActionItem = null;
@@ -312,19 +314,19 @@ public class ModRebootMenu {
                     Object volumeTristateActionItem = null;
                     Class<?> tristateClass = null;
                     Resources res = mContext.getResources();
-                    if (removeVolumeATH){
-                    	log("removeATH enabled");
+                    if (removeVolumeATH || removeVolume){
+                    	log("removeVolumeATH or removeVolume enabled");
                     	try{
                     		tristateClass = XposedHelpers.findClass(CLASS_SILENT_TRISTATE_ACTION, classLoader);
                     	}catch (ClassNotFoundError cnfe){
                     		log("error: tristateClass cannot be found!");
-                    		if (removeVolumeATHWorkaround){
-                    			log("removeATH workaround enabled. use the last object as the volume tristate object");
+                    		if (removeVolumeATHWorkaround || removeVolumeWorkaround){
+                    			log("removeVolume (ATH or not) workaround enabled. use the last object as the volume tristate object");
                     			volumeTristateActionItem = mItems.get(mItems.size()-1);
                     		}		
                     	}
                     }else{
-                    	log("removeATH disabled");
+                    	log("removeVolumeATH and removeVolume disabled");
                     }
                     
                     for (Object o : mItems) {
@@ -433,6 +435,9 @@ public class ModRebootMenu {
                     if(removeAirplane){
                     	mItems.remove(airplaneActionItem);
                     }
+                    if(removeVolume){
+                    	mItems.remove(volumeTristateActionItem);
+                    }
                     
                     
                     
@@ -455,38 +460,22 @@ public class ModRebootMenu {
                         mAdapter.notifyDataSetChanged();
                     }
                     
-                    if(advRebootEnabled){
+                    if(advRebootEnabled && (!(myKM.inKeyguardRestrictedInputMode()&&antiTheftHelperOn))){
 	                    if (rebootActionItem != null) {
-	                        log("Existing Reboot action item found! Replacing onPress()");
-	                        mRebootActionHook = XposedHelpers.findAndHookMethod(rebootActionItem.getClass(), 
-	                                "onPress", new XC_MethodReplacement () {
-	                            @Override
-	                            protected Object replaceHookedMethod(MethodHookParam param) throws Throwable {
-	                                if(normalRebootOnly){
-	                                	KeyguardManager myKM = (KeyguardManager) mContext.getSystemService(Context.KEYGUARD_SERVICE);
-	                                    if( myKM.inKeyguardRestrictedInputMode()&&antiTheftHelperOn) {
-	                                    	log("Is at lockscreen and shutdown protection is on");
-	                                    	showLockedDialog();
-	                                    }else{
-		                                	handleReboot(mContext, mRebootStr, SEQ_REBOOT_NORMAL);
-	                                    }
-	                                }else{
-	                                	showDialog();
-	                                }
-	                                return null;
-	                            }
-	                        });
-	                    } else if(!(myKM.inKeyguardRestrictedInputMode()&&antiTheftHelperOn)){
-	                        log("Existing Reboot action item NOT found! Adding new RebootAction item");
-
-	                        Object action = Proxy.newProxyInstance(classLoader, new Class<?>[] { actionClass }, 
-	                                new RebootAction());
-	                        mItems.add(afterPowerPos, action);
-	                        afterRebootPos++;
-	                        BaseAdapter mAdapter = (BaseAdapter) XposedHelpers.getObjectField(param.thisObject, "mAdapter");
-	                        mAdapter.notifyDataSetChanged(); 
-
+	                    	log("Existing Reboot action item found! Removing it.");
+	                    	mItems.remove(rebootActionItem);
+                    		afterRebootPos--;
 	                    }
+                        log("Adding new RebootAction item");
+
+                        Object action = Proxy.newProxyInstance(classLoader, new Class<?>[] { actionClass }, 
+                                new RebootAction());
+                        mItems.add(afterPowerPos, action);
+                        afterRebootPos++;
+                        BaseAdapter mAdapter = (BaseAdapter) XposedHelpers.getObjectField(param.thisObject, "mAdapter");
+                        mAdapter.notifyDataSetChanged(); 
+
+	                    
                     }
                     if(screenshotEnabled){
 	                    if (screenshotActionItem != null) {
