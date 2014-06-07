@@ -46,6 +46,8 @@
 	<string name="sect_reboot_item">Reboot menu item</string>
 	<string name="enable_reboot_title">Advanced reboot</string>
 	<string name="enable_reboot_summ">Add/replace the reboot option which allows different reboot methods</string>
+	<string name="reboot_workaround_title">Reboot workaround</string>
+	<string name="reboot_workaround_summ">Use an alternate implementation for replacing the reboot option. Check this if you have an original reboot option and advanced reboot does not work properly</string>
 	<string name="sect_add_items">Add menu items</string>
 	<string name="enable_screenshot_title">Screenshot</string>
 	<string name="enable_screenshot_summ">Add the option which enables screenshot functionality if none originally exists</string>

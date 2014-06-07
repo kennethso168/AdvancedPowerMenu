@@ -460,20 +460,54 @@ public class ModRebootMenu {
                         mAdapter.notifyDataSetChanged();
                     }
                     
+                    final boolean rebootWorkaroundEnabled = pref.getBoolean("pref_reboot_workaround", false);
                     if(advRebootEnabled && (!(myKM.inKeyguardRestrictedInputMode()&&antiTheftHelperOn))){
 	                    if (rebootActionItem != null) {
-	                    	log("Existing Reboot action item found! Removing it.");
-	                    	mItems.remove(rebootActionItem);
-                    		afterRebootPos--;
-	                    }
-                        log("Adding new RebootAction item");
+	                    	log("Existing Reboot action item found!");
+	                    	if(rebootWorkaroundEnabled){
+	                    		log("Replacing onPress() of existing reboot action item");
+		                        mRebootActionHook = XposedHelpers.findAndHookMethod(rebootActionItem.getClass(), 
+		                                "onPress", new XC_MethodReplacement () {
+				                            @Override
+				                            protected Object replaceHookedMethod(MethodHookParam param) throws Throwable {
+				                                if(normalRebootOnly){
+				                                	KeyguardManager myKM = (KeyguardManager) mContext.getSystemService(Context.KEYGUARD_SERVICE);
+				                                    if( myKM.inKeyguardRestrictedInputMode()&&antiTheftHelperOn) {
+				                                    	log("Is at lockscreen and shutdown protection is on");
+				                                    	showLockedDialog();
+				                                    }else{
+					                                	handleReboot(mContext, mRebootStr, SEQ_REBOOT_NORMAL);
+				                                    }
+				                                }else{
+				                                	showDialog();
+				                                }
+				                                return null;
+		                            }
+		                        });
+	                    	}else{
+	                    		log("Removing onPress() of existing reboot action item");
+	                    		mItems.remove(rebootActionItem);
+	                    		afterRebootPos--;
+	                    		log("Adding back new RebootAction item");
 
-                        Object action = Proxy.newProxyInstance(classLoader, new Class<?>[] { actionClass }, 
-                                new RebootAction());
-                        mItems.add(afterPowerPos, action);
-                        afterRebootPos++;
-                        BaseAdapter mAdapter = (BaseAdapter) XposedHelpers.getObjectField(param.thisObject, "mAdapter");
-                        mAdapter.notifyDataSetChanged(); 
+	                            Object action = Proxy.newProxyInstance(classLoader, new Class<?>[] { actionClass }, 
+	                                    new RebootAction());
+	                            mItems.add(afterPowerPos, action);
+	                            afterRebootPos++;
+	                            BaseAdapter mAdapter = (BaseAdapter) XposedHelpers.getObjectField(param.thisObject, "mAdapter");
+	                            mAdapter.notifyDataSetChanged();
+	                    	}
+	                    }else{
+	                    	log("Existing Reboot action item NOT found! Adding new RebootAction item");
+
+                            Object action = Proxy.newProxyInstance(classLoader, new Class<?>[] { actionClass }, 
+                                    new RebootAction());
+                            mItems.add(afterPowerPos, action);
+                            afterRebootPos++;
+                            BaseAdapter mAdapter = (BaseAdapter) XposedHelpers.getObjectField(param.thisObject, "mAdapter");
+                            mAdapter.notifyDataSetChanged();
+	                    }
+                         
 
 	                    
                     }
