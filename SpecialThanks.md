@@ -3,6 +3,7 @@ Developers
 - kennethso168 (Kenneth So) - Main Developer
 - Tungstwenty - Developer of the Quick Dial function
 - M1cha - Developer of Dualboot function on Xiaomi devices
+- CamberCreak - Developer of reboot to flashmode on sony devices
 
 Translators
 ===========
