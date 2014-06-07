@@ -37,7 +37,7 @@ public class ToggleDataAction extends SinglePressAction {
 		boolean mobileDataEnabled = false; // Assume disabled
 	    ConnectivityManager cm = (ConnectivityManager) mContext.getSystemService(Context.CONNECTIVITY_SERVICE);
 	    try {
-	        Class<?> cmClass = Class.forName(cm.getClass().getName());
+	        Class cmClass = Class.forName(cm.getClass().getName());
 	        Method method = cmClass.getDeclaredMethod("getMobileDataEnabled");
 	        method.setAccessible(true); // Make the method callable
 	        // get the setting for "mobile data"
@@ -76,6 +76,7 @@ public class ToggleDataAction extends SinglePressAction {
 
 	@Override
 	protected void onPress() {
+		// TODO Auto-generated method stub
 		try {
 			ConnectivityManager dataManager;
 			dataManager  = (ConnectivityManager) mContext.getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -88,15 +89,18 @@ public class ToggleDataAction extends SinglePressAction {
 			}
 			
 		} catch (IllegalArgumentException e) {
+			// TODO Auto-generated catch block
 			log(e);
 			e.printStackTrace();
 		} catch (IllegalAccessException e) {
-			log(e);
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (NoSuchMethodException e) {
+			// TODO Auto-generated catch block
 			log(e);
 			e.printStackTrace();
 		} catch (InvocationTargetException e) {
+			// TODO Auto-generated catch block
 			log(e);
 			e.printStackTrace();
 		}
