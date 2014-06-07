@@ -1,5 +1,6 @@
 <resources>
 
+	<!-- test message -->
 	<!--Basic Information -->
 	<!--Not necessary to translate as these are just descriptions. However if you like you can still translate these. -->
 	<string name="app_name">Advanced Power Menu</string>
@@ -11,11 +12,17 @@
 	<string name="reboot_soft">ソフトリブート</string>
 	<string name="reboot_recovery">リカバリ</string>
 	<string name="reboot_bootloader">Bootloader</string>
+	<string name="reboot_flashmode">Flash Mode</string>
+	<string name="reboot_system1">システム1</string>
+	<string name="reboot_system2">システム2</string>
+	<string name="reboot_system12">システム1/2</string>
+	<string name="reboot_safe">セーフモード</string>
 	
 	<!-- Confirmation Dialogs -->
 	<string name="reboot_confirm">端末を再起動します。</string>
 	<string name="reboot_confirm_recovery">リカバリへ再起動します。</string>
 	<string name="reboot_confirm_bootloader">Bootloaderへ再起動します。</string>
+	<string name="reboot_confirm_flashmode">Flash Modeへ再起動します。</string>
 	
 	<!-- Screenshot  -->
 	<string name="take_screenshot">スクリーンショット</string>
@@ -29,8 +36,7 @@
 	
 	<!-- Anti-theft helper -->
 	<string name="no_locked_off_dialog">誤操作･盗難防止機能が有効なためロック中は電源を切ったりデータ通信をオフにしたり出来ません。ロックを解除してやり直してください。</string>
-	<!-- Christmas Easter Egg -->
-	<string name="device_is_locked">メリークリスマス</string>
+	<string name="device_is_locked">ロックされています</string>
 	
 	<!-- Preference Screen -->
 	<string name="note_title">注意</string>
@@ -46,7 +52,9 @@
 	<string name="confirm_dialog_title">確認ダイアログ</string>
 	<string name="quick_dial_number">クイック発信番号</string>
 	<string name="quick_dial_note">空のままにするとこの機能を無効にします。</string>
+	<string name="quick_dial_label">クイック発信オプションテキスト</string>
 	<string name="disabled">無効</string>
+	<string name="label_default">デフォルト</string>
 	<string name="icon_color_title">アイコンのテーマ色</string>
 	<string name="reboot_methods_title">表示する再起動方法&#8230;</string>
 	<string name="expand_statusbar_title">通知領域を開く</string>
@@ -54,14 +62,27 @@
 	<string name="data_toggle">モバイルデータトグル</string>
 	<string name="data_toggle_summ">モバイルデータ通信をオンオフするオプションを追加します。</string>
 	<string name="sect_remove_items">メニューアイテムの削除</string>
+	
+	
+	
 	<string name="no_locked_off_title">誤操作･盗難防止</string>
 	<string name="no_locked_off_summ">ロックされている時に電源を切ったり再起動したり、データ通信をオフにしたりできないようにします。</string>
+	<string name="ath_hide_desc_title">盗難防止機能の説明を隠す</string>
+	<string name="ath_hide_desc_summ">電源メニューからロックされているという説明をなくし、泥棒に何が起きているか分からないようにさせます。</string>
 	<string name="remove_reboot_title">再起動アイテムの削除</string>
 	<string name="remove_reboot_summ">元からある再起動アイテムを削除します。</string>
 	<string name="remove_screenshot_title">スクリーンショットの削除</string>
 	<string name="remove_screenshot_summ">元から「スクリーンショット」があり「メニューアイテムの追加」で無効にしたときに電源メニューに表示しないようにします。</string>
 	<string name="remove_airplane_title">機内モードトグルの削除</string>
 	<string name="remove_airplane_summ">元から機内モードトグルがある場合電源メニューに表示しないようにします。</string>
+	<string name="ath_fake_poweroff_title">「電源を切る」の偽装</string>
+	<string name="ath_fake_poweroff_summ">盗難防止機能の説明を「電源を切る」に偽装します。</string>
+	<string name="remove_volume_state_when_locked">ロック中は音量トグルを隠す</string>
+	<string name="remove_vol_state_when_locked_summ">ロック画面で音量トグルを隠すようにします。</string>
+	<string name="remove_vol_state_workaround_title">一番下のアイテムを隠す</string>
+	<string name="remove_vol_state_workaround_summ">音量状態トグルアイテムを検出する代わりに電源メニューの一番下のアイテムを隠します。音量状態トグルを隠すオプションが動作せず、一番下に音量状態トグルがあるときにチェックしてください。</string>
+	<string name="remove_vol_state_title">音量状態トグルアイテムを隠す</string>
+	<string name="remove_vol_state_summ">音量トグルを隠すようにします。</string>
 
 	<string name="sect_debug">アプリオプション</string>
 	<string name="verbose_log_title">詳細なログを残す</string>
@@ -71,11 +92,17 @@
 
 	<string name="sect_about">このアプリについて</string>
 	<string name="app_info_title">アプリ情報</string>
-	<string name="app_info_before">"Advaced Power Menu バージョン"</string>	
+	<string name="app_info_before">"Advaced Power Menu バージョン"</string>
+	
+	<string name="readme_title">著作権および免責事項</string>
+
+
 
 	<string name="license_title">オープンソースライセンス</string>
 	<string name="special_thanks_title">協力者</string>
-	<string name="xda_title">xda threadを開く</string>
+	<string name="troubleshoot_title">トラブルシューティング</string>
+	<string name="troubleshoot_content">What can you do if the app doesn\'t work / if issue happens?\n\nStep 1: Try fixing it yourself\n1. Make sure that you have read the prerequisites and installation guide thoroughly/\n2. Reboot your phone TWICE (TWO TIMES)\nFor every single xposed mod, a reboot after installation is necessary. But that might not be enough as users have reported that the app doesn\'t work after a single reboot, but things get right when they reboot again. So rebooting TWICE is recommended\n3. Disable all other Xposed Mod\nXposed framework do take care of mods that hook the same method, but sometimes conflicts can still happen. Try disabling all mods except mine in the Xposed Installer. Then reboot and see if things get right.\n4. Clear app data/reinstalling my app\nThe settings may get messed up when my app updates, so try reinstalling and see if it helps.\n5. Use an older version of my app\nTry this and see if it helps. If so that means a new update breaks something old and please tell me about that!\nIf all the above doesn\'t work, you can then send me an issue report.\n\nStep 2: Tell me and see if I can fix it\n(Please don\'t do this before doing step 1)\nPlease send me an issue report including\n1) a description of the issue\n2) screenshots (if it helps explain the situation)\n3) The device, ROM, Android OS version, and the app version\n4) debug.log (Please enable verbose logging in my app first, then do something like long-pressing the power button)(you may obtain the log in xposed installer 2.4)\n5) Anything else you think it\'s important\nthrough one of the following means:\n1) xda forum thread/PM (preferred)\n2) e-mail (NOTE: please begin your subject with [APM] so I can better sort my emails. Thanks)\nPlease note that I can\'t solve the problem with insufficient information. I will also IGNORE any email with NO BODY TEXT (I use gmail)\n\nKeep in mind that even with all the information I still may not be able to fix your problem because I do not own your device and I\'m only a novice android developer. Sorry.</string>
+	<string name="xda_title">xdaサポートページを開く</string>
 	<string name="email_title">開発者にメールを送信</string>
 	<string name="donate_title">寄付</string>
 	
