@@ -1,3 +1,8 @@
+NOTE
+====
+I restricted editing to collaborators only. GitHub is really confusing and I accidentally reverted the hard work today! So this will prevent future occurrances.
+If you are a translator, please directly send me the strings. If you want to contribute, negotiate with me. Thanks.
+
 AdvancedPowerMenu
 ==================
 
