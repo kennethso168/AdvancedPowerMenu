@@ -409,17 +409,24 @@ public class ModRebootMenu {
                     		mItems.remove(powerOffActionItem);
                     		afterPowerPos--;
                     		afterRebootPos--;
-                    		
+                    		BaseAdapter mAdapter = (BaseAdapter) XposedHelpers.getObjectField(param.thisObject, "mAdapter");
+                            mAdapter.notifyDataSetChanged();
                     	}
                     	if(rebootActionItem != null){
                     		mItems.remove(rebootActionItem);
                     		afterRebootPos--;
+                    		BaseAdapter mAdapter = (BaseAdapter) XposedHelpers.getObjectField(param.thisObject, "mAdapter");
+                            mAdapter.notifyDataSetChanged();
                     	}
                     	if(airplaneActionItem != null){
                     		mItems.remove(airplaneActionItem);
+                    		BaseAdapter mAdapter = (BaseAdapter) XposedHelpers.getObjectField(param.thisObject, "mAdapter");
+                            mAdapter.notifyDataSetChanged();
                     	}
                     	if(removeVolumeATH){
                     		mItems.remove(volumeTristateActionItem);
+                    		BaseAdapter mAdapter = (BaseAdapter) XposedHelpers.getObjectField(param.thisObject, "mAdapter");
+                            mAdapter.notifyDataSetChanged();
                     	}
                         BaseAdapter mAdapter = (BaseAdapter) XposedHelpers.getObjectField(param.thisObject, "mAdapter");
                         mAdapter.notifyDataSetChanged();
@@ -428,15 +435,23 @@ public class ModRebootMenu {
                     	if(mItems.remove(rebootActionItem)){
                     		afterRebootPos--;
                     	}
+                    	BaseAdapter mAdapter = (BaseAdapter) XposedHelpers.getObjectField(param.thisObject, "mAdapter");
+                        mAdapter.notifyDataSetChanged();
                     }
                     if(removeScreenshot && !screenshotEnabled){
                     	mItems.remove(screenshotActionItem);
+                    	BaseAdapter mAdapter = (BaseAdapter) XposedHelpers.getObjectField(param.thisObject, "mAdapter");
+                        mAdapter.notifyDataSetChanged();
                     }
                     if(removeAirplane){
                     	mItems.remove(airplaneActionItem);
+                    	BaseAdapter mAdapter = (BaseAdapter) XposedHelpers.getObjectField(param.thisObject, "mAdapter");
+                        mAdapter.notifyDataSetChanged();
                     }
                     if(removeVolume){
                     	mItems.remove(volumeTristateActionItem);
+                    	BaseAdapter mAdapter = (BaseAdapter) XposedHelpers.getObjectField(param.thisObject, "mAdapter");
+                        mAdapter.notifyDataSetChanged();
                     }
                     
                     
@@ -453,11 +468,13 @@ public class ModRebootMenu {
                     		action = Proxy.newProxyInstance(classLoader, new Class<?>[] { actionClass },
                                     new AntiTheftHelperAction(mContext, mDeviceLockedLabel, mDeviceLockedIcon, noLockedOffDialogTitle, noLockedOffDialogMsg));
                     	}
-                        mItems.add(0, action);
+                        powerOffActionItem = action;
+                    	mItems.add(0, action);
                         afterPowerPos++;
                         afterRebootPos++;
                         BaseAdapter mAdapter = (BaseAdapter) XposedHelpers.getObjectField(param.thisObject, "mAdapter");
                         mAdapter.notifyDataSetChanged();
+                        
                     }
                     
                     final boolean rebootWorkaroundEnabled = pref.getBoolean("pref_reboot_workaround", false);
@@ -488,13 +505,16 @@ public class ModRebootMenu {
 	                    		log("Removing onPress() of existing reboot action item");
 	                    		mItems.remove(rebootActionItem);
 	                    		afterRebootPos--;
+	                    		BaseAdapter mAdapter = (BaseAdapter) XposedHelpers.getObjectField(param.thisObject, "mAdapter");
+	                            mAdapter.notifyDataSetChanged();
 	                    		log("Adding back new RebootAction item");
-
 	                            Object action = Proxy.newProxyInstance(classLoader, new Class<?>[] { actionClass }, 
 	                                    new RebootAction());
+	                            log("afterRebootPos = "+afterRebootPos);
+	                            log("afterPowerPos = "+afterPowerPos);
 	                            mItems.add(afterPowerPos, action);
+	                            rebootActionItem = action;
 	                            afterRebootPos++;
-	                            BaseAdapter mAdapter = (BaseAdapter) XposedHelpers.getObjectField(param.thisObject, "mAdapter");
 	                            mAdapter.notifyDataSetChanged();
 	                    	}
 	                    }else{
@@ -504,10 +524,11 @@ public class ModRebootMenu {
                                     new RebootAction());
                             mItems.add(afterPowerPos, action);
                             afterRebootPos++;
+                            rebootActionItem = action;
                             BaseAdapter mAdapter = (BaseAdapter) XposedHelpers.getObjectField(param.thisObject, "mAdapter");
                             mAdapter.notifyDataSetChanged();
 	                    }
-                         
+                        log("rebootActionItem "+(rebootActionItem==null?"is null":"is not null")); 
 
 	                    
                     }
@@ -547,6 +568,7 @@ public class ModRebootMenu {
                     if (dataToggleEnabled && !(myKM.inKeyguardRestrictedInputMode()&&antiTheftHelperOn)){
                     	Object action = Proxy.newProxyInstance(classLoader, new Class<?>[] { actionClass },
                                 new ToggleDataAction(mContext, mToggleDataOnLabel, mToggleDataOffLabel, mToggleDataIcon));
+                    	log("rebootActionItem "+(rebootActionItem==null?"is null":"is not null"));
                         mItems.add(afterRebootPos, action);
                         BaseAdapter mAdapter = (BaseAdapter) XposedHelpers.getObjectField(param.thisObject, "mAdapter");
                         mAdapter.notifyDataSetChanged();
@@ -576,6 +598,45 @@ public class ModRebootMenu {
         }
     }
 
+//    private static int getAfterPowerPos(List<Object> mItems, Object powerItem){
+//    	int size = mItems.size();
+//    	if(powerItem != null){
+//    		int index = mItems.indexOf(powerItem) + 1;
+//    		if(index>size){
+//    			log("obtained index > size, returning size = "+size);
+//    			return size;
+//    		}else{
+//    			log("successfully determined, returning index = "+index);
+//    			return index;
+//    		}
+//    	}else{
+//    		log("powerItem NOT found, returning 0");
+//    		return 0;
+//    	}
+//    }
+//    private static int getAfterRebootPos(List<Object> mItems, Object powerItem, Object rebootItem){	
+//    	int size = mItems.size();
+//    	if(rebootItem != null){
+//    		log("Index of reboot item="+mItems.indexOf(rebootItem));
+//    		int index = (int) mItems.indexOf(rebootItem);
+//    		if(index!=-1){
+//    			int pos = mItems.indexOf(rebootItem) + 1;
+//        		if(pos>size){
+//        			log("AfterRebootPos: obtained index > size, returning size = "+size);
+//        			return size;
+//        		}else{
+//        			log("AfterRebootPos: successfully determined, returning index = "+pos);
+//        			return pos;
+//        		}
+//    		}else{
+//    			log("rebootItem NOT found, returning afterPowerPos");
+//    			return getAfterPowerPos(mItems, powerItem);
+//    		}
+//    		
+//    	}
+//    	log("Error: rebootItem is null");
+//    	return 0;
+//    }
     private static void showDialog() {
         if (mContext == null) {
             log("mContext is null - aborting");
