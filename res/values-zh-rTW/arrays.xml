@@ -1,9 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="confirm_dialog">
         <item name="enable">顯示所有對話框</item>
         <item name="disable">重啟時不要顯示對話框</item>
     </string-array>
+    <!-- Don't change the digits -->
     <string-array name="confirm_dialog_values">
         <item name="enable">0</item>
         <item name="disable">1</item>
@@ -14,11 +15,12 @@
         <item name="color">彩色</item>
         <item name="existenz">eXistenZ</item>
     </string-array>
-    <!-- Don't translate all the below strings -->
+    <!-- Don't change the digits -->
     <string-array name="icon_color_values">
         <item name="default">0</item>
         <item name="dark">1</item>
         <item name="color">2</item>
         <item name="existenz">3</item>
     </string-array>
+    
 </resources>
