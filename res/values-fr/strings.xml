@@ -6,24 +6,26 @@
 <!--Not necessary to translate as these are just descriptions. However if you like you can still translate these. -->
     <string name="app_name">Menu Alimentation Avancé</string>
     <string name="launcher_name">Menu Alim Avancé</string>
-<string name="xposed_description">Ajouter des raccourcis de redémarrage, redémarrage logiciel, récupération et capture d\'écran au menu d\'alimentation.\nDéveloppé par kennethso168@xda</string>
-<string name="credits_msg">Développé par kennethso168@xda</string>
+	<string name="xposed_description">Ajouter des raccourcis de redémarrage, redémarrage logiciel, récupération et capture d\'écran au menu d\'alimentation.\nDéveloppé par kennethso168@xda</string>
+	<string name="credits_msg">Développé par kennethso168@xda</string>
     
 <!-- Reboot Options -->
-<string name="reboot_soft">Redémarrage logiciel</string>
+	<string name="reboot_soft">Redémarrage logiciel</string>
     <string name="reboot_recovery">Récupération</string>
     <string name="reboot_bootloader">Bootloader</string>
+	<string name="reboot_flashmode">Mode flash</string>
     <string name="reboot_system1">System1</string>
     <string name="reboot_system2">System2</string>
     <string name="reboot_system12">System1/2</string>
     <string name="reboot_safe">Mode sans échec</string>
-
+	
 <!-- Confirmation Dialogs -->
     <string name="reboot_confirm">Votre appareil va redémarrer.</string>
     <string name="reboot_confirm_recovery">Votre appareil va redémarrer en mode récupération.</string>
     <string name="reboot_confirm_bootloader">Votre appareil va redémarrer en mode bootloader.</string>
+    <string name="reboot_confirm_flashmode">Votre appareil va redémarrer en mode flash.</string>
 
-<!-- Screenshot -->
+	<!-- Screenshot -->
 <string name="take_screenshot">Capture d\'écran</string>
 
 <!-- Quick dial -->
@@ -45,6 +47,8 @@
 <string name="sect_reboot_item">Menu redémarrer</string>
 <string name="enable_reboot_title">Redémarrage avancé</string>
 <string name="enable_reboot_summ">Ajoute/remplace l\'option de redémarrage avec plusieurs méthodes</string>
+<string name="reboot_workaround_title">Contournement redémarrage</string>
+<string name="reboot_workaround_summ">Utilise une méthode alternative pour remplacer le menu de redémarrage. Cocher cette option s\'il y a d\'origine un menu redémarrer et que les options de redémarrage avancées ne fonctionnent pas correctement</string>
 <string name="sect_add_items">Ajouter des commandes au menu</string>
 <string name="enable_screenshot_title">Capture d\'écran</string>
 <string name="enable_screenshot_summ">Ajoute l\'option de capture d\écran si celle-ci n\'existe pas d\'origine</string>
@@ -69,18 +73,19 @@
 <string name="ath_hide_desc_title">Masquer la description PAV</string>
 <string name="ath_hide_desc_summ">Ne pas afficher l\'option \'Appareil verrouillé\' dans le menu d\'alimentation, ainsi un voleur n\'aura pas d\'indication sur ce qui se passe</string>
 <string name="remove_reboot_title">Enlever le menu redémarrage</string>
-<string name="remove_reboot_summ">Enlève le menu de redémarrage d\'origine s\'il existe et le redémarrage avancé est arrêté</string>
-<string name="remove_screenshot_title">Enlever le menu capture d\'écran</string>
-<string name="remove_screenshot_summ">Enlève le menu de capture d\'écran d\'origine s\'il existe et désactive l\'option capture d\'écran dans la section \'Ajouter des commandes au menu\'</string>
+<string name="remove_reboot_summ">Supprime le menu de redémarrage d\'origine s\'il existe et le redémarrage avancé est arrêté</string>
+<string name="remove_screenshot_title">Enlever la capture d\'écran</string>
+<string name="remove_screenshot_summ">Supprime le menu de capture d\'écran d\'origine s\'il existe et désactive l\'option capture d\'écran dans la section \'Ajouter des commandes au menu\'</string>
 <string name="remove_airplane_title">Enlever le menu mode avion</string>
-<string name="remove_airplane_summ">Enlève le menu de mode avion d\'origine s\'il existe</string>
-<string name="ath_fake_poweroff_title">Menu éteindre fictif</string>
+<string name="remove_airplane_summ">Supprime le menu de mode avion d\'origine s\'il existe</string>
+<string name="ath_fake_poweroff_title">Faux menu d\'arrêt</string>
 <string name="ath_fake_poweroff_summ">Remplace la description PAV par un faux bouton \'Eteindre\'</string>
-<string name="remove_volume_state_when_locked">Masquer le contrôle du volume lorsque l\'appareil est verrouillé</string>
-<string name="remove_vol_state_when_locked_summ">Supprime également le contrôle du volume lorsque l\'appareil est sur l\'écran de verrouillage</string>
-<string name="remove_vol_state_workaround_title">Supprimer le dernier menu</string>
+<string name="remove_volume_state_when_locked">Enlever le contrôle du volume lorsque l\'appareil est verrouillé</string>
+<string name="remove_vol_state_when_locked_summ">Supprime le contrôle du volume lorsque l\'appareil est sur l\'écran de verrouillage</string>
+<string name="remove_vol_state_workaround_title">Enlever le dernier menu</string>
 <string name="remove_vol_state_workaround_summ">Supprime aveuglément le dernier menu au lieu de détecter l\'option de contrôle du volume. Cochez cette option uniquement si l\'option "Supprimer le contrôle du volume" ne fonctionne pas correctement et que le dernier menu est bien le contrôle du volume</string>
-
+<string name="remove_vol_state_title">Enlever le contrôle du volume</string>
+<string name="remove_vol_state_summ">Supprime le menu de contrôle du volume</string>
 
 <string name="sect_debug">Options de l\'appli</string>
 <string name="verbose_log_title">Journalisation</string>

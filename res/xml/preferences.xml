@@ -1,74 +1,216 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
-    <Preference android:title="@string/note_title" android:summary="@string/note_summ" android:key="pref_note"></Preference>
-    <PreferenceCategory android:title="@string/sect_menu_options" android:key="pref_menu_options">
-        
-        
-<CheckBoxPreference android:summary="@string/no_locked_off_summ" android:title="@string/no_locked_off_title" android:key="pref_no_locked_off" android:defaultValue="false"/>
-        
-        <CheckBoxPreference android:summary="@string/ath_hide_desc_summ" android:key="pref_ath_hide_desc" android:title="@string/ath_hide_desc_title" android:dependency="pref_no_locked_off" android:defaultValue="false"/>
-        <CheckBoxPreference android:summary="@string/ath_fake_poweroff_summ" android:key="pref_ath_fake_poweroff" android:title="@string/ath_fake_poweroff_title" android:dependency="pref_no_locked_off" android:defaultValue="false"/>
-        <CheckBoxPreference android:key="pref_ath_volume_toggle" android:title="@string/remove_volume_state_when_locked" android:defaultValue="false" android:dependency="pref_no_locked_off" android:summary="@string/remove_vol_state_when_locked_summ"/><CheckBoxPreference android:title="@string/remove_vol_state_workaround_title" android:key="pref_ath_volume_toggle_workaround" android:summary="@string/remove_vol_state_workaround_summ" android:defaultValue="false" android:dependency="pref_ath_volume_toggle"/><ListPreference android:key="pref_icon_color" android:title="@string/icon_color_title" android:entryValues="@array/icon_color_values" android:entries="@array/icon_color" android:defaultValue="@string/icon_color_title_default"/>
-        <PreferenceScreen android:key="pref_modify_items" android:title="@string/modify_menu_items">
-            <PreferenceCategory android:key="pref_reboot_item" android:title="@string/sect_reboot_item"><CheckBoxPreference android:summary="@string/enable_reboot_summ" android:key="pref_enable_reboot" android:title="@string/enable_reboot_title" android:defaultValue="true" android:disableDependentsState="true"/><CheckBoxPreference android:summary="@string/reboot_workaround_summ" android:title="@string/reboot_workaround_title" android:key="pref_reboot_workaround" android:defaultValue="false" /><ListPreference android:entries="@array/confirm_dialog" android:key="pref_confirm_dialog" android:title="@string/confirm_dialog_title" android:defaultValue="@string/confirm_dialog_default" android:entryValues="@array/confirm_dialog_values" /><PreferenceScreen android:title="@string/reboot_methods_title" android:key="pref_reboot_methods" android:persistent="false">
-            <CheckBoxPreference android:defaultValue="true" android:key="pref_rebootsub_soft" android:title="@string/reboot_soft" />
-            <CheckBoxPreference android:defaultValue="true" android:key="pref_rebootsub_recovery" android:title="@string/reboot_recovery" />
-            <CheckBoxPreference android:defaultValue="true" android:key="pref_rebootsub_bootloader" android:title="@string/reboot_bootloader" />
-            <CheckBoxPreference android:defaultValue="false" android:key="pref_rebootsub_flashmode" android:title="@string/reboot_flashmode" />
-            <CheckBoxPreference android:defaultValue="false" android:key="pref_rebootsub_system12" android:title="@string/reboot_system12" />
-            <CheckBoxPreference android:key="pref_rebootsub_safe" android:defaultValue="false" android:enabled="false" android:title="@string/reboot_safe"/>
-        </PreferenceScreen>
-            
-</PreferenceCategory>
-            <PreferenceCategory android:key="pref_add_items" android:title="@string/sect_add_items"><CheckBoxPreference android:summary="@string/enable_screenshot_summ" android:key="pref_enable_screenshot" android:title="@string/enable_screenshot_title" android:defaultValue="true" android:disableDependentsState="true"/><EditTextPreference android:key="pref_quick_dial_number" android:title="@string/quick_dial_number" android:inputType="phone" android:dialogMessage="@string/quick_dial_note"/>
-        
-        <EditTextPreference android:key="pref_quick_dial_label" android:title="@string/quick_dial_label"/><CheckBoxPreference android:summary="@string/data_toggle_summ" android:key="pref_data_toggle" android:title="@string/data_toggle"/>
-        
-</PreferenceCategory>
-            <PreferenceCategory android:key="pref_remove_items" android:title="@string/sect_remove_items">
-                <CheckBoxPreference android:key="pref_remove_reboot" android:title="@string/remove_reboot_title" android:summary="@string/remove_reboot_summ" android:defaultValue="false" android:dependency="pref_enable_reboot"/>
-                <CheckBoxPreference android:key="pref_remove_screenshot" android:title="@string/remove_screenshot_title" android:summary="@string/remove_screenshot_summ" android:defaultValue="false" android:dependency="pref_enable_screenshot"/>
-                <CheckBoxPreference android:key="pref_remove_airplane" android:title="@string/remove_airplane_title" android:summary="@string/remove_airplane_summ" android:defaultValue="false"/>
-                <CheckBoxPreference android:key="pref_remove_volume" android:title="@string/remove_vol_state_title" android:summary="@string/remove_vol_state_summ" android:defaultValue="false"/>
-                <CheckBoxPreference android:title="@string/remove_vol_state_workaround_title" android:summary="@string/remove_vol_state_workaround_summ" android:dependency="pref_remove_volume" android:key="pref_remove_volume_workaround" android:defaultValue="false"/>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <Preference
+        android:key="pref_note"
+        android:summary="@string/note_summ"
+        android:title="@string/note_title"/>
+    <PreferenceCategory
+        android:key="pref_menu_options"
+        android:title="@string/sect_menu_options">
+
+
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="pref_no_locked_off"
+            android:summary="@string/no_locked_off_summ"
+            android:title="@string/no_locked_off_title" />
+
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:dependency="pref_no_locked_off"
+            android:key="pref_ath_hide_desc"
+            android:summary="@string/ath_hide_desc_summ"
+            android:title="@string/ath_hide_desc_title" />
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:dependency="pref_no_locked_off"
+            android:key="pref_ath_fake_poweroff"
+            android:summary="@string/ath_fake_poweroff_summ"
+            android:title="@string/ath_fake_poweroff_title" />
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:dependency="pref_no_locked_off"
+            android:key="pref_ath_volume_toggle"
+            android:summary="@string/remove_vol_state_when_locked_summ"
+            android:title="@string/remove_volume_state_when_locked" />
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:dependency="pref_ath_volume_toggle"
+            android:key="pref_ath_volume_toggle_workaround"
+            android:summary="@string/remove_vol_state_workaround_summ"
+            android:title="@string/remove_vol_state_workaround_title" />
+        <ListPreference
+            android:defaultValue="@string/icon_color_title_default"
+            android:entries="@array/icon_color"
+            android:entryValues="@array/icon_color_values"
+            android:key="pref_icon_color"
+            android:title="@string/icon_color_title" />
+        <PreferenceScreen
+            android:key="pref_modify_items"
+            android:title="@string/modify_menu_items">
+            <PreferenceCategory
+                android:key="pref_reboot_item"
+                android:title="@string/sect_reboot_item">
+                <CheckBoxPreference
+                    android:defaultValue="true"
+                    android:disableDependentsState="true"
+                    android:key="pref_enable_reboot"
+                    android:summary="@string/enable_reboot_summ"
+                    android:title="@string/enable_reboot_title" />
+                <CheckBoxPreference
+                    android:defaultValue="false"
+                    android:key="pref_reboot_workaround"
+                    android:summary="@string/reboot_workaround_summ"
+                    android:title="@string/reboot_workaround_title" />
+                <ListPreference
+                    android:defaultValue="@string/confirm_dialog_default"
+                    android:entries="@array/confirm_dialog"
+                    android:entryValues="@array/confirm_dialog_values"
+                    android:key="pref_confirm_dialog"
+                    android:title="@string/confirm_dialog_title" />
+                <PreferenceScreen
+                    android:key="pref_reboot_methods"
+                    android:persistent="false"
+                    android:title="@string/reboot_methods_title">
+                    <CheckBoxPreference
+                        android:defaultValue="true"
+                        android:key="pref_rebootsub_soft"
+                        android:title="@string/reboot_soft" />
+                    <CheckBoxPreference
+                        android:defaultValue="true"
+                        android:key="pref_rebootsub_recovery"
+                        android:title="@string/reboot_recovery" />
+                    <CheckBoxPreference
+                        android:defaultValue="true"
+                        android:key="pref_rebootsub_bootloader"
+                        android:title="@string/reboot_bootloader" />
+                    <CheckBoxPreference
+                        android:defaultValue="false"
+                        android:key="pref_rebootsub_flashmode"
+                        android:title="@string/reboot_flashmode" />
+                    <CheckBoxPreference
+                        android:defaultValue="false"
+                        android:key="pref_rebootsub_system12"
+                        android:title="@string/reboot_system12" />
+                    <CheckBoxPreference
+                        android:defaultValue="false"
+                        android:enabled="false"
+                        android:key="pref_rebootsub_safe"
+                        android:title="@string/reboot_safe" />
+                </PreferenceScreen>
+
+            </PreferenceCategory>
+            <PreferenceCategory
+                android:key="pref_add_items"
+                android:title="@string/sect_add_items">
+                <CheckBoxPreference
+                    android:defaultValue="true"
+                    android:disableDependentsState="true"
+                    android:key="pref_enable_screenshot"
+                    android:summary="@string/enable_screenshot_summ"
+                    android:title="@string/enable_screenshot_title" />
+                <EditTextPreference
+                    android:dialogMessage="@string/quick_dial_note"
+                    android:inputType="phone"
+                    android:key="pref_quick_dial_number"
+                    android:title="@string/quick_dial_number" />
+
+                <EditTextPreference
+                    android:key="pref_quick_dial_label"
+                    android:title="@string/quick_dial_label" />
+                <CheckBoxPreference
+                    android:key="pref_data_toggle"
+                    android:summary="@string/data_toggle_summ"
+                    android:title="@string/data_toggle" />
+
+            </PreferenceCategory>
+            <PreferenceCategory
+                android:key="pref_remove_items"
+                android:title="@string/sect_remove_items">
+                <CheckBoxPreference
+                    android:defaultValue="false"
+                    android:dependency="pref_enable_reboot"
+                    android:key="pref_remove_reboot"
+                    android:summary="@string/remove_reboot_summ"
+                    android:title="@string/remove_reboot_title" />
+                <CheckBoxPreference
+                    android:defaultValue="false"
+                    android:dependency="pref_enable_screenshot"
+                    android:key="pref_remove_screenshot"
+                    android:summary="@string/remove_screenshot_summ"
+                    android:title="@string/remove_screenshot_title" />
+                <CheckBoxPreference
+                    android:defaultValue="false"
+                    android:key="pref_remove_airplane"
+                    android:summary="@string/remove_airplane_summ"
+                    android:title="@string/remove_airplane_title" />
+                <CheckBoxPreference
+                    android:defaultValue="false"
+                    android:key="pref_remove_volume"
+                    android:summary="@string/remove_vol_state_summ"
+                    android:title="@string/remove_vol_state_title" />
+                <CheckBoxPreference
+                    android:defaultValue="false"
+                    android:dependency="pref_remove_volume"
+                    android:key="pref_remove_volume_workaround"
+                    android:summary="@string/remove_vol_state_workaround_summ"
+                    android:title="@string/remove_vol_state_workaround_title" />
             </PreferenceCategory>
         </PreferenceScreen>
-        
-        
-        
-        
-        
-        
+
+
     </PreferenceCategory>
-    <PreferenceCategory android:title="@string/sect_debug" android:key="pref_debug">
-        <CheckBoxPreference android:key="pref_hide_ic_launcher" android:title="@string/hide_ic_launcher_title" android:defaultValue="false" /><CheckBoxPreference android:summary="@string/verbose_log_summ" android:key="pref_verbose_log" android:title="@string/verbose_log_title" android:defaultValue="false"/>
-        
+    <PreferenceCategory
+        android:key="pref_debug"
+        android:title="@string/sect_debug">
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="pref_hide_ic_launcher"
+            android:title="@string/hide_ic_launcher_title" />
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="pref_verbose_log"
+            android:summary="@string/verbose_log_summ"
+            android:title="@string/verbose_log_title" />
+
     </PreferenceCategory>
-    <PreferenceCategory android:title="@string/sect_about" android:key="pref_about">
-        <Preference android:title="@string/app_info_title" android:key="pref_app_info"/>
+    <PreferenceCategory
+        android:key="pref_about"
+        android:title="@string/sect_about">
+        <Preference
+            android:key="pref_app_info"
+            android:title="@string/app_info_title" />
         <hk.kennethso168.xposed.advancedrebootmenu.DialogExPreference
-        android:title="@string/readme_title"
-        android:dialogMessage="@string/readme_content"
-        android:negativeButtonText="@null"/>
-        <Preference android:key="pref_special_thanks" android:title="@string/special_thanks_title">
-            <intent android:action="android.intent.action.VIEW"
-            		android:data="https://raw.github.com/kennethso168/AdvancedPowerMenu/master/SpecialThanks.md" />
-        </Preference> 
+            android:dialogMessage="@string/readme_content"
+            android:negativeButtonText="@null"
+            android:title="@string/readme_title" />
+        <Preference
+            android:key="pref_special_thanks"
+            android:title="@string/special_thanks_title">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="https://raw.github.com/kennethso168/AdvancedPowerMenu/master/SpecialThanks.md" />
+        </Preference>
         <hk.kennethso168.xposed.advancedrebootmenu.DialogExPreference
-        android:title="@string/troubleshoot_title"
-        android:dialogMessage="@string/troubleshoot_content"
-        android:negativeButtonText="@null"/>
-        <Preference android:title="@string/xda_title" android:key="pref_xda">
-            <intent android:action="android.intent.action.VIEW"
-            		android:data="http://forum.xda-developers.com/showthread.php?t=2594642" />
+            android:dialogMessage="@string/troubleshoot_content"
+            android:negativeButtonText="@null"
+            android:title="@string/troubleshoot_title" />
+        <Preference
+            android:key="pref_xda"
+            android:title="@string/xda_title">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="http://forum.xda-developers.com/showthread.php?t=2594642" />
         </Preference>
-        <Preference android:title="@string/donate_title" android:key="pref_donate">
-            <intent android:action="android.intent.action.VIEW"
-            		android:data="http://forum.xda-developers.com/donatetome.php?u=4414937" />
+        <Preference
+            android:key="pref_donate"
+            android:title="@string/donate_title">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="http://forum.xda-developers.com/donatetome.php?u=4414937" />
         </Preference>
-        
+
     </PreferenceCategory>
-    
-    
+
 
 </PreferenceScreen>

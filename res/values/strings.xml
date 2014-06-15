@@ -84,7 +84,7 @@
 	<string name="remove_vol_state_workaround_title">Remove last power menu option</string>
 	<string name="remove_vol_state_workaround_summ">Blindly remove the last option instead of detecting the volume state toggle option. Check this option if removing the volume state toggle doesn\'t work properly and you have the volume state toggle as the last option</string>
 	<string name="remove_vol_state_title">Remove volume state toggle item</string>
-	<string name="remove_vol_state_summ">Remove the original airplane mode toggle item</string>
+	<string name="remove_vol_state_summ">Remove the original volume state toggle item</string>
 	
 	<string name="sect_debug">App Options</string>
 	<string name="verbose_log_title">Verbose logging</string>

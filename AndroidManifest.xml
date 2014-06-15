@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="hk.kennethso168.xposed.advancedrebootmenu"
-    android:versionCode="26"
-    android:versionName="9.2.3" >
+    android:versionCode="27"
+    android:versionName="9.2.4" >
     
     <uses-sdk
         android:minSdkVersion="14"
@@ -36,7 +36,7 @@
 		</activity-alias> 
          
         <meta-data android:name="xposedmodule" android:value="true"/>
-        <meta-data android:name="xposedminversion" android:value="2.0*"/>
+        <meta-data android:name="xposedminversion" android:value="54"/>
         <meta-data android:name="xposeddescription" android:value="@string/xposed_description"/>
     </application>
 
