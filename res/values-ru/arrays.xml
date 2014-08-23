@@ -8,5 +8,6 @@
 		<item name="default">Белые (По умлочанию)</item>
 		<item name="dark">Чёрные</item>
 		<item name="color">Цветные</item>
+		<item name="existenz">Экзистенция</item>
 	</string-array>
 </resources>
