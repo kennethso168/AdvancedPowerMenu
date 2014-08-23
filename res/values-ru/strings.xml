@@ -1,57 +1,127 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
+    <string name="app_info_after">"
+Разработчик Kenneth So (kennethso168@xda)</string>
+    <string name="app_info_before">"Расширенное меню перезагрузки. 
+Версия "</string>
+    <string name="app_info_title">Информация о приложении</string>
     <string name="app_name">Расширенное меню перезагрузки</string>
-	<string name="launcher_name">Меню перезагрузки</string>
-	<string name="xposed_description">"Добавляет варианты перезагрузки и скриншот в меню выключения. \nРазработка kennethso168@xda \nПеревод от greatslon"</string>
-	<string name="credits_msg">Разработка kennethso168@xda</string>
-	<string name="reboot_soft">Мягкая перезагрузка</string>
-	<string name="reboot_recovery">Рекавери</string>
-	<string name="reboot_confirm">Телефон будет перезагружен</string>
-	<string name="take_screenshot">Скриншот</string>
-	<string name="note_title">Внимание</string>
-	<string name="note_summ">Необходима перезагрузка, чтобы изменения вступли в силу.</string>
-	<string name="sect_menu_options">Настройки</string>
-	<string name="enable_reboot_title">Расширенная перезагрузка</string>
-	<string name="enable_reboot_summ">Выберите для включения различных вариантов перезагрузки.</string>
-	<string name="enable_screenshot_title">Cкриншот</string>
-	<string name="enable_screenshot_summ">Добавление пункта Скриншот, если его изначально нет в меню выключения.</string>
-	<string name="confirm_dialog_title">Диалог подтверждения</string>
-	<string name="sect_debug">Отладка</string>
-	<string name="verbose_log_title">Подробное логирование</string>
-	<string name="verbose_log_summ">Включите для записи полного лога в /data/xposed/debug.log</string>
-	<string name="hide_ic_launcher_title">Скрыть иконку в лаунчере</string>
-	<string name="hide_ic_launcher_dialog">Возможно придётся подождать немного или перезагрузить лаунчер.\nВы также будете иметь доступ к настройкам Расширенного меню через Xposed Installer > Модули > Расширенное меню перезагрузки (Нажмите на название, а не чекбокс).</string>
-	<string name="sect_about">О приложении</string>
-	<string name="app_info_title">Информация о приложении</string>
-	<string name="app_info_before">"Расширенное меню перезагрузки. Версия "</string>
-	<string name="app_info_after">\nот Kenneth So (kennethso168@xda). \nПеревод от greatslon.</string>
-	<string name="license_title">Открытая лицензия</string>
-	<string name="special_thanks_title">Отдельное спасибо</string>
-	<string name="xda_title">Пост на xda</string>
-	<string name="email_title">Написать разработчику</string>
-	<string name="donate_title">Спонсировать</string>
-	<string name="icon_color_title">Цвет иконок</string>
-	<string name="reboot_methods_title">Отображаемые варианты перезагрузки</string>
-	<string name="reboot_bootloader">Бутлоадер</string>
-	<string name="reboot_confirm_bootloader">Телефон будет перезагружен в бутлоадер.</string>
-	<string name="reboot_confirm_recovery">Телефон будет перезагружен в рекавери.</string>
-	<string name="quick_dial">Быстрый набор</string>
-	<string name="quick_dial_number">Номер быстрого набора</string>
-	<string name="quick_dial_note">Оставьте пустым для отключения функции</string>
-	<string name="disabled">Отключено</string>
-	<string name="mobile_data_on">Включить мобильный интернет</string>
-	<string name="mobile_data_off">Выключить мобильный интернет</string>
-	<string name="expand_statusbar_title">Развернуть строку состояния</string>
-	<string name="expand_statusbar_summ">Добавить опцию открытия строки состояния</string>
-	<string name="data_toggle">Вкл/выкл мобильный интернет</string>
-	<string name="data_toggle_summ">Добавить опцию переключения мобильного интернета</string>
-	<string name="no_locked_off_title">Анти-вор</string>
-	<string name="no_locked_off_summ">Отключить выключение и перезагрузку при заблокированном экране</string>
-	<string name="no_locked_off_dialog">Вы не можете выключить телефон, т.к. включён режим "Анти-вот". Пожалуйста разблокируйте телефон и повторите попытку.</string>
-	<string name="readme_title">Копирайт и отказ от ответственности</string>
-	<string name="readme_content">Копирайт © 2013 So Kei Hong. Все права защищены.\n\nПРОГРАММА ПОСТОВЛЯЕТСЯ \"КАК ЕСТЬ \", БЕЗ ГАРАНТИЙ ЛЮБОГО РОДА, ЯВНЫХ ИЛИ ПОДРАЗУМЕВАЕМЫХ, АВТОРЫ ИЛИ ВЛАДЕЛЬЦЫ АВТОРСКИХ ПРАВ НЕ НЕСУТ ОТВЕТСТВЕННОСТИ ЗА ЛЮБЫЕ ПРЕТЕНЗИИ, ИЛИ УБЫТКИ.</string>
-	<string name="email_note_title">Примечание для писем</string>
-	<string name="email_note_content">Каждый день, меня переполняет тонн писем (не связанных с этим приложением). Поэтому, пожалуйста, внимание на следующие моменты, прежде чем посылать мне сообщения.\n1. Я скорее всего увижу ваше сообщение при отправе через личные сообщения на XDA\n2. Пожалуйста ознакомьтесь с \"What can you do if the app doesn\'t work / if issue happens?\" перед отправкой мне писем (можно найти в Xposed Installer > Download > Advanced Power Menu)\n3. Пожалуйста начинайте своё сообщение с [APM], чтобы я мог легче сортировать свою почту. Спасибо.\n4.Обратите внимание, что я не могу решить проблему с недостаточной информацией. Я также ИГНОРИРУЮ любые сообщения с пустым "телом письма" (Я использую gmail).\n5. Я понимаю только Английский и Китайский языки.\nБлагодарю за сотрудничество.</string>
+    <string name="ath_fake_poweroff_summ">Добавить поддельную кнопку выключения для обмана воров</string>
+    <string name="ath_fake_poweroff_title">Поддельная кнопка выключения</string>
+    <string name="ath_hide_desc_summ">Скрыть параметр «Устройство заблокировано» в меню выключения для дезинформации вора</string>
+    <string name="ath_hide_desc_title">Скрыть описание ATH</string>
+    <string name="confirm_dialog_title">Диалог подтверждения</string>
+    <string name="credits_msg">Разработка kennethso168@xda</string>
+    <string name="data_toggle">Вкл/выкл мобильный интернет</string>
+    <string name="data_toggle_summ">Добавление опции переключения мобильного интернета</string>
+    <string name="device_is_locked">Устройство заблокировано</string>
+    <string name="disabled">Отключено</string>
+    <string name="donate_title">Спонсировать</string>
+    <string name="email_note_content">"Каждый день, меня переполняет тонн писем (не связанных с этим приложением). Поэтому обратите внимание на следующие моменты, прежде чем посылать мне сообщения.
+1. Я скорее всего увижу ваше сообщение при отправке через личные сообщения на XDA
+2. Пожалуйста, ознакомьтесь с инструкцией \"Что вы можете сделать, если приложение не работает / возникает проблема?\" перед отправкой мне писем (можно найти в Xposed Installer > Download > Advanced Power Menu)
+3. Пожалуйста, начинайте своё сообщение с [APM], чтобы я мог легче сортировать свою почту. Спасибо.
+4. Обратите внимание, что я не могу решить проблему с недостаточной информацией. Я также ИГНОРИРУЮ любые сообщения с пустым телом письма (Я использую gmail).
+5. Я понимаю только Английский и Китайский языки.
+Благодарю за сотрудничество."</string>
+    <string name="email_note_title">Примечание для писем</string>
+    <string name="email_title">Написать разработчику</string>
+    <string name="enable_reboot_summ">Выберите для включения различных вариантов перезагрузки.</string>
+    <string name="enable_reboot_title">Расширенная перезагрузка</string>
+    <string name="enable_screenshot_summ">Добавление пункта Скриншот, если его нет в меню выключения.</string>
+    <string name="enable_screenshot_title">Cкриншот</string>
+    <string name="expand_statusbar_summ">Добавление опции открытия строки состояния</string>
+    <string name="expand_statusbar_title">Развернуть строку состояния</string>
+    <string name="hide_ic_launcher_dialog">"Возможно придётся немного подождать или перезагрузить лаунчер.
+Вы можете настроить расширенное меню перезагрузки через Xposed Installer > Модули > Расширенное меню перезагрузки (Нажмите на название, а не на чекбокс)."</string>
+    <string name="hide_ic_launcher_title">Скрыть иконку в лаунчере</string>
+    <string name="icon_color_title">Цвет иконок</string>
+    <string name="label_default">По умолчанию</string>
+    <string name="launcher_name">Меню перезагрузки</string>
+    <string name="license_title">Открытая лицензия</string>
+    <string name="mobile_data_off">Выключить мобильный интернет</string>
+    <string name="mobile_data_on">Включить мобильный интернет</string>
+    <string name="modify_menu_items">Изменить меню перезагрузки…</string>
+    <string name="no_locked_off_dialog">Вы не можете выключить телефон, т.к. включён режим Анти-вор. Пожалуйста, разблокируйте телефон и повторите попытку.</string>
+    <string name="no_locked_off_summ">Отключить выключение и перезагрузку при заблокированном экране</string>
+    <string name="no_locked_off_title">Анти-вор</string>
+    <string name="note_summ">Необходима перезагрузка для вступления изменений в силу.</string>
+    <string name="note_title">Внимание</string>
+    <string name="quick_dial">Быстрый набор</string>
+    <string name="quick_dial_label">Вариант быстрого набора текста</string>
+    <string name="quick_dial_note">Оставьте пустым для отключения функции</string>
+    <string name="quick_dial_number">Номер быстрого набора</string>
+    <string name="readme_content">"Копирайт © 2013 So Kei Hong. Все права защищены.
 
+ПРОГРАММА ПОСТОВЛЯЕТСЯ \"КАК ЕСТЬ \", БЕЗ ГАРАНТИЙ ЛЮБОГО РОДА, ЯВНЫХ ИЛИ ПОДРАЗУМЕВАЕМЫХ, АВТОРЫ ИЛИ ВЛАДЕЛЬЦЫ АВТОРСКИХ ПРАВ НЕ НЕСУТ ОТВЕТСТВЕННОСТИ ЗА ЛЮБЫЕ ПРЕТЕНЗИИ, ИЛИ УБЫТКИ."</string>
+    <string name="readme_title">Копирайт и отказ от ответственности</string>
+    <string name="reboot_bootloader">Бутлоадер</string>
+    <string name="reboot_confirm">Девайс будет перезагружен</string>
+    <string name="reboot_confirm_bootloader">Будет произведена перезагрузка в бутлоадер.</string>
+    <string name="reboot_confirm_recovery">Будет произведена перезагрузка в рекавери.</string>
+    <string name="reboot_methods_title">Отображаемые варианты перезагрузки</string>
+    <string name="reboot_flashmode">Фонарик</string>
+    <string name="reboot_methods_title">Показать методы перезагрузки…</string>
+    <string name="reboot_recovery">Рекавери</string>
+    <string name="reboot_safe">Безопасный режим</string>
+    <string name="reboot_soft">Быстрая перезагрузка</string>
+    <string name="reboot_system1">Загрузка в систему 1</string>
+    <string name="reboot_system12">Загрузка в систему 1/2</string>
+    <string name="reboot_system2">Загрузка в систему 2</string>
+    <string name="reboot_workaround_summ">Использование альтернативной реализации для замены параметров перезагрузки. Проверьте это, если у вас оригинальные варианты перезагрузки не работают должным образом</string>
+    <string name="reboot_workaround_title">Обход перезагрузки</string>
+    <string name="remove_airplane_summ">Удаление переключателя режима полета, если он существует</string>
+    <string name="remove_airplane_title">Удалить пункт включения режима полета</string>
+    <string name="remove_reboot_summ">Удаление пункта перезагрузки, если он существует, а дополнительные варианты перезагрузки выключены</string>
+    <string name="remove_reboot_title">Удалить пункт перезагрузки</string>
+    <string name="remove_screenshot_summ">Удаление кнопки скриншота, если она существует, а пункт скриншота отключен в разделе «Добавить пункт меню»</string>
+    <string name="remove_screenshot_title">Удалить кнопку скриншот</string>
+    <string name="remove_vol_state_summ">Удаление звуковой панели при заблокированном экране</string>
+    <string name="remove_vol_state_title">Удалить звуковую панель</string>
+    <string name="remove_vol_state_when_locked_summ">Удаление звуковой панели при </string>
+    <string name="remove_vol_state_workaround_summ">Слепое удаление последнего пункта в меню выключения вместо обнаружения звуковой панели. Установите этот флажок, если удаление звуковой панели не работает должным образом и у вас панель находятся снизу</string>
+    <string name="remove_vol_state_workaround_title">Удалить последний пункт в меню выключения</string>
+    <string name="remove_volume_state_when_locked">Удалить звуковую панель в меню выключения</string>
+    <string name="sect_about">О приложении</string>
+    <string name="sect_add_items">Добавление пунктов меню</string>
+    <string name="sect_debug">Параметры приложения</string>
+    <string name="sect_menu_options">Меню выключения</string>
+    <string name="sect_reboot_item">Меню перезагрузки</string>
+    <string name="sect_remove_items">Удаление пунктов меню</string>
+    <string name="special_thanks_title">Отдельное спасибо</string>
+    <string name="take_screenshot">Скриншот</string>
+    <string name="troubleshoot_content">"Что вы можете сделать, если приложение не работает / возникает проблема?
+
+Шаг 1: Попробуйте найти решение самостоятельно
+1. Убедитесь, что вы внимательно прочитали руководство по установке/
+2. Дважды перезагрузите девайс (ДВА РАЗА)
+Для каждого отдельного Xposed модуля необходима перезагрузка после установки. Пользователи сообщали, что приложение может не работать после одной перезагрузки. Но после повторной перезагрузки функционирует. Так что рекомендуется повторная перезагрузка.
+3. Отключите другие Xposed модули
+Xposed модули могут конфликтовать друг с другом. Попробуйте отключить все остальные модули в Xposed Installer и перезагрузитесь для проверки работоспособности модуля.
+4. Очистите данные приложения / переустановите приложение
+Параметры приложения могут перепутаться при его обновлении. Поэтому попробуйте переустановить приложение, это может помочь.
+5. Попробуйте старую версию приложения
+Проверте работоспособность прошлой версии приложения. Если оно работает, значит обновление что-то нарушает. Пожалуйста, скажите мне об этом!
+Если вышеперечисленные способы не работают, вы можете отправить мне отчет о проблеме.
+
+Шаг 2: Обратитесь ко мне за помощью
+(Пожалуйста, делайте это ТОЛЬКО после первого шага)
+Пожалуйста, пришлите мне отчет о проблеме, содержащий
+1) Описание проблемы
+2) Скриншоты (если это поможет вам объяснить ситуацию)
+3) Название и модель устройства, прошивку, номер Android версии и версии приложения
+4) debug.log (Пожалуйста, включите подробное логирование в приложении, а затем сделайте долгое нажатие на кнопку питания)(вы можете получить лог в Xposed Installer)
+5) Еще кое-что, если вы думаете, что это важно
+Обратится можно одним из следующих способов:
+1) через личные сообщения на XDA (предпочтительно)
+2) по электронной почте (ПРИМЕЧАНИЕ: пожалуйста, начинайте своё сообщение с [APM], чтобы я мог легче сортировать свою почту. Спасибо.)
+Обратите внимание, что я не могу решить проблему при недостаточной информации. Я также ИГНОРИРУЮ любые сообщения с ПУСТЫМ ТЕЛОМ ПИСЬМА (Я использую gmail) 
+Я понимаю только Английский и Китайский языки.
+Имейте в виду, что даже со полной информацией о проблеме я не имею возможности исправить вашу проблему, так как я не являюсь владельцем вашего устройства, и я ещё начинающий разработчик под OS Android. Извините."</string>
+    <string name="troubleshoot_title">Устранение неполадок</string>
+    <string name="verbose_log_summ">Включите для записи полного лога в /data/xposed/debug.log</string>
+    <string name="verbose_log_title">Подробное логирование</string>
+    <string name="xda_title">Пост на xda</string>
+    <string name="xposed_description">"Добавляет варианты перезагрузки и скриншот в меню выключения. 
+Разработка kennethso168@xda 
 </resources>
