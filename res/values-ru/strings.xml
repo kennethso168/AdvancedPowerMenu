@@ -8,7 +8,7 @@
     <string name="app_name">Расширенное меню перезагрузки</string>
     <string name="ath_fake_poweroff_summ">Добавить поддельную кнопку выключения для обмана воров</string>
     <string name="ath_fake_poweroff_title">Поддельная кнопка выключения</string>
-    <string name="ath_hide_desc_summ">Скрыть параметр «Устройство заблокировано» в меню выключения для дезинформации вора</string>
+    <string name="ath_hide_desc_summ">Скрыть параметр \"Устройство заблокировано\" в меню выключения для дезинформации вора</string>
     <string name="ath_hide_desc_title">Скрыть описание ATH</string>
     <string name="confirm_dialog_title">Диалог подтверждения</string>
     <string name="credits_msg">Разработка kennethso168@xda</string>
@@ -33,7 +33,7 @@
     <string name="expand_statusbar_summ">Добавление опции открытия строки состояния</string>
     <string name="expand_statusbar_title">Развернуть строку состояния</string>
     <string name="hide_ic_launcher_dialog">"Возможно придётся немного подождать или перезагрузить лаунчер.
-Вы можете настроить расширенное меню перезагрузки через Xposed Installer > Модули > Расширенное меню перезагрузки (Нажмите на название, а не на чекбокс)."</string>
+Вы можете настроить расширенное меню перезагрузки в Xposed Installer > Модули > Расширенное меню перезагрузки (Нажмите на название, а не на чекбокс)."</string>
     <string name="hide_ic_launcher_title">Скрыть иконку в лаунчере</string>
     <string name="icon_color_title">Цвет иконок</string>
     <string name="label_default">По умолчанию</string>
